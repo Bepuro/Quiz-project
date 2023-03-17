@@ -5,3 +5,4 @@ var cards = document.querySelectorAll('.card');
         card.classList.toggle('is-flipped');
     });
 });
+
