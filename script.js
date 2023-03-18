@@ -6,3 +6,19 @@ var cards = document.querySelectorAll('.card');
     });
 });
 
+let cardDeck = ['1','2','3','4','5','6','7','8'];
+let dir = {0:['мама','папа'],1:['тетя','дядя'],2:['сестра','брат']};
+let i = 0;
+
+document.getElementById('button').onclick = function() {
+    if (Object.keys(dir).length === i) {
+        document.getElementById("f").innerHTML = "Я";
+        document.getElementById("b").innerHTML = "Семья";
+        i =0;
+    }
+    else {
+        document.getElementById("f").innerHTML = dir[i][0];
+        document.getElementById("b").innerHTML = dir[i][1];
+        i++;
+    }
+}
