@@ -2,21 +2,43 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel ='stylesheet' href="style.css">
     <title>CardDeck</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
 </head>
 <body>
-    <div class="wrap">
-        <div class="scene scene--card">
-            <div class="card">
-                <div class="card__face card__face--front"><span id = "f">я</span></div>
-                <div class="card__face card__face--back"><span id = "b">семья</span></div>
-            </div>
+<header>
+  <div class="container">
+    <div class="header-line">
+      <div class="header-logo">
+          <img src="img/Koloda.png" alt="">
         </div>
-        <button id = "button" type="button"> Следующая</button>
+        <div class="nav">
+          <a class="nav-item" href="#">Главная</a>
+          <a class="nav-item" href="#">Карточки</a>
+        </div>
+        <div class = "authorization">
+            <a  class="nav-item" href="#">Вход</a>
+            <a  class="btn" href="#">Зарегистрироваться</a>
+        </div>
     </div>
+  </div>
 
-    <script src="script.js"></script>
+</header>
+<main>
+    <div class="box">
+        <img class = "back-img" src="img/bg.jpg" alt="">
+        <h1>С легкостью готовься к
+            сложным экзаменам с
+            помощью карточек</h1>
+
+        <h2> Присоединяйся к нам и создавай карточки сам</h2>
+        <a  class="btn1" href="#">Зарегистрироваться</a>
+    </div>
+</main>
 
 </body>
 </html>

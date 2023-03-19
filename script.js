@@ -6,7 +6,6 @@ var cards = document.querySelectorAll('.card');
     });
 });
 
-let cardDeck = ['1','2','3','4','5','6','7','8'];
 let dir = {0:['мама','папа'],1:['тетя','дядя'],2:['сестра','брат']};
 let i = 0;
 
