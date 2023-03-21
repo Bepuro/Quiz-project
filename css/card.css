@@ -1,0 +1,167 @@
+html,body{
+    width:100%;
+    height:100%;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+header {
+    height: 69px;
+}
+
+.container {
+    margin: 0px 20px;
+}
+
+.header-line {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.nav-item {
+    color: #1E1E1E;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 18px;
+
+    margin-right: 57px;
+}
+
+.btn {
+    background-color: #305DFF;
+    color: #fff;
+    text-decoration: none;
+    padding: 14px 19.5px;
+    font-weight: 400;
+    border-radius: 10px;
+}
+
+
+.wrap {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.scene {
+    display: inline-block;
+    width: 700px;
+    height: 400px;
+    margin: 40px 0;
+    perspective: 600px;
+}
+
+.card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transform-origin: center right;
+    transition: transform 1s;
+}
+
+.card.is-flipped {
+    transform: translateX(-100%) rotateY(-180deg);
+}
+
+.card__face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    line-height: 400px;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    font-size: 40px;
+    backface-visibility: hidden;
+    border-radius: 10px;
+}
+
+.card__face--front {
+    background: crimson;
+}
+
+.card__face--back {
+    background: slateblue;
+    transform: rotateY(180deg);
+}
+
+main {
+    background-color: #F6F7FB;
+    width: 100%;
+    height: 100%;
+}
+
+.estimation {
+
+    height: 1200px;
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: flex;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    margin-bottom: 6px;
+}
+.score {
+    width: 17vw;
+    height: 17vw;
+    max-width: 70px;
+    max-height: 70px;
+    margin: auto;
+    color: #fff;
+    border-radius: 50%;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-box-shadow: inset 0 0 0 2px #fff;
+    box-shadow: inset 0 0 0 2px #fff;
+    border: 1px solid;
+    text-align: center;
+    font-size: 36px;
+    line-height: 25px;
+}
+.name {
+    position: absolute;
+    top: 80px;
+    left: 45%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.one {
+    background: #ABBEFF;
+    border-color: #ABBEFF;
+}
+
+.two {
+    background: #8FA8FF;
+    border-color: #8FA8FF;
+}
+.three {
+    background: #6F8EFF;
+    border-color: #6F8EFF;
+}
+
+.four {
+    background: #4B73FF;
+    border-color: #4B73FF;
+}
+
+.five {
+    background: #305DFF;
+    border-color: #305DFF;
+}
+
+
+

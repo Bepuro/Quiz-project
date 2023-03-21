@@ -9,7 +9,7 @@ var cards = document.querySelectorAll('.card');
 let dir = {0:['мама','папа'],1:['тетя','дядя'],2:['сестра','брат']};
 let i = 0;
 
-document.getElementById('button').onclick = function() {
+document.getElementById('one').onclick = function() {
     if (Object.keys(dir).length === i) {
         document.getElementById("f").innerHTML = "Я";
         document.getElementById("b").innerHTML = "Семья";
