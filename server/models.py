@@ -4,6 +4,7 @@ from sqlalchemy.orm import relationship
 
 Base = declarative_base()
 
+
 class UserCardProgress(Base):
     __tablename__ = 'user_card_progress'
     id = Column(Integer, primary_key=True)
@@ -13,11 +14,13 @@ class UserCardProgress(Base):
     user = relationship('User')
     card = relationship('Card')
 
+
 class User(Base):
     __tablename__ = 'users'
     id = Column(Integer, primary_key=True)
     username = Column(String(20), nullable=False)
     decks = relationship('Deck', cascade='all, delete, delete-orphan')
+
 
 class Deck(Base):
     __tablename__ = 'decks'
@@ -26,6 +29,7 @@ class Deck(Base):
     user_id = Column(Integer, ForeignKey('users.id'))
     user = relationship('User')
     cards = relationship('Card', cascade='all, delete, delete-orphan')
+
 
 class Card(Base):
     __tablename__ = 'cards'
