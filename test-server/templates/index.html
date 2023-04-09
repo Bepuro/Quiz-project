@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+<head>
+    <meta charset="UTF-8">
+    <link rel ='stylesheet' href="../../css/main.css">
+    <title>CardDeck</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+<header>
+  <div class="container">
+    <div class="header-line">
+      <div class="header-logo">
+          <img src="{{ url_for('static', filename='img/Koloda.png') }}" alt="">
+        </div>
+        <div class="nav">
+          <a class="nav-item" href="/">Главная</a>
+          <a class="nav-item" href="/card">Карточки</a>
+        </div>
+        <div class = "authorization">
+            <a  class="nav-item" href="/auth/login">Вход</a>
+            <a  class="btn" href="/auth/register">Зарегистрироваться</a>
+        </div>
+    </div>
+  </div>
+
+</header>
+<main>
+    <div class="box">
+        <img class = "back-img" src="{{ url_for('static', filename='img/bg.png') }}" alt="">
+        <p class = "p1">С легкостью готовься к
+            <br>сложным экзаменам с
+            <br>помощью карточек</p>
+
+        <p class ="p2"> Присоединяйся к нам и создавай карточки сам</p>
+        <a  class="btn1" href="/auth/register">Зарегистрироваться</a>
+    </div>
+</main>
+
+</body>
+</html>
