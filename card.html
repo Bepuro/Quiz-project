@@ -11,41 +11,40 @@
 </head>
 <body>
 <header>
-    <div class="container">
-        <div class="header-line">
-            <div class="header-logo">
-                <img src="img/Koloda.png" alt="">
-            </div>
-            <div class="nav">
-                <a class="nav-item" href="#">Главная</a>
-                <a class="nav-item" href="#">Карточки</a>
-            </div>
-            <div class = "authorization">
-                <a  class="nav-item" href="#">Вход</a>
-                <a  class="btn" href="#">Зарегистрироваться</a>
-            </div>
+    <div class="cnt">
+        <img class="logo" src="img/Koloda.svg"></div>
+    <div class="tab">
+        <div class="cnt">
+            <div class="tablinks text" onclick="window.location.href = 'index.html';">Главная</div>
         </div>
+        <div class="cnt">
+            <div class="tablinks text" onclick="window.location.href = 'cards.html';">Карточки</div>
+        </div>
+    </div>
+    <div class="wrp">
+        <div class="btn-1 text">Вход</div>
+        <button class="btn-2">Зарегистрироваться</button>
     </div>
 </header>
 <main>
-    <div class = "name-deсk">
+    <div class="name-deсk">
         <h1 class="name">КАКАКАКАКАК</h1>
     </div>
     <div class="wrap">
         <div class="scene scene--card">
             <div class="card">
-                <div class="card__face card__face--front"><span id = "f">я</span></div>
-                <div class="card__face card__face--back"><span id = "b">семья</span></div>
+                <div class="card__face card__face--front"><span id="f">я</span></div>
+                <div class="card__face card__face--back"><span id="b">семья</span></div>
             </div>
         </div>
 
     </div>
-    <div class = "estimation" >
-        <button class = "score one">1</button>
-        <button class = "score two">2</button>
-        <button class = "score three">3</button>
-        <button class = "score four">4</button>
-        <button class = "score five">5</button>
+    <div class="estimation">
+        <button id="one" class="score one">1</button>
+        <button class="score two">2</button>
+        <button class="score three">3</button>
+        <button class="score four">4</button>
+        <button class="score five">5</button>
 
     </div>
     <script src="script.js"></script>
