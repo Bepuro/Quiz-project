@@ -1,6 +1,5 @@
 import functools
 
-import psycopg2.extras
 from flask import (
     Blueprint,
     flash,
@@ -16,6 +15,8 @@ from werkzeug.security import (
     generate_password_hash,
 )
 from .database import get_db
+from .models import User
+from sqlalchemy.exc import IntegrityError
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
@@ -25,7 +26,7 @@ def register():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        database = get_db()
+        db = get_db()
         err = None
 
         if not username:
@@ -35,13 +36,11 @@ def register():
 
         if err is None:
             try:
-                with database.cursor() as cur:
-                    cur.execute(
-                        "INSERT INTO user_name (username, password) VALUES (%s, %s)",
-                        (username, generate_password_hash(password))
-                    )
-                    database.commit()
-            except database.IntegrityError:
+                user = User(username=username, password=generate_password_hash(password))
+                db.session.add(user)
+                db.session.commit()
+            except IntegrityError as e:
+                db.session.rollback()
                 err = f'User {username} is already registered.'
             else:
                 return redirect(url_for("auth.login"))
@@ -58,20 +57,16 @@ def login():
         db = get_db()
         err = None
 
-        user = None
-        with db.cursor(cursor_factory=psycopg2.extras.DictCursor) as cur:
-            cur.execute(
-                "SELECT * FROM user_name WHERE username = %s", (username,)
-            )
-            user = cur.fetchone()
+        user = User.query.filter_by(username=username).first()
+
         if user is None:
             err = 'Incorrect username'
-        elif not check_password_hash(user['password'], password):
+        elif not check_password_hash(user.password, password):
             err = 'Incorrect password.'
 
         if err is None:
             session.clear()
-            session['user_id'] = user['id']
+            session['user_id'] = user.id
             return redirect(url_for('index'))
 
         flash(err)
@@ -86,11 +81,7 @@ def load_logged_in_user():
     if user_id is None:
         g.user = None
     else:
-        with get_db().cursor() as cur:
-            cur.execute(
-                'SELECT * FROM user_name WHERE id = %s', (user_id,)
-            )
-            g.user = cur.fetchone()
+            g.user = User.query.get(user_id)
 
 
 @bp.route('/logout')
