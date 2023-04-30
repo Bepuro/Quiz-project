@@ -54,7 +54,6 @@ def login():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        db = get_db()
         err = None
 
         user = User.query.filter_by(username=username).first()
@@ -81,7 +80,7 @@ def load_logged_in_user():
     if user_id is None:
         g.user = None
     else:
-            g.user = User.query.get(user_id)
+        g.user = User.query.get(user_id)
 
 
 @bp.route('/logout')
