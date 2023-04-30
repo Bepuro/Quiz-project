@@ -1,5 +1,5 @@
 import json
-from flask import jsonify, Blueprint, request
+from flask import jsonify, Blueprint, request, session
 from server.models import Deck, Card
 from server import db
 
@@ -24,6 +24,9 @@ def _deck_decoder(obj):
 
 @bp.route('/decks', methods=['POST'])
 def create_deck():
+    if 'username' not in session:
+        return jsonify({'message': 'Unauthorized'})
+
     data = request.get_json()
     new_deck = _deck_decoder(data)
 
