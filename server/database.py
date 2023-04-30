@@ -5,7 +5,7 @@ from flask import current_app, g
 from flask.cli import with_appcontext
 from flask_sqlalchemy import SQLAlchemy
 from dotenv import load_dotenv
-from .models import db
+from server.models import db
 
 
 def init_app(app):

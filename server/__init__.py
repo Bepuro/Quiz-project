@@ -1,6 +1,6 @@
 import os
 from flask import Flask
-from .models import db
+from server.models import db
 
 
 def create_app(test_config=None):
@@ -28,15 +28,23 @@ def create_app(test_config=None):
     def say_hello():
         return 'Hey, this is flask-server!'
 
-    from . import database
+    import server.database as database
     database.init_app(app)
     db.init_app(app)
 
-    from . import auth
+    import server.auth as auth
     app.register_blueprint(auth.bp)
 
-    from . import index
+    import server.index as index
     app.register_blueprint(index.bp)
     app.add_url_rule('/', endpoint='index')
 
+    import server.api as api
+    app.register_blueprint(api.bp)
+
     return app
+
+
+if __name__ == '__main__':
+    app = create_app()
+    app.run()
