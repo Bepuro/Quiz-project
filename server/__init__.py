@@ -2,6 +2,7 @@ import os
 from flask import Flask
 from .models import db
 
+
 def create_app(test_config=None):
     app = Flask(
         __name__,
@@ -9,7 +10,6 @@ def create_app(test_config=None):
     )
     app.config.from_mapping(
         SECRET_KEY='lol',
-        DATABASE=os.path.join(app.instance_path, 'server-engine.sql'),
         SQLALCHEMY_DATABASE_URI=f"",
         SQLALCHEMY_TRACK_MODIFICATIONS=False
     )
@@ -21,8 +21,8 @@ def create_app(test_config=None):
 
     try:
         os.makedirs(app.instance_path)
-    except OSError as ex:
-        print(ex)
+    except OSError:
+        pass
 
     @app.route('/hello')
     def say_hello():
@@ -31,9 +31,7 @@ def create_app(test_config=None):
     from . import database
     database.init_app(app)
     db.init_app(app)
-    #with app.app_context():
-        #db.drop_all()
-        #db.create_all()
+
     from . import auth
     app.register_blueprint(auth.bp)
 

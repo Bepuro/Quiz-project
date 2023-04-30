@@ -7,6 +7,7 @@ from flask_sqlalchemy import SQLAlchemy
 from dotenv import load_dotenv
 from .models import db
 
+
 def init_app(app):
     dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
     if os.path.exists(dotenv_path):
@@ -25,16 +26,19 @@ def get_db():
         g.db = db
     return g.db
 
+
 def close_db(e=None):
     db = g.pop('db', None)
 
     if db is not None:
         db.session.close()
 
+
 def init_db():
     with app.app_context():
-        #db.drop_all()
+        # db.drop_all()
         db.create_all()
+
 
 @click.command('init-db')
 @with_appcontext
