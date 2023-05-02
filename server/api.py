@@ -1,5 +1,5 @@
 import json
-from flask import jsonify, Blueprint, request, session
+from flask import jsonify, Blueprint, request, session, make_response
 from werkzeug.security import check_password_hash
 
 from server.models import Deck, Card, User
@@ -8,8 +8,12 @@ from server import db
 bp = Blueprint('api', __name__, url_prefix='/api')
 
 
+def jsonify(obj, status_code=200):
+    return make_response(json.dumps(obj, ensure_ascii=False, indent=4), status_code, {'Content-Type': 'application/json; charset=utf-8'})
+
+
 def _deck_decoder(obj):
-    demanded_params = {'name', 'user_id'}
+    demanded_params = {'name'}
 
     new_deck = Deck()
 
@@ -59,6 +63,7 @@ def create_deck():
     if new_deck is None:
         return jsonify({'message': 'Some err occurred'})
 
+    new_deck.user_id = session['user_id']
     db.session.add(new_deck)
     db.session.commit()
 
@@ -79,7 +84,7 @@ def delete_deck(deck_id: int):
 
     deck = Deck.query.get(deck_id)
 
-    if not deck:
+    if not deck or deck.user_id != session['user_id']:
         return jsonify({'message': 'No Content'}), 204
 
     db.session.delete(deck)
@@ -126,3 +131,84 @@ def delete_card(card_id: int):
     db.session.commit()
 
     return jsonify({'message': 'Success'}), 200
+
+
+@bp.route('/decks/<int:deck_id>', methods=['PUT'])
+def update_deck(deck_id):
+    if 'user_id' not in session:
+        return jsonify({'message': 'Unauthorized'})
+
+    data = request.get_json()
+    if 'name' not in data:
+        return jsonify({'message': 'Missing required parameter "name"'})
+
+    deck = Deck.query.filter_by(id=deck_id, user_id=session['user_id']).first()
+    if deck is None:
+        return jsonify({'message': 'Deck not found'})
+
+    deck.name = data['name']
+    db.session.commit()
+
+    return jsonify({
+        "id": deck.id,
+        "name": deck.name,
+        "user_id": deck.user_id
+    }), 200
+
+
+@bp.route('/cards/<int:card_id>', methods=['PUT'])
+def update_card(card_id):
+    if 'user_id' not in session:
+        return jsonify({'message': 'Unauthorized'})
+
+    data = request.get_json()
+    if 'question' not in data or 'answer' not in data:
+        return jsonify({'message': 'Missing required parameters "question" and/or "answer"'})
+
+    card = Card.query.filter_by(id=card_id).join(Deck).filter_by(user_id=session['user_id']).first()
+    if card is None:
+        return jsonify({'message': 'Card not found'})
+
+    card.question = data['question']
+    card.answer = data['answer']
+    db.session.commit()
+
+    return jsonify({
+        "id": card.id,
+        "question": card.question,
+        "answer": card.answer,
+        "deck_id": card.deck_id
+    }), 200
+
+
+@bp.route('/user/decks', methods=['GET'])
+def get_user_decks():
+    if 'user_id' not in session:
+        return jsonify({'message': 'Unauthorized'})
+
+    decks = Deck.query.filter_by(user_id=session['user_id']).all()
+
+    return jsonify([{
+        "id": deck.id,
+        "name": deck.name,
+        "user_id": deck.user_id
+    } for deck in decks]), 200
+
+
+@bp.route('/decks/<int:deck_id>/cards', methods=['GET'])
+def get_deck_cards(deck_id):
+    if 'user_id' not in session:
+        return jsonify({'message': 'Unauthorized'})
+
+    deck = Deck.query.filter_by(id=deck_id, user_id=session['user_id']).first()
+    if deck is None:
+        return jsonify({'message': 'Deck not found'})
+
+    cards = Card.query.filter_by(deck_id=deck_id).all()
+
+    return jsonify([{
+        "id": card.id,
+        "question": card.question,
+        "answer": card.answer,
+        "deck_id": card.deck_id
+    } for card in cards]), 200
