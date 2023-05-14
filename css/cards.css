@@ -50,13 +50,18 @@ header{
 }
 
 .btn-1{
-    color: gray;
+    cursor: pointer;
+    color: gray !important;
+}
+
+.btn-1:hover{
+    color: #0036f8 !important;
 }
 
 .btn-2{
     background-color: #305DFF;
     color: white;
-    width: 240px;
+    /* width: 240px; */
     align-items: center;
     border: 0px;
     height: fit-content;
@@ -242,4 +247,112 @@ header{
 .btn-next{
     color: #305DFF;
     font-size: 20px;
+}
+
+dialog::backdrop {
+    background-color: rgba(0 0 0 / .3);
+}
+
+dialog {
+    width: 60%;
+    border: none;
+    border-radius: 14px;
+    background: linear-gradient(to left,white 50%,#305DFF 50%);
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 26px;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-inf{
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    width: 100%;
+    align-items: center;
+}
+
+.inputs{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.modal-dist{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    align-items: center;
+}
+
+.label{
+    font-weight: 400;
+    font-size: 16px;
+    color: #808080;
+}
+
+.h1{
+    padding: 0px;
+    margin: 0px;
+    font-weight: 500;
+    font-size: 32px;
+    color: #1E1E1E;
+}
+
+.h5{
+    padding: 0px;
+    margin: 0px;
+    font-weight: 500;
+    font-size: 16px;
+    color: grey;
+}
+
+.input{
+    background: #F6F7FB;
+    border-radius: 10px;
+    padding: 16px 10px;
+    border: #0036f8;
+}
+
+.btn-3{
+    cursor: pointer;
+    background-color: #305DFF;
+    color: white;
+    width: 100%;
+    align-items: center;
+    border: 0px;
+    height: fit-content;
+    border-radius: 10px;
+    padding: 14px 18px;
+    font-size: 14px;
+}
+
+.btn-3:hover{
+    background-color: #0036f8;
+}
+
+.btn-gr{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.modal-text{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px !important;
 }
