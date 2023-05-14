@@ -39,14 +39,56 @@ header{
     width: fit-content;
 }
 
-.wrp{
+.t-cnt {
+    cursor: pointer;
+    align-items: center;
     display: flex;
+    gap: 10px;
+    justify-content: center;
+    padding: 16px 20px;
     position: relative;
+    width: fit-content;
+}
+
+.wrp{
+    padding:3px;
+    display: flex;
+    position: absolute;
     width: fit-content;
     align-items: center;
     gap: 40px;
-    padding: 10px 40px 10px 0px;
-    margin-left: 753px;
+    right: 25px;
+}
+
+.wrp-img {
+    padding:3px;
+    display: none;
+    position: absolute;
+    align-items: center;
+    gap: 40px;
+    right: 25px;
+    width: 40px;
+}
+
+@media (max-width: 1000px) {
+    .tab {
+        gap: 0;
+    }
+
+    .t-cnt {
+        padding: 16px 10px;
+
+    }
+
+    .wrp {
+        display:none;
+    }
+
+    .wrp-img {
+        display: flex;
+    }
+
+
 }
 
 .btn-1{

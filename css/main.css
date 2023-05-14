@@ -45,11 +45,11 @@ header{
 
 .wrp{
     display: flex;
-    position: relative;
+    position: absolute;
     width: fit-content;
     align-items: center;
     gap: 40px;
-    padding: 10px 40px 10px 0px;
+    right: 20px;
     margin-left: 753px;
 }
 

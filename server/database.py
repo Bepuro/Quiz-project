@@ -9,11 +9,11 @@ from server.models import db
 
 
 def init_app(app):
-    dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
+    dotenv_path = os.path.join(os.path.dirname(__file__), '1.env')
     if os.path.exists(dotenv_path):
         load_dotenv(dotenv_path)
     else:
-        raise FileNotFoundError('File .env not found')
+        raise FileNotFoundError('File 1.env not found')
     DATABASE_URI = os.getenv('DATABASE_URL')
     app.config["SQLALCHEMY_DATABASE_URI"] = DATABASE_URI
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
