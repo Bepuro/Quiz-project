@@ -1,5 +1,7 @@
 body {
     font-family: 'Roboto', sans-serif;
+    width: 100%;
+    height: 100%;
 }
 
 header{
@@ -61,6 +63,7 @@ header{
 }
 
 .wrp-img {
+    cursor: pointer;
     padding:3px;
     display: none;
     position: absolute;
@@ -70,26 +73,6 @@ header{
     width: 40px;
 }
 
-@media (max-width: 1000px) {
-    .tab {
-        gap: 0;
-    }
-
-    .t-cnt {
-        padding: 16px 10px;
-
-    }
-
-    .wrp {
-        display:none;
-    }
-
-    .wrp-img {
-        display: flex;
-    }
-
-
-}
 
 .btn-1{
     cursor: pointer;
@@ -397,4 +380,33 @@ dialog {
     flex-direction: column;
     align-items: center;
     gap: 6px !important;
+}
+
+
+@media (max-width: 1000px) {
+    .tab {
+        gap: 0;
+    }
+
+    .t-cnt {
+        padding: 16px 10px;
+
+    }
+
+    .wrp {
+        display:none;
+    }
+
+    .wrp-img {
+        display: flex;
+    }
+
+    .search {
+        width: 500px;
+    }
+
+    .menu {
+        gap: 50px;
+    }
+
 }

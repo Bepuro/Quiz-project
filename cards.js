@@ -38,3 +38,14 @@ login_btn.onclick = () => {
   modal_1.close()
   modal.showModal()
 }
+
+const btnOpen1 = document.getElementById("wrp-img");
+
+btnOpen1.onclick = () => {
+  modal.showModal()
+}
+
+
+btnClose.onclick = () => {
+  modal.close()
+}
