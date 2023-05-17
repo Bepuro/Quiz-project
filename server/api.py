@@ -1,7 +1,10 @@
 import json
-from flask import jsonify, Blueprint, request, session, make_response
-from werkzeug.security import check_password_hash
+from sqlite3 import IntegrityError
 
+from flask import jsonify, Blueprint, request, session, make_response
+from werkzeug.security import check_password_hash, generate_password_hash
+
+from server.database import get_db
 from server.models import Deck, Card, User
 from server import db
 
@@ -9,7 +12,8 @@ bp = Blueprint('api', __name__, url_prefix='/api')
 
 
 def jsonify(obj, status_code=200):
-    return make_response(json.dumps(obj, ensure_ascii=False, indent=4), status_code, {'Content-Type': 'application/json; charset=utf-8'})
+    return make_response(json.dumps(obj, ensure_ascii=False, indent=4), status_code,
+                         {'Content-Type': 'application/json; charset=utf-8'})
 
 
 def _deck_decoder(obj):
@@ -50,6 +54,32 @@ def login_user():
 def logout():
     session.clear()
     return jsonify({'message': 'Logged Out'})
+
+
+@bp.route('/register', methods=['POST'])
+def register_user():
+    username = request.form['username']
+    password = request.form['password']
+    db = get_db()
+    err = None
+
+    if not username:
+        err = 'Username is required'
+    elif not password:
+        err = 'Password is required'
+
+    if err is None:
+        try:
+            user = User(username=username, password=generate_password_hash(password))
+            db.session.add(user)
+            db.session.commit()
+        except IntegrityError as e:
+            db.session.rollback()
+            err = f'User {username} is already registered.'
+    if err:
+        return jsonify({'err': err}), 500
+    else:
+        return jsonify({'message': 'Success'}), 200
 
 
 @bp.route('/decks', methods=['POST'])
