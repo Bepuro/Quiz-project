@@ -58,8 +58,8 @@ def logout():
 
 @bp.route('/register', methods=['POST'])
 def register_user():
-    username = request.form['username']
-    password = request.form['password']
+    username = request.json.get('username')
+    password = request.json.get('password')
     db = get_db()
     err = None
 
