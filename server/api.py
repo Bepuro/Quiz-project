@@ -77,9 +77,9 @@ def register_user():
             db.session.rollback()
             err = f'User {username} is already registered.'
     if err:
-        return jsonify({'err': err}), 500
+        return jsonify({'err': err}), 400
     else:
-        return jsonify({'message': 'Success'}), 200
+        return jsonify({'message': 'Success', 'username': username}), 200
 
 
 @bp.route('/decks', methods=['POST'])
