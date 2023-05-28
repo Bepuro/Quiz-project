@@ -1,6 +1,7 @@
 const answer = document.createElement('span');
 const question = document.createElement('span');
 const card = document.querySelector('.card');
+const counter = document.querySelector('.counter');
 const arrows = {
     left: document.querySelector('.left-arrow'),
     right: document.querySelector('.right-arrow')
@@ -18,6 +19,7 @@ function initScript() {
         { front: 'тетя', back: 'дядя'},
         { front: 'сестра', back: 'брат'}
     ];
+
     let mxIdx = info.length - 1;
 
     addHeader(deckName);
@@ -43,6 +45,7 @@ function addCardLogic(info) {
     question.id = "front";
     answer.id = "back";
 
+    counter.innerHTML = `${curIdx + 1} / ${info.length}`;
     question.innerHTML = info[curIdx].front;
     answer.innerHTML = info[curIdx].back;
 
@@ -59,6 +62,7 @@ function addSwitching(info, mxIdx) {
             curIdx--;
             question.innerHTML = info[curIdx].front;
             tryFlipCard(info);
+            counter.innerHTML = `${curIdx + 1} / ${info.length}`;
         }
     };
     arrows.right.onclick = e => {
@@ -66,6 +70,7 @@ function addSwitching(info, mxIdx) {
             curIdx++;
             question.innerHTML = info[curIdx].front;
             tryFlipCard(info);
+            counter.innerHTML = `${curIdx + 1} / ${info.length}`;
         }
     };
 }
