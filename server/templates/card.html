@@ -29,14 +29,16 @@
 
 <main>
     <div class = "name-deсk"></div>
-   <div class="wrap">
-       <div class="scene scene--card">
-           <div class="card">
-               <div class="card__face card__face--front"><!--<span id = "front">я</span>--></div>
-               <div class="card__face card__face--back"><!--<span id = "back">семья</span>--></div>
+    <div class = "counter"></div>
+    <div class="wrap">
+        <div class="arrow left-arrow"><div></div></div>
+        <div class="scene scene--card">
+            <div class="card">
+               <div class="card__face card__face--front"></div>
+               <div class="card__face card__face--back"></div>
             </div>
         </div>
-
+        <div class="arrow right-arrow"><div></div></div>
     </div>
     <div class = "numeration"></div>
     <script src="{{ url_for('static', filename='script.js') }}"></script>

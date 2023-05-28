@@ -1,8 +1,15 @@
-let curIdx = 0;
-let answer = null;
-let question = null;
-let card = null;
+const answer = document.createElement('span');
+const question = document.createElement('span');
+const card = document.querySelector('.card');
+const arrows = {
+    left: document.querySelector('.left-arrow'),
+    right: document.querySelector('.right-arrow')
+}
+
+
 let cardIsFlipped = false;
+let curIdx = 0;
+
 
 function initScript() {
     const deckName = 'Семья';
@@ -11,10 +18,11 @@ function initScript() {
         { front: 'тетя', back: 'дядя'},
         { front: 'сестра', back: 'брат'}
     ];
+    let mxIdx = info.length - 1;
 
     addHeader(deckName);
     addCardLogic(info);
-    addNumeration(info);
+    addSwitching(info, mxIdx);
 }
 
 function addHeader(deckName) {
@@ -27,16 +35,12 @@ function addHeader(deckName) {
 }
 
 function addCardLogic(info) {
-    card = document.querySelector('.card');
     card.addEventListener( 'click', function() {
         card.classList.toggle('is-flipped');
         cardIsFlipped = !cardIsFlipped;
     });
 
-    question = document.createElement('span');
     question.id = "front";
-
-    answer = document.createElement('span');
     answer.id = "back";
 
     question.innerHTML = info[curIdx].front;
@@ -49,27 +53,28 @@ function addCardLogic(info) {
     answerBox.appendChild(answer);
 }
 
-function addNumeration(info) {
-    const numeration = document.querySelector('.numeration');
-    for (let i = 0; i < info.length; i++) {
-        let newNum = document.createElement('button');
-        newNum.className = 'num';
-        newNum.innerHTML = String(i + 1);
-
-        newNum.onclick = (e) => {
-            curIdx = i;
-            if (cardIsFlipped) {
-                card.classList.toggle('is-flipped');
-                cardIsFlipped = false;
-            }
+function addSwitching(info, mxIdx) {
+    arrows.left.onclick = e => {
+        if (curIdx > 0) {
+            curIdx--;
             question.innerHTML = info[curIdx].front;
-            setTimeout(() => answer.innerHTML = info[curIdx].back, 1000);
+            tryFlipCard(info);
         }
+    };
+    arrows.right.onclick = e => {
+        if (curIdx < mxIdx) {
+            curIdx++;
+            question.innerHTML = info[curIdx].front;
+            tryFlipCard(info);
+        }
+    };
+}
 
-        newNum.onmousedown = (e) => newNum.style.background = '#2f4dbd';
-        newNum.onmouseup = (e) => newNum.style.background = '#305DFF';
-
-        numeration.appendChild(newNum);
+function tryFlipCard(info) {
+    if (cardIsFlipped) {
+        card.classList.toggle('is-flipped');
+        cardIsFlipped = false;
+        setTimeout(() => answer.innerHTML = info[curIdx].back, 500);
     }
 }
 

@@ -57,6 +57,9 @@ main {
 .name-deсk {
     margin-bottom: 20px;
 }
+.counter {
+    margin-bottom: 25px;
+}
 
 .wrap {
     display: flex;
@@ -66,6 +69,7 @@ main {
     max-width: 700px;
     height: auto;
     margin-bottom: 20px;
+    gap: 20px;
 }
 
 .scene {
@@ -140,4 +144,60 @@ main {
     justify-content: center;
     align-items: center;
     margin-bottom: 20px;
+}
+
+.arrow {
+    cursor: pointer;
+    position: relative;
+    width: 30px;
+    height: 50px;
+    margin: 20px auto;
+}
+
+.left-arrow {
+    transform: rotate(180deg);
+}
+
+.right-arrow {
+    transform: rotate(0deg);
+}
+
+.arrow div {
+    position: relative;
+    top: 20px;
+    width: 40px;
+    height: 5px;
+    background-color: #000000;
+    box-shadow: 0 3px 5px rgb(0 0 0 / 20%);
+    left: 0;
+    display: block;
+}
+
+.arrow div::before {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 5px;
+    top: 9px;
+    right: -8px;
+    background-color: #000000;
+    box-shadow: 0 3px 5px rgb(0 0 0 / 20%);
+    transform: rotate(-45deg);
+}
+
+.arrow div::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 5px;
+    top: -9px;
+    right: -8px;
+    background-color: #000000;
+    transform: rotate(45deg);
+}
+
+:after, :before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
