@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <meta charset="UTF-8">
     <title>CardDeck</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='card.css') }}">
@@ -27,27 +26,19 @@
         </div>
     </div>
 </header>
+
 <main>
-    <div class = "name-deсk">
-        <h1 class="name">КАКАКАКАКАК</h1>
-    </div>
-    <div class="wrap">
-        <div class="scene scene--card">
-            <div class="card">
-                <div class="card__face card__face--front"><span id = "f">я</span></div>
-                <div class="card__face card__face--back"><span id = "b">семья</span></div>
+    <div class = "name-deсk"></div>
+   <div class="wrap">
+       <div class="scene scene--card">
+           <div class="card">
+               <div class="card__face card__face--front"><!--<span id = "front">я</span>--></div>
+               <div class="card__face card__face--back"><!--<span id = "back">семья</span>--></div>
             </div>
         </div>
 
     </div>
-    <div class = "estimation" >
-        <button class = "score one">1</button>
-        <button class = "score two">2</button>
-        <button class = "score three">3</button>
-        <button class = "score four">4</button>
-        <button class = "score five">5</button>
-
-    </div>
+    <div class = "numeration"></div>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </main>
 </body>

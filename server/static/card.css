@@ -1,11 +1,15 @@
-html,body{
-    width:100%;
-    height:100%;
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 body {
     font-family: 'Roboto', sans-serif;
 }
+
 header {
     height: 69px;
 }
@@ -27,7 +31,6 @@ header {
     text-decoration: none;
     font-weight: 400;
     font-size: 18px;
-
     margin-right: 57px;
 }
 
@@ -40,23 +43,34 @@ header {
     border-radius: 10px;
 }
 
-
-.wrap {
-    position: absolute;
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: initial;
+    background-color: #F6F7FB;
     width: 100%;
     height: 100%;
-    left: 0;
-    top: 50px;
+    padding: 20px;
+}
+
+.name-deсk {
+    margin-bottom: 20px;
+}
+
+.wrap {
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 700px;
+    height: auto;
+    margin-bottom: 20px;
 }
 
 .scene {
-    display: inline-block;
-    width: 700px;
+    width: 100%;
     height: 400px;
-    margin: 40px 0;
     perspective: 600px;
 }
 
@@ -96,72 +110,34 @@ header {
     transform: rotateY(180deg);
 }
 
-main {
-    background-color: #F6F7FB;
-    width: 100%;
-    height: 100%;
-}
-
-.estimation {
-
-    height: 1200px;
-    display: -ms-flexbox;
-    display: -webkit-box;
+.numeration {
     display: flex;
-    -ms-flex-direction: row;
-    flex-direction: row;
-    -ms-flex-wrap: nowrap;
-    flex-wrap: nowrap;
-    margin-bottom: 6px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
 }
-.score {
+
+.num {
+    flex: 0 0 auto;
     width: 17vw;
     height: 17vw;
     max-width: 70px;
     max-height: 70px;
-    margin: auto;
     color: #fff;
     border-radius: 50%;
-    -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    -webkit-box-shadow: inset 0 0 0 2px #fff;
-    box-shadow: inset 0 0 0 2px #fff;
-    border: 1px solid;
     text-align: center;
     font-size: 36px;
     line-height: 25px;
+    background: #305DFF;
+    border: 1px solid #305DFF;
+    margin: 12px;
 }
+
 .name {
-    position: absolute;
-    top: 80px;
-    left: 45%;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 20px;
 }
-.one {
-    background: #ABBEFF;
-    border-color: #ABBEFF;
-}
-
-.two {
-    background: #8FA8FF;
-    border-color: #8FA8FF;
-}
-.three {
-    background: #6F8EFF;
-    border-color: #6F8EFF;
-}
-
-.four {
-    background: #4B73FF;
-    border-color: #4B73FF;
-}
-
-.five {
-    background: #305DFF;
-    border-color: #305DFF;
-}
-
-
-
