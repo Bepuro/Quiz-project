@@ -1,5 +1,5 @@
-const answer = document.createElement('span');
-const question = document.createElement('span');
+const answer = document.querySelector('#answer');
+const question = document.querySelector('#question');
 
 const answerSoundBox = new SpeechSynthesisUtterance();
 const questionSoundBox = new SpeechSynthesisUtterance();
@@ -12,6 +12,8 @@ const arrows = {
     right: document.querySelector('.right-arrow')
 }
 
+const charactersPerLine = 20;
+
 
 let cardIsFlipped = false;
 let curIdx = 0;
@@ -20,10 +22,24 @@ let curIdx = 0;
 function initScript() {
     const deckName = 'Семья';
     const info = [
-        { front: 'мама', back: 'папа'},
-        { front: 'тетя', back: 'дядя'},
-        { front: 'сестра', back: 'брат'}
+        { front: 'мама', back: 'папа', grade: -1, isFavourite: false },
+        { front: 'тетя', back: 'дядя', grade: -1, isFavourite: false },
+        { front: 'сестра', back: 'брат', grade: -1, isFavourite: false },
+        {
+            front: 'Очень длинный текст',
+            back: function () {
+                let arr = [];
+                for (let i = 0; i < 1000; i++) {
+                    arr.push('очень длинный текст');
+                }
+                return arr.join('');
+            }(),
+            grade: -1,
+            isFavourite: false
+        },
     ];
+
+    preprocessCards(info);
 
     let mxIdx = info.length - 1;
 
@@ -31,7 +47,7 @@ function initScript() {
     addCardLogic(info);
     addSwitching(info, mxIdx);
     addSound();
-    addFavourite();
+    addFavourite(info);
 }
 
 function addHeader(deckName) {
@@ -49,16 +65,12 @@ function addCardLogic(info) {
         cardIsFlipped = !cardIsFlipped;
     });
 
-    question.id = "front";
-    answer.id = "back";
-
     counter.innerHTML = `${curIdx + 1} / ${info.length}`;
     question.innerHTML = info[curIdx].front;
     answer.innerHTML = info[curIdx].back;
 
     questionSoundBox.text = info[curIdx].front;
     answerSoundBox.text = info[curIdx].back;
-
 
     const questionBox = card.querySelector('.card__face--front');
     const answerBox = card.querySelector('.card__face--back');
@@ -121,17 +133,43 @@ function addSound() {
     }
 }
 
-function addFavourite() {
+function addFavourite(info) {
     const frontFav = document.querySelector('.card__face--front .favourite');
     const backFav = document.querySelector('.card__face--back .favourite');
 
-    frontFav.onclick = e => e.stopPropagation();
-    backFav.onclick = e => e.stopPropagation();
+    frontFav.onclick = e => {
+        e.stopPropagation();
+        info[curIdx].isFavourite = true;
+    };
+    backFav.onclick = e => {
+        e.stopPropagation();
+        info[curIdx].isFavourite = true;
+    };
+}
+
+function preprocessCards(info) {
+    for (let infoCard of info) {
+        infoCard.back = formatText(infoCard.back);
+        infoCard.front = formatText(infoCard.front);
+    }
+}
+
+function formatText(text) {
+    const words = text.split('');
+    const finalTextArr = [];
+
+    let curLength = 0;
+    for (let i = 0; i < words.length; i++) {
+        finalTextArr.push(words[i]);
+        curLength += words[i].length;
+
+        if (curLength >= charactersPerLine) {
+            curLength = 0;
+            finalTextArr.push('<br>');
+        }
+    }
+
+    return finalTextArr.join('');
 }
 
 initScript();
-
-
-
-
-

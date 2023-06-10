@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>CardDeck</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='card.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='cardPage/card.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -36,23 +36,31 @@
             <div class="card">
                <div class="card__face card__face--front">
                    <div class="nav">
-                       <div class="sound">&#128364;</div>
-                       <div class="favourite">&#9733;</div>
+                       <button class="sound">&#128364;</button>
+                       <button class="favourite">&#9733;</button>
                    </div>
+                   <div id="question"></div>
                    <div class="text-bottom">Нажми на карточку, чтобы перевернуть</div>
                </div>
                <div class="card__face card__face--back">
                    <div class="nav">
-                       <div class="sound">&#128364;</div>
-                       <div class="favourite">&#9733;</div>
+                       <button class="sound">&#128364;</button>
+                       <button class="favourite">&#9733;</button>
                    </div>
+                   <div id="answer"></div>
                </div>
             </div>
         </div>
         <div class="arrow right-arrow"><div></div></div>
     </div>
-    <div class = "numeration"></div>
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <div class = "grades">
+        <button id="btn-5" class="grade grade-5">5</button>
+        <button id="btn-4" class="grade grade-4">4</button>
+        <button id="btn-3" class="grade grade-3">3</button>
+        <button id="btn-2" class="grade grade-2">2</button>
+        <button id="btn-1" class="grade grade-1">1</button>
+    </div>
+    <script src="{{ url_for('static', filename='cardPage/cardPage.js') }}"></script>
 </main>
 </body>
 </html>

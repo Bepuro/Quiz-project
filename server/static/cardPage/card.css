@@ -96,7 +96,7 @@ main {
     width: 100%;
     max-width: 700px;
     height: auto;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     gap: 20px;
 }
 
@@ -116,6 +116,7 @@ main {
     transform-origin: center right;
     transition: transform 1s;
 }
+
 
 @keyframes rotateAnimationRight {
     0% {
@@ -147,13 +148,37 @@ main {
     position: absolute;
     width: 100%;
     height: 100%;
-    line-height: 400px;
     color: black;
     text-align: center;
     font-size: 40px;
     backface-visibility: hidden;
     border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+#question, #answer {
+    position: absolute;
+    top: calc(30px + 20px);
+    bottom: calc(12px + 20px);
+    left: 10px;
+    right: 10px;
+    overflow-y: auto;
+    white-space: nowrap;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+#question::-webkit-scrollbar,
+#answer::-webkit-scrollbar {
+
+}
+
 
 .card__face--front {
     background: white;
@@ -172,18 +197,31 @@ main {
     background-color: #fff;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
+
 }
 
 .card__face--front .nav .favourite,
 .card__face--back .nav .favourite {
     margin-left: auto;
     margin-right: 30px;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    font-size: inherit;
+    color: inherit;
+    cursor: pointer;
 }
 
 .card__face--front .nav .sound,
 .card__face--back .nav .sound {
     margin-right: auto;
     margin-left: 30px;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    font-size: inherit;
+    color: inherit;
+    cursor: pointer;
 }
 
 .card__face--front .nav .favourite:hover,
@@ -217,29 +255,76 @@ main {
     transform: rotateY(180deg);
 }
 
-.numeration {
+.grades {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
 }
 
-.num {
-    flex: 0 0 auto;
+.grade {
     width: 17vw;
     height: 17vw;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    align-items: center;
     max-width: 70px;
     max-height: 70px;
     color: #fff;
     border-radius: 50%;
-    box-sizing: border-box;
-    text-align: center;
     font-size: 36px;
-    line-height: 25px;
     background: #305DFF;
-    border: 1px solid #305DFF;
-    margin: 12px;
+    border: 2px solid #ffffff;
+    box-sizing: border-box;
+    box-shadow: 0 0 0 2px #305DFF;
+    margin: 18px;
+}
+
+
+.grade.grade-5 {
+    background-color: #305DFF;
+    box-shadow: 0 0 0 2px #305DFF;
+}
+
+.grade.grade-5:hover {
+    box-shadow: 0 0 0 4px rgb(0, 52, 253);
+}
+
+.grade.grade-4 {
+    background-color: rgba(48, 93, 255, 0.8);
+    box-shadow: 0 0 0 2px rgba(48, 93, 255, 0.8);
+}
+
+.grade.grade-4:hover {
+    box-shadow: 0 0 0 4px rgb(0, 52, 253);
+}
+
+.grade.grade-3 {
+    background-color: rgba(48, 93, 255, 0.6);
+    box-shadow: 0 0 0 2px rgba(48, 93, 255, 0.6);
+}
+
+.grade.grade-3:hover {
+    box-shadow: 0 0 0 4px rgb(0, 52, 253);
+}
+
+.grade.grade-2 {
+    background-color: rgba(48, 93, 255, 0.4);
+    box-shadow: 0 0 0 2px rgba(48, 93, 255, 0.4);
+}
+
+.grade.grade-2:hover {
+    box-shadow: 0 0 0 4px rgb(0, 52, 253);
+}
+
+.grade.grade-1 {
+    background-color: rgba(48, 93, 255, 0.2);
+    box-shadow: 0 0 0 2px rgba(48, 93, 255, 0.2);
+}
+
+.grade.grade-1:hover {
+    box-shadow: 0 0 0 4px rgb(0, 52, 253);
 }
 
 .name {

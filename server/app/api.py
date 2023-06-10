@@ -4,9 +4,9 @@ from sqlite3 import IntegrityError
 from flask import jsonify, Blueprint, request, session, make_response
 from werkzeug.security import check_password_hash, generate_password_hash
 
-from server.database import get_db
-from server.models import Deck, Card, User
-from server import db
+from .database import get_db
+from .database.models import Deck, Card, User
+from .database import db
 
 bp = Blueprint('api', __name__, url_prefix='/api')
 

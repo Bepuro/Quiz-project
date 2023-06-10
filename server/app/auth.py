@@ -14,8 +14,8 @@ from werkzeug.security import (
     check_password_hash,
     generate_password_hash,
 )
-from server.database import get_db
-from server.models import User
+from .database import get_db
+from .database.models import User
 from sqlalchemy.exc import IntegrityError
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
