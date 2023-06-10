@@ -72,24 +72,34 @@ function addSwitching(info, mxIdx) {
         if (curIdx > 0) {
             curIdx--;
             changeCard(info);
+
+            card.style.animation = 'rotateAnimationLeft 0.5s linear';
+            card.addEventListener('animationend', () => card.style.animation = '');
         }
     };
     arrows.right.onclick = e => {
         if (curIdx < mxIdx) {
             curIdx++;
             changeCard(info);
+
+            card.style.animation = 'rotateAnimationRight 0.5s linear';
+            card.addEventListener('animationend', () => card.style.animation = '');
         }
     };
 }
 
 function changeCard(info) {
     if (cardIsFlipped) {
+        card.style.transition = 'none';
         card.classList.toggle('is-flipped');
+        setTimeout(() => card.style.transition = 'transform 1s', 0);
+
         cardIsFlipped = false;
-        setTimeout(() => answer.innerHTML = info[curIdx].back, 500);
+        answer.innerHTML = info[curIdx].back;
     } else {
         answer.innerHTML = info[curIdx].back
     }
+
     question.innerHTML = info[curIdx].front;
     counter.innerHTML = `${curIdx + 1} / ${info.length}`;
 
