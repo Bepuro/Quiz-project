@@ -160,9 +160,15 @@ main {
 
 #question, #answer {
     position: absolute;
-    top: calc(30px + 20px);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+
+
     bottom: calc(12px + 20px);
-    left: 10px;
+    width: 75%;
+
     right: 10px;
     overflow-y: auto;
     white-space: nowrap;
@@ -174,9 +180,30 @@ main {
     margin-bottom: 30px;
 }
 
+:root {
+    --scrollbarBg: rgb(48, 93, 255);
+    --scrollbarThumb: rgba(255, 255, 255, 0.8);
+    --scrollbarWidth: 12px;
+    --scrollbarBorder: 3px solid var(--scrollbarBg);
+    --scrollbarBorderRadius: calc(var(--scrollbarWidth) / 2);
+}
+
 #question::-webkit-scrollbar,
 #answer::-webkit-scrollbar {
+    width: var(--scrollbarWidth);
+}
 
+#question::-webkit-scrollbar-track,
+#answer::-webkit-scrollbar-track {
+    background: var(--scrollbarBg);
+    border-radius: var(--scrollbarBorderRadius);
+}
+
+#question::-webkit-scrollbar-thumb,
+#answer::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbarThumb);
+    border-radius: var(--scrollbarBorderRadius);
+    border: var(--scrollbarBorder);
 }
 
 
