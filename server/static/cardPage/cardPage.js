@@ -19,25 +19,9 @@ let cardIsFlipped = false;
 let curIdx = 0;
 
 
-function initScript() {
-    const deckName = 'Семья';
-    const info = [
-        { front: 'мама', back: 'папа', grade: -1, isFavourite: false },
-        { front: 'тетя', back: 'дядя', grade: -1, isFavourite: false },
-        { front: 'сестра', back: 'брат', grade: -1, isFavourite: false },
-        {
-            front: 'Очень длинный текст',
-            back: function () {
-                let arr = [];
-                for (let i = 0; i < 1000; i++) {
-                    arr.push('очень длинный текст');
-                }
-                return arr.join('');
-            }(),
-            grade: -1,
-            isFavourite: false
-        },
-    ];
+function initScript(deck) {
+    const deckName = deck.deckName;
+    const info = deck.info;
 
     preprocessCards(info);
 
@@ -45,6 +29,7 @@ function initScript() {
 
     addHeader(deckName);
     addCardLogic(info);
+    addGradeLogic(info);
     addSwitching(info, mxIdx);
     addSound();
     addFavourite(info);
@@ -69,6 +54,9 @@ function addCardLogic(info) {
     question.innerHTML = info[curIdx].front;
     answer.innerHTML = info[curIdx].back;
 
+    //question.onclick = e => e.stopPropagation();
+    //answer.onclick = e => e.stopPropagation();
+
     questionSoundBox.text = info[curIdx].front;
     answerSoundBox.text = info[curIdx].back;
 
@@ -84,20 +72,26 @@ function addSwitching(info, mxIdx) {
         if (curIdx > 0) {
             curIdx--;
             changeCard(info);
-
-            card.style.animation = 'rotateAnimationLeft 0.5s linear';
-            card.addEventListener('animationend', () => card.style.animation = '');
+            leftSwitch();
         }
     };
     arrows.right.onclick = e => {
         if (curIdx < mxIdx) {
             curIdx++;
             changeCard(info);
-
-            card.style.animation = 'rotateAnimationRight 0.5s linear';
-            card.addEventListener('animationend', () => card.style.animation = '');
+            rightSwitch();
         }
     };
+}
+
+function leftSwitch() {
+    card.style.animation = 'rotateAnimationLeft 0.5s linear';
+    card.addEventListener('animationend', () => card.style.animation = '');
+}
+
+function rightSwitch() {
+    card.style.animation = 'rotateAnimationRight 0.5s linear';
+    card.addEventListener('animationend', () => card.style.animation = '');
 }
 
 function changeCard(info) {
@@ -117,6 +111,25 @@ function changeCard(info) {
 
     questionSoundBox.text = info[curIdx].front;
     answerSoundBox.text = info[curIdx].back;
+
+    speechSynthesis.cancel();
+}
+
+function addGradeLogic(info) {
+    const grades = document.querySelectorAll('.grade');
+
+    for (let i = 0; i < grades.length; i++) {
+        grades[i].onclick = () => {
+            info[curIdx].grade = info.length - i + 1;
+
+            rightSwitch();
+
+            curIdx++;
+            curIdx %= info.length;
+
+            changeCard(info);
+        };
+    }
 }
 
 function addSound() {
@@ -172,4 +185,23 @@ function formatText(text) {
     return finalTextArr.join('');
 }
 
-initScript();
+initScript({
+    deckName: 'Семья',
+    info: [
+        { front: 'мама', back: 'папа', grade: -1, isFavourite: false },
+        { front: 'тетя', back: 'дядя', grade: -1, isFavourite: false },
+        { front: 'сестра', back: 'брат', grade: -1, isFavourite: false },
+        {
+            front: 'Очень длинный текст',
+            back: function () {
+                let arr = [];
+                for (let i = 0; i < 1000; i++) {
+                    arr.push('очень длинный текст ');
+                }
+                return arr.join('');
+            }(),
+            grade: -1,
+            isFavourite: false
+        },
+    ]
+});

@@ -168,6 +168,7 @@ main {
 
     bottom: calc(12px + 20px);
     width: 75%;
+    height: 75%;
 
     right: 10px;
     overflow-y: auto;
