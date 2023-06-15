@@ -15,3 +15,7 @@ def index():
 @bp.route('/card')
 def card():
     return render_template('card.html')
+
+@bp.route('/api_test')
+def api_test():
+    return render_template('api_test.html')

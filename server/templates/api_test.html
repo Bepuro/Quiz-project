@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Управление колодами</title>
+    <script src="{{ url_for('static', filename='api.js') }}"></script>
+</head>
+<body>
+    <h1>Управление колодами</h1>
+
+    <h2>Ваши колоды</h2>
+    <div id="decks"></div>
+
+    <h2>Ваши карты</h2>
+    <form id="getCardsForm">
+        <label for="deckIdInput">Введите ID колоды:</label>
+        <input type="text" id="deckIdInput" name="deckIdInput">
+        <button type="submit">Получить карты</button>
+    </form>
+    <div id="cards"></div>
+
+    <h2>Создание колоды</h2>
+    <form id="createDeckForm">
+        <label for="deckName">Имя колоды:</label>
+        <input type="text" id="deckName" name="deckName">
+        <button type="submit">Создать колоду</button>
+    </form>
+
+    <h2>Удаление колоды</h2>
+    <form id="deleteDeckForm">
+        <label for="deleteDeckId">ID колоды:</label>
+        <input type="text" id="deleteDeckId" name="deleteDeckId">
+        <button type="submit">Удалить колоду</button>
+    </form>
+
+    <h2>Обновление колоды</h2>
+    <form id="updateDeckForm">
+        <label for="updateDeckId">ID колоды:</label>
+        <input type="text" id="updateDeckId" name="updateDeckId">
+        <label for="newDeckName">Новое имя колоды:</label>
+        <input type="text" id="newDeckName" name="newDeckName">
+        <button type="submit">Обновить колоду</button>
+    </form>
+
+    <h2>Создание карты</h2>
+    <form id="createCardForm">
+        <label for="deckId">ID колоды:</label>
+        <input type="text" id="deckId" name="deckId">
+        <label for="question">Вопрос:</label>
+        <input type="text" id="question" name="question">
+        <label for="answer">Ответ:</label>
+        <input type="text" id="answer" name="answer">
+        <button type="submit">Создать карту</button>
+    </form>
+
+    <h2>Удаление карты</h2>
+    <form id="deleteCardForm">
+        <label for="deleteCardId">ID карты:</label>
+        <input type="text" id="deleteCardId" name="deleteCardId">
+        <button type="submit">Удалить карту</button>
+    </form>
+
+    <h2>Обновление карты</h2>
+    <form id="updateCardForm">
+        <label for="updateCardId">ID карты:</label>
+        <input type="text" id="updateCardId" name="updateCardId">
+        <label for="newQuestion">Новый вопрос:</label>
+        <input type="text" id="newQuestion" name="newQuestion">
+        <label for="newAnswer">Новый ответ:</label>
+        <input type="text" id="newAnswer" name="newAnswer">
+        <button type="submit">Обновить карту</button>
+    </form>
+
+    <script>
+
+document.addEventListener('DOMContentLoaded', function() {
+        getUserDecks().then(function(decks) {
+            let decksDiv = document.getElementById('decks');
+            decks.forEach(function(deck) {
+                let deckDiv = document.createElement('div');
+                deckDiv.textContent = deck.id + ': ' + deck.name;
+                decksDiv.appendChild(deckDiv);
+            });
+        });
+
+        document.getElementById('getCardsForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+                let deckId = document.getElementById('deckIdInput').value;
+                if (deckId) {
+                    getDeckCards(deckId).then(function(cards) {
+                        let cardsDiv = document.getElementById('cards');
+                        cardsDiv.innerHTML = '';
+                        cards.forEach(function(card) {
+                            let cardDiv = document.createElement('div');
+                            cardDiv.textContent = card.id + ': ' + card.question + ' -> ' + card.answer;
+                            cardsDiv.appendChild(cardDiv);
+                        });
+                    });
+                }
+            });
+        });
+
+    document.getElementById('createDeckForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        let deckName = document.getElementById('deckName').value;
+        createDeck(deckName);
+    });
+
+    document.getElementById('deleteDeckForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        let deckId = document.getElementById('deleteDeckId').value;
+        deleteDeck(deckId);
+    });
+
+    document.getElementById('updateDeckForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        let deckId = document.getElementById('updateDeckId').value;
+        let newDeckName = document.getElementById('newDeckName').value;
+        updateDeck(deckId, newDeckName);
+    });
+
+    document.getElementById('createCardForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        let deckId = document.getElementById('deckId').value;
+        let question = document.getElementById('question').value;
+        let answer = document.getElementById('answer').value;
+        addCard(deckId, question, answer);
+    });
+
+    document.getElementById('deleteCardForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        let cardId = document.getElementById('deleteCardId').value;
+        deleteCard(cardId);
+    });
+
+    document.getElementById('updateCardForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        let cardId = document.getElementById('updateCardId').value;
+        let newQuestion = document.getElementById('newQuestion').value;
+        let newAnswer = document.getElementById('newAnswer').value;
+        updateCard(cardId, newQuestion, newAnswer);
+    });
+    </script>
+</body>
+</html>
