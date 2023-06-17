@@ -5,12 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cards</title>
-    <link rel="stylesheet" href="../../old/css/cards.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='cards.css') }}">
 </head>
 <body>
     <header>
         <div class="cnt">
-            <img class="logo" src="../../old/img/Koloda.svg">
+            <img class="logo" src="{{ url_for('static', filename='img/Koloda.png') }}">
         </div>
         <div class="tab">
             <div class="t-cnt">
@@ -22,7 +22,7 @@
         </div>
 
 
-        <img hidden class="wrp-img" id = "wrp-img" src="../../old/img/user.svg">
+        <img hidden class="wrp-img" id = "wrp-img" src="{{ url_for('static', filename='img/user.svg') }}">
 
         <div  class="wrp" id="wrp">
             <div id="btn-txt" class="btn-1 text" id="btn-log-in">Вход</div>
@@ -33,7 +33,7 @@
         <dialog id="modal">
             <span id="btn-close" class="close">&times;</span>
             <div class="modal-dist">
-                <img src="../../old/img/Saly-1.png">
+                <img src="{{ url_for('static', filename='img/Saly-1.png') }}">
                 <div class="modal-inf">
                     <div class="modal-text">
                         <p class="h1">Добро пожаловать!</p>
@@ -56,7 +56,7 @@
         <dialog id="modal_1">
             <span id="btn-close-1" class="close">&times;</span>
             <div class="modal-dist">
-                <img src="../../old/img/Saly-1.png">
+                <img src="{{ url_for('static', filename='img/Saly-1.png') }}">
                 <div class="modal-inf">
                     <div class="modal-text">
                         <p class="h1">Добро пожаловать!</p>
@@ -86,12 +86,11 @@
                 </div>
             </div>
         </dialog>
-
     </header>
     <div class="wrapper">
         <h1 class="text">Найди карточку для себя</h1>
         <div class="search">
-            <img class="vector" src="../../old/img/Vector.svg">
+            <img class="vector" src="{{ url_for('static', filename='img/Vector.svg') }}">
             <div class="placeholder text">Твоя тема</div>
         </div>
         <div class="menu">
@@ -103,134 +102,10 @@
         </div>
     </div>
     <div class="container">
-        <div class="list">
-            <div class="block">
-                <div class="item" onclick="window.location.href = 'card.html';">
-                    <div class="block-name">
-                        <div class="text-block">
-                            <h3 class="text text-list">Cтроение компа</h3>
-                            <a class="desc">12 вопросов</a>
-                        </div>
-                        <div class="name">
-                            <div class="circle"></div>
-                            <div class="text">Oleg Ivanov</div>
-                        </div>
-                    </div>
-                    <div class="tag">АрхЭвм</div>
-                </div>
-                <div class="item" onclick="window.location.href = 'card.html';">
-                    <div class="block-name">
-                        <div class="text-block">
-                            <h3 class="text text-list">Cтроение компа</h3>
-                            <a class="desc">12 вопросов</a>
-                        </div>
-                        <div class="name">
-                            <div class="circle"></div>
-                            <div class="text">Oleg Ivanov</div>
-                        </div>
-                    </div>
-                    <div class="tag">АрхЭвм</div>
-                </div>
-                <div class="item" onclick="window.location.href = 'card.html';">
-                    <div class="block-name">
-                        <div class="text-block">
-                            <h3 class="text text-list">Cтроение компа</h3>
-                            <a class="desc">12 вопросов</a>
-                        </div>
-                        <div class="name">
-                            <div class="circle"></div>
-                            <div class="text">Oleg Ivanov</div>
-                        </div>
-                    </div>
-                    <div class="tag">АрхЭвм</div>
-                </div>
-            </div>
-            <div class="block">
-                <div class="item" onclick="window.location.href = 'card.html';">
-                    <div class="block-name">
-                        <div class="text-block">
-                            <h3 class="text text-list">Cтроение компа</h3>
-                            <a class="desc">12 вопросов</a>
-                        </div>
-                        <div class="name">
-                            <div class="circle"></div>
-                            <div class="text">Oleg Ivanov</div>
-                        </div>
-                    </div>
-                    <div class="tag">АрхЭвм</div>
-                </div>
-                <div class="item" onclick="window.location.href = 'card.html';">
-                    <div class="block-name">
-                        <div class="text-block">
-                            <h3 class="text text-list">Cтроение компа</h3>
-                            <a class="desc">12 вопросов</a>
-                        </div>
-                        <div class="name">
-                            <div class="circle"></div>
-                            <div class="text">Oleg Ivanov</div>
-                        </div>
-                    </div>
-                    <div class="tag">АрхЭвм</div>
-                </div>
-                <div class="item" onclick="window.location.href = 'card.html';">
-                    <div class="block-name">
-                        <div class="text-block">
-                            <h3 class="text text-list">Cтроение компа</h3>
-                            <a class="desc">12 вопросов</a>
-                        </div>
-                        <div class="name">
-                            <div class="circle"></div>
-                            <div class="text">Oleg Ivanov</div>
-                        </div>
-                    </div>
-                    <div class="tag">АрхЭвм</div>
-                </div>
-            </div>
-            <div class="block">
-                <div class="item" onclick="window.location.href = 'card.html';">
-                    <div class="block-name">
-                        <div class="text-block">
-                            <h3 class="text text-list">Cтроение компа</h3>
-                            <a class="desc">12 вопросов</a>
-                        </div>
-                        <div class="name">
-                            <div class="circle"></div>
-                            <div class="text">Oleg Ivanov</div>
-                        </div>
-                    </div>
-                    <div class="tag">АрхЭвм</div>
-                </div>
-                <div class="item" onclick="window.location.href = 'card.html';">
-                    <div class="block-name">
-                        <div class="text-block">
-                            <h3 class="text text-list">Cтроение компа</h3>
-                            <a class="desc">12 вопросов</a>
-                        </div>
-                        <div class="name">
-                            <div class="circle"></div>
-                            <div class="text">Oleg Ivanov</div>
-                        </div>
-                    </div>
-                    <div class="tag">АрхЭвм</div>
-                </div>
-                <div class="item" onclick="window.location.href = 'card.html';">
-                    <div class="block-name">
-                        <div class="text-block">
-                            <h3 class="text text-list">Cтроение компа</h3>
-                            <a class="desc">12 вопросов</a>
-                        </div>
-                        <div class="name">
-                            <div class="circle"></div>
-                            <div class="text">Oleg Ivanov</div>
-                        </div>
-                    </div>
-                    <div class="tag">АрхЭвм</div>
-                </div>
-            </div>
-        </div>
+        <div class="list"></div>
         <div class="pages">
             <div class="next-prev">
-                <img src="../../old/img/prev.svg">
+                <img src="{{ url_for('static', filename='img/prev.svg') }}">
                 <div class="text btn-prev">Назад</div>
             </div>
             <div class="nums">
@@ -243,10 +118,10 @@
             </div>
             <div class="next-prev">
                 <div class="text btn-next">Далее</div>
-                <img src="../../old/img/next.svg">
+                <img src="{{ url_for('static', filename='img/next.svg') }}">
             </div>
         </div>
     </div>
-    <script src="../static/cards.js"></script>
+    <script src="{{ url_for('static', filename='cards.js') }}"></script>
 </body>
 </html>

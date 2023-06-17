@@ -3,49 +3,119 @@ const btnClose = document.querySelector("#btn-close")
 const modal = document.querySelector("#modal");
 const sign_btn = document.getElementById("sign-up");
 
-btnOpen.onclick = () => {
-  modal.showModal()
-}
-
-
-btnClose.onclick = () => {
-    modal.close()
-}
-
-
 const btnOpen_1 = document.getElementById("btn");
 const btnClose_1 = document.getElementById("btn-close-1")
 const modal_1 = document.getElementById("modal_1");
 const login_btn = document.getElementById("log-in");
-
-btnOpen_1.onclick = () => {
-  modal_1.showModal()
-}
-
-
-btnClose_1.onclick = () => {
-  modal_1.close()
-}
-
-
-sign_btn.onclick = () => {
-  modal.close()
-  modal_1.showModal()
-}
-
-login_btn.onclick = () => {
-  console.log('------111222')
-  modal_1.close()
-  modal.showModal()
-}
-
 const btnOpen1 = document.getElementById("wrp-img");
 
-btnOpen1.onclick = () => {
-  modal.showModal()
-}
+const itemPattern = document.createElement('div');
+const cardsList = document.querySelector('.list');
+
+function addButtons() {
+  btnOpen.onclick = () => {
+    modal.showModal()
+  }
 
 
-btnClose.onclick = () => {
-  modal.close()
+  btnClose.onclick = () => {
+    modal.close()
+  }
+
+
+  btnOpen_1.onclick = () => {
+    modal_1.showModal()
+  }
+
+
+  btnClose_1.onclick = () => {
+    modal_1.close()
+  }
+
+
+  sign_btn.onclick = () => {
+    modal.close()
+    modal_1.showModal()
+  }
+
+  login_btn.onclick = () => {
+    console.log('------111222')
+    modal_1.close()
+    modal.showModal()
+  }
+
+  btnOpen1.onclick = () => {
+    modal.showModal()
+  }
+
+
+  btnClose.onclick = () => {
+    modal.close()
+  }
 }
+
+function createItemPattern() {
+  itemPattern.className = 'item';
+  itemPattern.innerHTML = [
+      '<div class="item" onclick="window.location.href = \'card\';">',
+        '<div class="block-name">',
+          '<div class="text-block">',
+            '<h3 class="text text-list" id="deck-name">Cтроение компа</h3>',
+            '<a class="desc" id="quest-count">12 вопросов</a>',
+          '</div>',
+          '<div class="name">',
+            '<div class="circle"></div>',
+            '<div class="text" id="author-name">Oleg Ivanov</div>',
+          '</div>',
+        '</div>',
+        '<div class="tag">АрхЭвм</div>',
+      '</div>'
+  ].join('');
+}
+
+function addDeckBlocks(decks) {
+  for (let deck of decks) {
+    let newBlock = itemPattern.cloneNode(true);
+    newBlock.querySelector('#deck-name').innerText = deck.name;
+    newBlock.querySelector('#quest-count').innerText =
+        `${deck.questionNum} ${deck.questionNum === 1 ? 'question' : 'questions'}`;
+    newBlock.querySelector('#author-name').innerText = deck.author;
+    newBlock.onclick = e => window.location.href = `card?deckId=${deck.id}`;
+
+    cardsList.appendChild(newBlock);
+  }
+}
+
+function initScript(decks) {
+  addButtons();
+  createItemPattern();
+  addDeckBlocks(decks);
+  //cardsList.appendChild(itemPattern);
+}
+
+initScript([
+  {
+    name: 'АРХэвм',
+    questionNum: 1,
+    author: 'Petya',
+    id: 0
+  },
+  {
+    name: 'АРХэвм',
+    questionNum: 12,
+    author: 'Petya',
+    id: 0
+  },
+  {
+    name: 'АРХэвм',
+    questionNum: 12,
+    author: 'Petya',
+    id: 0
+  },
+  {
+    name: 'АРХэвм',
+    questionNum: 12,
+    author: 'Petya',
+    id: 0
+  }
+]);

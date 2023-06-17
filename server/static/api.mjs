@@ -1,7 +1,7 @@
-const API_BASE_URL = `${window.location.origin}/api`;
+export const API_BASE_URL = `${window.location.origin}/api`;
 
 
-function getUserDecks() {
+export function getUserDecks() {
     return fetch(`${API_BASE_URL}/user/decks`, {
         method: 'GET',
         credentials: 'include'
@@ -13,7 +13,7 @@ function getUserDecks() {
     });
 }
 
-function createDeck(deckName) {
+export function createDeck(deckName) {
     const deckData = {
         name: deckName
     };
@@ -29,7 +29,7 @@ function createDeck(deckName) {
     .then(data => console.log(data));
 }
 
-function deleteDeck(deckId) {
+export function deleteDeck(deckId) {
     fetch(`${API_BASE_URL}/decks/${deckId}`, {
         method: 'DELETE',
         credentials: 'include'
@@ -38,7 +38,7 @@ function deleteDeck(deckId) {
     .then(data => console.log(data));
 }
 
-function addCard(deckId, question, answer) {
+export function addCard(deckId, question, answer) {
     const cardData = {
         question: question,
         answer: answer
@@ -55,7 +55,7 @@ function addCard(deckId, question, answer) {
     .then(data => console.log(data));
 }
 
-function deleteCard(cardId) {
+export function deleteCard(cardId) {
     fetch(`${API_BASE_URL}/cards/${cardId}`, {
         method: 'DELETE',
         credentials: 'include'
@@ -64,7 +64,7 @@ function deleteCard(cardId) {
     .then(data => console.log(data));
 }
 
-function updateDeck(deckId, newName) {
+export function updateDeck(deckId, newName) {
     const deckData = {
         name: newName
     };
@@ -80,7 +80,7 @@ function updateDeck(deckId, newName) {
     .then(data => console.log(data));
 }
 
-function updateCard(cardId, newQuestion, newAnswer) {
+export function updateCard(cardId, newQuestion, newAnswer) {
     const cardData = {
         question: newQuestion,
         answer: newAnswer
@@ -97,7 +97,7 @@ function updateCard(cardId, newQuestion, newAnswer) {
     .then(data => console.log(data));
 }
 
-function getDeckCards(deckId) {
+export function getDeckCards(deckId) {
     return fetch(`${API_BASE_URL}/decks/${deckId}/cards`, {
         method: 'GET',
         credentials: 'include'

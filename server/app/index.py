@@ -6,7 +6,7 @@ from werkzeug.exceptions import abort
 from .auth import login_required
 from .database import get_db
 
-bp = Blueprint('blog', __name__)
+bp = Blueprint('card_pages', __name__, template_folder='templates')
 
 @bp.route('/')
 def index():
@@ -15,6 +15,10 @@ def index():
 @bp.route('/card')
 def card():
     return render_template('card.html')
+
+@bp.route('/cards')
+def cards():
+    return render_template('cards.html')
 
 @bp.route('/api_test')
 def api_test():

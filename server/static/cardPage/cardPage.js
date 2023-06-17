@@ -1,3 +1,5 @@
+import { getDeckCards } from '../api.mjs'
+
 const answer = document.querySelector('#answer');
 const question = document.querySelector('#question');
 
@@ -19,7 +21,9 @@ let cardIsFlipped = false;
 let curIdx = 0;
 
 
-function initScript(deck) {
+function initScript() {
+    const deck = getDeck();
+
     const deckName = deck.deckName;
     const info = deck.info;
 
@@ -28,11 +32,22 @@ function initScript(deck) {
     let mxIdx = info.length - 1;
 
     addHeader(deckName);
+
     addCardLogic(info);
     addGradeLogic(info);
     addSwitching(info, mxIdx);
+
     addSound();
     addFavourite(info);
+}
+
+function getDeck() {
+    const reqParams = new URLSearchParams(window.location.search);
+    const deckId = reqParams.get('deckId');
+
+    const deck = getDeckCards(deckId);
+
+
 }
 
 function addHeader(deckName) {
@@ -185,23 +200,4 @@ function formatText(text) {
     return finalTextArr.join('');
 }
 
-initScript({
-    deckName: 'Семья',
-    info: [
-        { front: 'мама', back: 'папа', grade: -1, isFavourite: false },
-        { front: 'тетя', back: 'дядя', grade: -1, isFavourite: false },
-        { front: 'сестра', back: 'брат', grade: -1, isFavourite: false },
-        {
-            front: 'Очень длинный текст',
-            back: function () {
-                let arr = [];
-                for (let i = 0; i < 1000; i++) {
-                    arr.push('очень длинный текст ');
-                }
-                return arr.join('');
-            }(),
-            grade: -1,
-            isFavourite: false
-        },
-    ]
-});
+initScript();
