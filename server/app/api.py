@@ -235,10 +235,17 @@ def get_deck_cards(deck_id):
         return jsonify({'message': 'Deck not found'})
 
     cards = Card.query.filter_by(deck_id=deck_id).all()
+    deck_name = Deck.query.filter_by(id=deck_id).first().name
 
-    return jsonify([{
-        "id": card.id,
-        "question": card.question,
-        "answer": card.answer,
-        "deck_id": card.deck_id
-    } for card in cards]), 200
+    return jsonify({'deck':
+        {
+            'deckName': deck_name,
+            'cards': [{
+                    "id": card.id,
+                    "question": card.question,
+                    "answer": card.answer,
+                    "deck_id": card.deck_id
+                } for card in cards
+            ]
+        }
+    }), 200

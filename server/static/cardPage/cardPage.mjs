@@ -22,8 +22,41 @@ let curIdx = 0;
 
 
 function initScript() {
-    const deck = getDeck();
+    const reqParams = new URLSearchParams(window.location.search);
+    const deckId = reqParams.get('deckId');
 
+    getDeckCards(deckId).then(
+        res => {
+            const deckJson = res;
+            const deck = {
+                deckName: '',
+                info: []
+            };
+
+            console.log(res);
+            if ('deck' in deckJson) {
+                const deckName = deckJson.deck.deckName;
+                const cards = deckJson.deck.cards;
+
+                deck.deckName = deckName;
+
+                for (let card of cards) {
+                    deck.info.push({
+                        front: card.question,
+                        back: card.answer,
+                        grade: -1,
+                        isFavourite: false
+                    });
+                }
+            }
+            startScript(deck);
+        }
+    ).catch(err => {
+        console.log(err);
+    });
+}
+
+function startScript(deck) {
     const deckName = deck.deckName;
     const info = deck.info;
 
@@ -39,15 +72,6 @@ function initScript() {
 
     addSound();
     addFavourite(info);
-}
-
-function getDeck() {
-    const reqParams = new URLSearchParams(window.location.search);
-    const deckId = reqParams.get('deckId');
-
-    const deck = getDeckCards(deckId);
-
-
 }
 
 function addHeader(deckName) {

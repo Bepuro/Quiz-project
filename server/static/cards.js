@@ -1,3 +1,5 @@
+import {getUserDecks} from "./api.mjs";
+
 const btnOpen = document.getElementById("btn-txt");
 const btnClose = document.querySelector("#btn-close")
 const modal = document.querySelector("#modal");
@@ -87,10 +89,15 @@ function addDeckBlocks(decks) {
 }
 
 function initScript(decks) {
+  getUserDecks().then(decksJson => {
+    if ()
+  })
+}
+
+function startScript(decks) {
   addButtons();
   createItemPattern();
   addDeckBlocks(decks);
-  //cardsList.appendChild(itemPattern);
 }
 
 initScript([
@@ -98,24 +105,24 @@ initScript([
     name: 'АРХэвм',
     questionNum: 1,
     author: 'Petya',
-    id: 0
+    id: 4
   },
   {
     name: 'АРХэвм',
     questionNum: 12,
     author: 'Petya',
-    id: 0
+    id: 4
   },
   {
     name: 'АРХэвм',
     questionNum: 12,
     author: 'Petya',
-    id: 0
+    id: 4
   },
   {
     name: 'АРХэвм',
     questionNum: 12,
     author: 'Petya',
-    id: 0
+    id: 4
   }
 ]);

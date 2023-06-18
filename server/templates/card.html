@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='cardPage/card.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
 </head>
 <body>
 <header>
@@ -60,7 +60,8 @@
         <button id="btn-2" class="grade grade-2">2</button>
         <button id="btn-1" class="grade grade-1">1</button>
     </div>
-    <script src="{{ url_for('static', filename='cardPage/cardPage.js') }}"></script>
+    <script src="{{ url_for('static', filename='api.mjs') }}" type="module"></script>
+    <script src="{{ url_for('static', filename='cardPage/cardPage.mjs') }}" type="module"></script>
 </main>
 </body>
 </html>
