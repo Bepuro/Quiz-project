@@ -88,9 +88,23 @@ function addDeckBlocks(decks) {
   }
 }
 
-function initScript(decks) {
+function initScript() {
+  const decks = [];
   getUserDecks().then(decksJson => {
-    if ()
+    if ('decks' in decksJson) {
+      for (let deck of decksJson.decks) {
+        decks.push({
+          name: deck.name,
+          questionNum: 'many',
+          author: 'Petya',
+          id: deck.id
+        });
+      }
+
+      startScript(decks);
+    } else {
+      throw new Error(decksJson.message);
+    }
   })
 }
 

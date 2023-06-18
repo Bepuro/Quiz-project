@@ -218,11 +218,12 @@ def get_user_decks():
 
     decks = Deck.query.filter_by(user_id=session['user_id']).all()
 
-    return jsonify([{
-        "id": deck.id,
-        "name": deck.name,
-        "user_id": deck.user_id
-    } for deck in decks]), 200
+    return jsonify({ "decks": [{
+            "id": deck.id,
+            "name": deck.name,
+            "user_id": deck.user_id
+        } for deck in decks]
+    }), 200
 
 
 @bp.route('/decks/<int:deck_id>/cards', methods=['GET'])
