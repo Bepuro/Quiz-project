@@ -114,29 +114,4 @@ function startScript(decks) {
   addDeckBlocks(decks);
 }
 
-initScript([
-  {
-    name: 'АРХэвм',
-    questionNum: 1,
-    author: 'Petya',
-    id: 4
-  },
-  {
-    name: 'АРХэвм',
-    questionNum: 12,
-    author: 'Petya',
-    id: 4
-  },
-  {
-    name: 'АРХэвм',
-    questionNum: 12,
-    author: 'Petya',
-    id: 4
-  },
-  {
-    name: 'АРХэвм',
-    questionNum: 12,
-    author: 'Petya',
-    id: 4
-  }
-]);
+initScript();
