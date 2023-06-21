@@ -123,7 +123,7 @@ def delete_deck(deck_id: int):
     return jsonify({'message': 'Success'}), 200
 
 
-@bp.route('/decks/<int:deck_id>/cards', methods=['POST'])
+@bp.route('/decks/<int:deck_id>/card', methods=['POST'])
 def add_card(deck_id):
     if 'user_id' not in session:
         return jsonify({'message': 'Unauthorized'})
@@ -145,6 +145,35 @@ def add_card(deck_id):
     db.session.commit()
 
     return jsonify({'message': 'Card added'}), 201
+
+
+@bp.route('/decks/<int:deck_id>/cards', methods=['POST'])
+def add_cards(deck_id):
+    if 'user_id' not in session:
+        return jsonify({'message': 'Unauthorized'})
+
+    cards = request.json.get('cards')
+    print(cards)
+    if not cards:
+        return jsonify({'message': 'No cards'}), 204
+
+    for card in cards:
+        question = card.get('question')
+        answer = card.get('answer')
+
+        if not question or not answer:
+            continue
+
+        new_card = Card()
+        new_card.answer = answer
+        new_card.question = question
+        new_card.deck_id = deck_id
+
+        db.session.add(new_card)
+
+    db.session.commit()
+
+    return jsonify({'message': 'Cards added'}), 201
 
 
 @bp.route('/cards/<int:card_id>', methods=['DELETE'])

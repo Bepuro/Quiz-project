@@ -43,12 +43,25 @@ export function addCard(deckId, question, answer) {
         question: question,
         answer: answer
     };
-    fetch(`${API_BASE_URL}/decks/${deckId}/cards`, {
+    fetch(`${API_BASE_URL}/decks/${deckId}/card`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(cardData),
+        credentials: 'include'
+    })
+    .then(response => response.json())
+    .then(data => console.log(data));
+}
+
+export function addCards(deckId, cards) {
+    fetch(`${API_BASE_URL}/decks/${deckId}/cards`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({cards: cards}),
         credentials: 'include'
     })
     .then(response => response.json())
