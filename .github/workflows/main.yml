@@ -17,7 +17,7 @@ jobs:
       with:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
-        key: ${{ secrets.KEY }}
+        password: ${{ secrets.KEY }}
         source: "."
         target: "`/root/Quiz-project"
 
@@ -26,7 +26,7 @@ jobs:
       with:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
-        key: ${{ secrets.KEY }}
+        password: ${{ secrets.KEY }}
         script: |
           cd /root/Quiz-project
           if [ ! -d "venv" ]; then
