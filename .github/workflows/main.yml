@@ -19,7 +19,7 @@ jobs:
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.KEY }}
         source: "."
-        target: "`/home/root/Quiz-project"
+        target: "`/root/Quiz-project"
 
     - name: Deploy
       uses: appleboy/ssh-actihon@master
@@ -28,7 +28,7 @@ jobs:
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.KEY }}
         script: |
-          cd /home/root/Quiz-project
+          cd /root/Quiz-project
           if [ ! -d "venv" ]; then
             python3 -m venv venv
           fi
