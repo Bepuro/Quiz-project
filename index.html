@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,17 +13,80 @@
             <img class="logo" src="img/Koloda.svg">
         </div>
         <div class="tab">
-            <div class="cnt">
-                <div class="tablinks text" onclick="window.location.href = 'index.html';">Главная</div>
+            <div class="t-cnt">
+                <div class="tablinks text" onclick="window.location.href = 'index.html';">Главная</div><!-- треш!!!!!  -->
+                
             </div>
-            <div class="cnt">
-                <div class="tablinks text" onclick="window.location.href = 'cards.html';">Карточки</div>
+            <div class="t-cnt">
+                <div class="tablinks text" onclick="window.location.href = 'cards.html';">Карточки</div><!-- треш!!!!!  -->
             </div>
         </div>
-        <div class="wrp">
-            <div class="btn-1 text">Вход</div>
-            <button class="btn-2">Зарегистрироваться</button>
+
+
+        <img hidden class="wrp-img" id = "wrp-img" src="img/user.svg">
+
+        <div  class="wrp" id="wrp">
+            <div id="btn-txt" class="btn-1 text" id="btn-log-in">Вход</div>
+            <button id="btn" class="btn-2">Зарегистрироваться</button>
+
         </div>
+
+        <dialog id="modal">
+            <span id="btn-close" class="close">&times;</span>
+            <div class="modal-dist">
+                <img src="img/Saly-1.png">
+                <div class="modal-inf">
+                    <div class="modal-text">
+                        <p class="h1">Добро пожаловать!</p>
+                        <p class="h5">Авторизация</p>
+                    </div>
+                    <div class="inputs">
+                        <label for="email" class="label">Почта</label>
+                        <input class="input" type="email" id="email" size="30" required placeholder="test@test.com">
+                        <label for="pass" class="label">Пароль</label>
+                        <input class="input" type="password" id="pass" name="password" minlength="8" required placeholder="***********">
+                        <div class="btn-gr">
+                            <button class="btn-3">Войти</button>
+                            <div  id="sign-up" class="btn-1 text-items">Зарегистрироваться</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </dialog>
+
+        <dialog id="modal_1">
+            <span id="btn-close-1" class="close">&times;</span>
+            <div class="modal-dist">
+                <img src="img/Saly-1.png">
+                <div class="modal-inf">
+                    <div class="modal-text">
+                        <p class="h1">Добро пожаловать!</p><!-- треш!!!!!  -->
+                        <p class="h5">Регистрация</p><!-- треш!!!!!  -->
+                    </div>
+                    <div class="inputs">
+
+                        <label for="text-b" class="label">Логин</label>
+                        <input type="text" id="text-b" class="input" name="input" placeholder="jsx123">
+
+                        <label for="email" class="label">Почта</label>
+                        <input class="input" type="email" id="email" size="30" required placeholder="test@test.com">
+
+                        <label for="phone" class="label">Телефон</label>
+                        <input type="tel" class="input" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required placeholder="953002211">
+
+                        <label for="pass" class="label">Пароль</label>
+                        <input class="input" type="password" id="pass" name="password" minlength="8" required placeholder="***********">
+
+                        <label for="pass" class="label">Пароль</label>
+                        <input class="input" type="password" id="pass" name="password" minlength="8" required placeholder="***********">
+                        <div class="btn-gr">
+                            <button class="btn-3">Зарегистрироваться</button>
+                            <div id="log-in" class="btn-1 text-items">Уже есть аккаунт?</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </dialog>
 
     </header>
     <div class="box">
@@ -38,5 +101,6 @@
       <p class ="p2"> Присоединяйся к нам и создавай карточки сам</p>
       <a  class="btn1" href="#">Зарегистрироваться</a>
     </div>
+    <script src="cards.js"></script><!-- треш!!!!!  -->
 </body>
 </html>

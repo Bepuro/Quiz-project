@@ -1,19 +1,18 @@
-var cards = document.querySelectorAll('.card');
+const cards = document.querySelectorAll('.card');
 
 [...cards].forEach((card)=>{
     card.addEventListener( 'click', function() {
-        card.classList.toggle('is-flipped');
-    });
-});
+        card.classList.toggle('is-flipped'); // можно this
+    }); 
+}); 
 
-let dir = {0:['мама','папа'],1:['тетя','дядя'],2:['сестра','брат']};
+const dir = {0:['мама','папа'],1:['тетя','дядя'],2:['сестра','брат']};
 let i = 0;
 
 document.getElementById("one").addEventListener(() => {
     
 })
-document.getElementById("one").onclick = function() {
-    console.log("232")
+document.getElementById("one").onclick = function() { // addEventListener
     if (Object.keys(dir).length === i) {
 
         document.getElementById("f").innerHTML = "Я";

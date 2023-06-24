@@ -1,37 +1,103 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-
     <meta charset="UTF-8">
     <title>CardDeck</title>
     <link rel="stylesheet" href="css/card.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+     <!-- мб лучше скачать  -->
 </head>
 <body>
-<header>
-    <div class="cnt">
-        <img class="logo" src="img/Koloda.svg"></div>
-    <div class="tab">
+    <header>
         <div class="cnt">
-            <div class="tablinks text" onclick="window.location.href = 'index.html';">Главная</div>
+            <img class="logo" src="img/Koloda.svg">
         </div>
-        <div class="cnt">
-            <div class="tablinks text" onclick="window.location.href = 'cards.html';">Карточки</div>
+        <div class="tab">
+            <div class="t-cnt">
+                <div class="tablinks text" onclick="window.location.href = 'index.html';">Главная</div>
+                 <!-- треш!!!!!  -->
+            </div>
+            <div class="t-cnt">
+                <div class="tablinks text" onclick="window.location.href = 'cards.html';">Карточки</div>
+                 <!-- треш!!!!!  -->
+            </div>
         </div>
-    </div>
-    <div class="wrp">
-        <div class="btn-1 text">Вход</div>
-        <button class="btn-2">Зарегистрироваться</button>
-    </div>
-</header>
+
+
+        <img hidden class="wrp-img" id = "wrp-img" src="img/user.svg">
+
+        <div  class="wrp" id="wrp">
+            <div id="btn-txt" class="btn-1 text" id="btn-log-in">Вход</div>
+            <button id="btn" class="btn-2">Зарегистрироваться</button>
+
+        </div>
+
+        <dialog id="modal">
+            <span id="btn-close" class="close">&times;</span>
+            <div class="modal-dist">
+                <img src="img/Saly-1.png">
+                <div class="modal-inf">
+                    <div class="modal-text">
+                        <p class="h1">Добро пожаловать!</p>
+                        <p class="h5">Авторизация</p>
+                    </div>
+                    <div class="inputs">
+                        <label for="email" class="label">Почта</label>
+                        <input class="input" type="email" id="email" size="30" required placeholder="test@test.com">
+                        <label for="pass" class="label">Пароль</label>
+                        <input class="input" type="password" id="pass" name="password" minlength="8" required placeholder="***********">
+                        <div class="btn-gr">
+                            <button class="btn-3">Войти</button>
+                            <div  id="sign-up" class="btn-1 text-items">Зарегистрироваться</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </dialog>
+
+        <dialog id="modal_1">
+            <span id="btn-close-1" class="close">&times;</span>
+            <div class="modal-dist">
+                <img src="img/Saly-1.png">
+                <div class="modal-inf">
+                    <div class="modal-text">
+                        <p class="h1">Добро пожаловать!</p>
+                        <p class="h5">Регистрация</p>
+                    </div>
+                    <div class="inputs">
+
+                        <label for="text-b" class="label">Логин</label>
+                        <input type="text" id="text-b" class="input" name="input" placeholder="jsx123">
+
+                        <label for="email" class="label">Почта</label>
+                        <input class="input" type="email" id="email" size="30" required placeholder="test@test.com">
+
+                        <label for="phone" class="label">Телефон</label>
+                        <input type="tel" class="input" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required placeholder="953002211">
+
+                        <label for="pass" class="label">Пароль</label>
+                        <input class="input" type="password" id="pass" name="password" minlength="8" required placeholder="***********">
+
+                        <label for="pass" class="label">Пароль</label>
+                        <input class="input" type="password" id="pass" name="password" minlength="8" required placeholder="***********">
+                        <div class="btn-gr">
+                            <button class="btn-3">Зарегистрироваться</button>
+                            <div id="log-in" class="btn-1 text-items">Уже есть аккаунт?</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </dialog>
+
+    </header>
 <main>
     <div class="name-deсk">
         <h1 class="name">КАКАКАКАКАК</h1>
     </div>
     <div class="wrap">
-        <div class="scene scene--card">
+        <div class="scene scene--card"><!-- треш имя класса!!!!!  -->
             <div class="card">
                 <div class="card__face card__face--front"><span id="f">я</span></div>
                 <div class="card__face card__face--back"><span id="b">семья</span></div>
@@ -47,7 +113,7 @@
         <button class="score five">5</button>
 
     </div>
-    <script src="script.js"></script>
+    <script src="script.js"></script><!-- треш!!!!!  -->
 </main>
 </body>
 </html>
