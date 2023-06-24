@@ -22,7 +22,6 @@ jobs:
         run: |
           pwd
           whoami
-          cd /home/Quiz-project
           git pull
           source venv/bin/activate
           pip install -r requirements.txt
