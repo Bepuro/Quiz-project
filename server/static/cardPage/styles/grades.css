@@ -1,0 +1,71 @@
+.grades {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.grade {
+    width: 17vw;
+    height: 17vw;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    align-items: center;
+    max-width: 70px;
+    max-height: 70px;
+    color: #fff;
+    border-radius: 50%;
+    font-size: 36px;
+    background: #305DFF;
+    border: 2px solid #ffffff;
+    box-sizing: border-box;
+    box-shadow: 0 0 0 2px #305DFF;
+    margin: 18px;
+}
+
+
+.grade.grade-5 {
+    background-color: #305DFF;
+    box-shadow: 0 0 0 2px #305DFF;
+}
+
+.grade.grade-5:hover {
+    box-shadow: 0 0 0 4px rgb(0, 52, 253);
+}
+
+.grade.grade-4 {
+    background-color: rgba(48, 93, 255, 0.8);
+    box-shadow: 0 0 0 2px rgba(48, 93, 255, 0.8);
+}
+
+.grade.grade-4:hover {
+    box-shadow: 0 0 0 4px rgb(0, 52, 253);
+}
+
+.grade.grade-3 {
+    background-color: rgba(48, 93, 255, 0.6);
+    box-shadow: 0 0 0 2px rgba(48, 93, 255, 0.6);
+}
+
+.grade.grade-3:hover {
+    box-shadow: 0 0 0 4px rgb(0, 52, 253);
+}
+
+.grade.grade-2 {
+    background-color: rgba(48, 93, 255, 0.4);
+    box-shadow: 0 0 0 2px rgba(48, 93, 255, 0.4);
+}
+
+.grade.grade-2:hover {
+    box-shadow: 0 0 0 4px rgb(0, 52, 253);
+}
+
+.grade.grade-1 {
+    background-color: rgba(48, 93, 255, 0.2);
+    box-shadow: 0 0 0 2px rgba(48, 93, 255, 0.2);
+}
+
+.grade.grade-1:hover {
+    box-shadow: 0 0 0 4px rgb(0, 52, 253);
+}
