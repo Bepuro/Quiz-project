@@ -20,6 +20,8 @@ jobs:
 
       - name: Install dependencies
         run: |
+          pwd
+          whoami
           cd /home/Quiz-project
           git pull
           source venv/bin/activate
