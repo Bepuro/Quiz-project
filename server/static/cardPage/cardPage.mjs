@@ -14,12 +14,15 @@ const arrows = {
     right: document.querySelector('.right-arrow')
 }
 
+const confetti = document.querySelector('.confetti-container');
+const fanfarAudio = document.querySelector('#fanfar');
+
 const charactersPerLine = 20;
 
 
 let cardIsFlipped = false;
 let curIdx = 0;
-
+let mxIdx = 0;
 
 function initScript() {
     const reqParams = new URLSearchParams(window.location.search);
@@ -58,17 +61,17 @@ function initScript() {
 
 function startScript(deck) {
     const deckName = deck.deckName;
-    const info = deck.info;
+    const info = deck.info.sort((a, b) => a.grade - b.grade);
 
     preprocessCards(info);
 
-    let mxIdx = info.length - 1;
+    mxIdx = info.length - 1;
 
     addHeader(deckName);
 
     addCardLogic(info);
     addGradeLogic(info);
-    addSwitching(info, mxIdx);
+    addSwitching(info);
 
     addSound();
     addFavourite(info);
@@ -93,9 +96,6 @@ function addCardLogic(info) {
     question.innerHTML = info[curIdx].front;
     answer.innerHTML = info[curIdx].back;
 
-    //question.onclick = e => e.stopPropagation();
-    //answer.onclick = e => e.stopPropagation();
-
     questionSoundBox.text = info[curIdx].front;
     answerSoundBox.text = info[curIdx].back;
 
@@ -106,12 +106,13 @@ function addCardLogic(info) {
     answerBox.appendChild(answer);
 }
 
-function addSwitching(info, mxIdx) {
+function addSwitching(info) {
     arrows.left.onclick = e => {
         if (curIdx > 0) {
             curIdx--;
             changeCard(info);
             leftSwitch();
+            confetti.style.display = 'none';
         }
     };
     arrows.right.onclick = e => {
@@ -119,6 +120,7 @@ function addSwitching(info, mxIdx) {
             curIdx++;
             changeCard(info);
             rightSwitch();
+            confetti.style.display = 'none';
         }
     };
 }
@@ -134,6 +136,8 @@ function rightSwitch() {
 }
 
 function changeCard(info) {
+    if (cardIsFlipped && curIdx === mxIdx + 1)
+        return;
     if (cardIsFlipped) {
         card.style.transition = 'none';
         card.classList.toggle('is-flipped');
@@ -161,10 +165,15 @@ function addGradeLogic(info) {
         grades[i].onclick = () => {
             info[curIdx].grade = info.length - i + 1;
 
-            rightSwitch();
+            if (curIdx !== mxIdx) {
+                rightSwitch();
+            } else {
+                confetti.style.display = 'block';
+                fanfarAudio.play();
+            }
 
             curIdx++;
-            curIdx %= info.length;
+            curIdx = Math.min(curIdx, mxIdx);
 
             changeCard(info);
         };
