@@ -1,0 +1,88 @@
+.arrow {
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+    width: 30px;
+    height: 50px;
+    margin: 20px auto;
+}
+
+.left-arrow {
+    transform: scaleX(-1);
+}
+
+.right-arrow {
+    transform: scaleX(1)
+}
+
+.arrow div {
+    position: relative;
+    top: 20px;
+    width: 40px;
+    height: 5px;
+    background-color: #000000;
+    box-shadow: 0 3px 5px rgb(0 0 0 / 20%);
+    left: 0;
+    display: block;
+}
+
+
+.arrow div::before {
+    content: '';
+    position: absolute;
+    width: 32px;
+    height: 5px;
+    top: 10px;
+    right: -9px;
+    background-color: #000000;
+    box-shadow: 0 3px 5px rgb(0 0 0 / 20%);
+    transform: rotate(-45deg);
+}
+
+.arrow div::after {
+    content: '';
+    position: absolute;
+    width: 32px;
+    height: 5px;
+    top: -10px;
+    right: -9px;
+    background-color: #000000;
+    transform: rotate(45deg);
+}
+
+:after, :before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.right-arrow:hover {
+    animation: right-arrow 1s linear infinite;
+}
+
+.left-arrow:hover {
+    animation: left-arrow 1s linear infinite;
+}
+
+@keyframes right-arrow {
+    0% {
+        left: 0;
+    }
+    50% {
+        left: 15px;
+    }
+    100% {
+        left: 0;
+    }
+}
+@keyframes left-arrow {
+    0% {
+        right: 0;
+    }
+    50% {
+        right: 15px;
+    }
+    100% {
+        right: 0;
+    }
+}

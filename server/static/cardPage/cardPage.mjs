@@ -14,11 +14,12 @@ const arrows = {
     right: document.querySelector('.right-arrow')
 }
 
+const grades = [-1, -1, -1, -1, -1];
+
 const confetti = document.querySelector('.confetti-container');
 const fanfarAudio = document.querySelector('#fanfar');
 
 const charactersPerLine = 20;
-
 
 let cardIsFlipped = false;
 let curIdx = 0;

@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>CardDeck</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='cardPage/card.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='cardPage/styles/card.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='cardPage/styles/confetti.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='cardPage/styles/arrows.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='cardPage/styles/grades.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -60,6 +63,10 @@
         <button id="btn-2" class="grade grade-2">2</button>
         <button id="btn-1" class="grade grade-1">1</button>
     </div>
+    <ol class="grade-slider">
+        <span class="slider-block" style="background: green; width: 90%">good</span>
+        <span class="slider-block" style="background: red; width: 10%">bad</span>
+    </ol>
     <div class="confetti-container">
         <div class="confetti">
             <i style="--speed: 10; --bg: yellow" class="square"></i>
