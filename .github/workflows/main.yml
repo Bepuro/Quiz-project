@@ -22,6 +22,7 @@ jobs:
         run: |
           pwd
           whoami
+          cd /home/Quiz-project
           git pull
 
       - name: Restart service
