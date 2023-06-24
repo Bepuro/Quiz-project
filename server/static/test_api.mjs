@@ -98,6 +98,31 @@ function parseCardsFromCSV(csvText) {
     });
 }
 
+document.getElementById('jsonUploadCardsForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    let deckId = document.getElementById('jsonDeckIdForUpload').value;
+    if (!deckId) {
+        alert('Пожалуйста, введите id колоды');
+        return;
+    }
+    let jsonFile = document.getElementById('jsonFile').files[0];
+    if (!jsonFile) {
+        alert('Пожалуйста, выберите файл');
+        return;
+    }
+    let reader = new FileReader();
+    reader.onload = function(e) {
+        let contents = e.target.result;
+        let cards = parseCardsFromJSON(contents);
+        addCards(deckId, cards);
+    };
+    reader.readAsText(jsonFile);
+});
+
+function parseCardsFromJSON(jsonText) {
+    return JSON.parse(jsonText);
+}
+
 document.getElementById('deleteCardForm').addEventListener('submit', function(event) {
     event.preventDefault();
     let cardId = document.getElementById('deleteCardId').value;
