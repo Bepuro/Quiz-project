@@ -20,6 +20,10 @@ def card():
 def cards():
     return render_template('cards.html')
 
+@bp.route('/profile')
+def profile():
+    return render_template('profile.html')
+
 @bp.route('/api_test')
 def api_test():
     return render_template('api_test.html')
