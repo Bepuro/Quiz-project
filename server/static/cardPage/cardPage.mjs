@@ -84,7 +84,7 @@ function startScript(deck) {
     addSwitching(info);
 
     addSound();
-    addFavourite(info);
+    //addFavourite(info);
 
     deck.info = info;
     addOnPageUnload(deck);
@@ -178,7 +178,7 @@ function addGradeLogic(info) {
         grades[i].onclick = () => {
             const oldGrade = info[curIdx].grade;
             info[curIdx].grade = 5 - i;
-
+            console.log(info)
             processSlider(info[curIdx].grade, oldGrade);
 
             if (curIdx !== mxIdx) {
@@ -197,6 +197,7 @@ function addGradeLogic(info) {
 }
 
 function processSlider(newGrade, oldGrade) {
+
     grades[newGrade - 1].num++;
     grades[oldGrade - 1].num--;
 
@@ -236,6 +237,10 @@ function addFavourite(info) {
 }
 
 function preprocessCards(info) {
+    for (let i = 1; i < 6; i++) {
+        grades[i - 1].grade = i;
+    }
+
     let emptyValNum = info.length;
     for (let infoCard of info) {
         infoCard.back = formatText(infoCard.back);
@@ -243,9 +248,12 @@ function preprocessCards(info) {
 
         if (infoCard.grade !== 6) {
             emptyValNum -= 1;
-            grades[infoCard.grade - 1]++;
+            grades[infoCard.grade - 1].num++;
+        } else {
+            grades[infoCard.grade - 1].num++;
         }
     }
+    console.log(grades);
     grades[5].num = emptyValNum;
 
     for (let grade of grades) {
@@ -261,7 +269,7 @@ function addOnPageUnload(deck) {
             updateCardProgress(
                 card.id,
                 {
-                    is_favourite: card,
+                    is_favourite: card.isFavourite,
                     grade: card.grade
                 }
             );

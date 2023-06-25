@@ -1,5 +1,6 @@
 import json
 from sqlite3 import IntegrityError
+from sqlalchemy import text
 
 from flask import jsonify, Blueprint, request, session, make_response
 from werkzeug.security import check_password_hash, generate_password_hash
@@ -239,8 +240,8 @@ def update_card(card_id):
         "deck_id": card.deck_id,
     }), 200
 
-@bp.route('/cards/progress/<int:card_id>', methods=['PUT'])
-def update_card_progress(card_id):
+@bp.route('/cards/progress/<int:card_id_prog>', methods=['PUT'])
+def update_card_progress(card_id_prog):
     if 'user_id' not in session:
         return jsonify({'message': 'Unauthorized'})
 
@@ -248,14 +249,15 @@ def update_card_progress(card_id):
     if 'grade' not in data or 'is_favourite' not in data:
         return jsonify({'message': 'Missing required parameters: "grade" or "is_favourite"'})
 
-    card_progress = UserCardProgress.query.filter_by(id=card_id, user_id=session['user_id']).first()
-    if card_progress  is None:
+    card_progress = UserCardProgress.query.filter_by(card_id=card_id_prog, user_id=session['user_id']).first()
+    if card_progress is None:
         new_prog = UserCardProgress()
         new_prog.user_id = session['user_id']
-        new_prog.card_id = card_id
+        new_prog.card_id = card_id_prog
         new_prog.progress = data['grade']
         new_prog.is_favourite = data['is_favourite']
         db.session.add(new_prog)
+        db.session.commit()
         return jsonify({'message': 'New user progress added'})
 
     card_progress.progress = data['grade']
@@ -265,7 +267,7 @@ def update_card_progress(card_id):
 
     return jsonify({
         "id": card_progress.id,
-        "grade": card_progress.grade,
+        "grade": card_progress.progress,
         "is_favourite": card_progress.is_favourite
     }), 200
 
@@ -294,14 +296,20 @@ def get_deck_cards(deck_id):
     if deck is None:
         return jsonify({'message': 'Deck not found'})
 
-    cards = Card.query.filter_by(deck_id=deck_id).outerjoin(UserCardProgress, UserCardProgress.user_id == session['user_id']).all()
+    query_text = text(f'''
+        select * from cards left join
+        	user_card_progress on cards.id = user_card_progress.card_id
+        where user_id = {session['user_id']} and deck_id = {deck_id}
+    ''')
+
+    cards = db.session.execute(query_text).fetchall()
     deck_name = Deck.query.filter_by(id=deck_id).first().name
 
     return jsonify({'deck':
         {
             'deckName': deck_name,
             'cards': [{
-                    "id": card.id,
+                    "id": card.card_id,
                     "question": card.question,
                     "answer": card.answer,
                     "deck_id": card.deck_id,
