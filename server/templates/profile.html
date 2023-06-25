@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='profile.css') }}">
-    <script defer src="{{ url_for('static', filename='profile.js') }}"></script>
+    <script defer src="{{ url_for('static', filename='profile.mjs') }}" type="module"></script>
 </head>
 <body>
     <header>
@@ -14,12 +14,9 @@
             <img class="logo" src="{{ url_for('static', filename='img/Koloda.png') }}">
         </div>
         <nav>
-            <div class="tab"> 
+            <div class="tab">
                 <div class="t-cnt">
-                    <div id="main-page" class="tablinks text">Главная</div>
-                </div>
-                <div class="t-cnt">
-                    <div id="cards-page" class="tablinks text">Карточки</div>
+                    <a id="cards-page" class="tablinks text" href="{{ url_for('static', filename='cards.html') }}">Карточки</a>
                 </div>
             </div>
         </nav>
@@ -36,7 +33,7 @@
                 <div class="menu-cnt">
                     <div class="wrp-1">
                         <div class="circle-1"></div>
-                        <div class="text name-txt">Алексеев Иван</div>
+                        <div class="text name-txt" id="username"></div>
                         <div id="page-edit" class="box-btn">
                             <img class="edit-btn" src="{{ url_for('static', filename='img/edit.svg') }}" >
                         </div>

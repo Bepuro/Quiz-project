@@ -9,10 +9,67 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='cardPage/styles/grades.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
+    <link rel="stylesheet" href="{{ url_for('static', filename='modal.css') }}">
+    <script defer src="{{ url_for('static', filename='regAuth.js') }}" type="module"></script>
 </head>
 <body>
 <header>
+    <dialog id="modal">
+        <span id="btn-close" class="close">&times;</span>
+        <div class="modal-dist">
+            <img src="{{ url_for('static', filename='img/Saly-1.png') }}">
+            <div class="modal-inf">
+                <div class="modal-text">
+                    <p class="h1">Добро пожаловать!</p>
+                    <p class="h5">Авторизация</p>
+                </div>
+                <form class="inputs" action="{{ url_for('auth.login_modal')}}" method="post">
+                    <label for="email" class="label">Почта</label>
+                    <input class="input" name="username">
+                    <label for="pass" class="label">Пароль</label>
+                    <input class="input" type="password" id="pass" name="password"  required placeholder="***********">
+                    <div class="btn-gr">
+                        <input type="submit" class="btn-3" value="Войти">
+                        <div id="sign-up" class="btn-1 text-items">Зарегистрироваться</div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </dialog>
+
+    <dialog id="modal_1">
+        <span id="btn-close-1" class="close">&times;</span>
+        <div class="modal-dist">
+            <img src="{{ url_for('static', filename='img/Saly-1.png') }}">
+            <div class="modal-inf">
+                <div class="modal-text">
+                    <p class="h1">Добро пожаловать!</p>
+                    <p class="h5">Регистрация</p>
+                </div>
+                <form class="inputs" action="{{ url_for('auth.register_modal')}}" method="post">
+
+                    <label for="text-b" class="label">Логин</label>
+                    <input type="text" id="text-b" class="input" name="username" placeholder="jsx123">
+
+                    <label for="email" class="label">Почта</label>
+                    <input class="input" type="email" id="email" size="30" name="email" required placeholder="test@test.com">
+
+                    <label for="phone" class="label">Телефон</label>
+                    <input type="tel" class="input" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required placeholder="953002211">
+
+                    <label for="pass" class="label">Пароль</label>
+                    <input class="input" type="password" id="pass" name="password" minlength="8" required placeholder="***********">
+
+                    <label for="pass" class="label">Пароль</label>
+                    <input class="input" type="password" id="pass" name="password" minlength="8" required placeholder="***********">
+                    <div class="btn-gr">
+                        <input class="btn-3" type="submit" value="Зарегистрироваться">
+                        <div id="log-in" class="btn-1 text-items">Уже есть аккаунт?</div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </dialog>
     <div class="container">
         <div class="header-line">
             <div class="header-logo">
@@ -22,8 +79,8 @@
                 <a class="nav-item" href="/cards">Карточки</a>
             </div>
             <div class = "authorization">
-                <a class="nav-item" href="/auth/login">Вход</a>
-                <a class="btn" href="/auth/register">Зарегистрироваться</a>
+                <a id="btn-txt" class="nav-item">Вход</a>
+                <a id="btn" class="btn">Зарегистрироваться</a>
             </div>
         </div>
     </div>

@@ -297,12 +297,14 @@ def get_deck_cards(deck_id):
         return jsonify({'message': 'Deck not found'})
 
     query_text = text(f'''
-        select * from cards left join
+        select * from cards join decks on cards.deck_id = decks.id left join
         	user_card_progress on cards.id = user_card_progress.card_id
-        where user_id = {session['user_id']} and deck_id = {deck_id}
+        where decks.user_id = {session['user_id']} and deck_id = {deck_id}
     ''')
 
+
     cards = db.session.execute(query_text).fetchall()
+    print(cards)
     deck_name = Deck.query.filter_by(id=deck_id).first().name
 
     return jsonify({'deck':
@@ -313,7 +315,7 @@ def get_deck_cards(deck_id):
                     "question": card.question,
                     "answer": card.answer,
                     "deck_id": card.deck_id,
-                    "progress": card.progress if hasattr(card, 'progress') else 6,
+                    "progress": 6 if card.progress is None else card.progress,
                     "is_favourite": card.is_favourite if hasattr(card, 'is_favourite') else False
                 } for card in cards
             ]
@@ -340,7 +342,7 @@ def update_user_data():
     return jsonify({'message': 'User data updated successfully'}), 200
 
 
-@bp.route('/user/data', methods=['GET'])
+@bp.route('/get_user_data', methods=['GET'])
 def get_user_data():
     if 'user_id' not in session:
         return jsonify({'message': 'Unauthorized'}), 401

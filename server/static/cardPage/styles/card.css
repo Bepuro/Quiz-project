@@ -51,6 +51,7 @@ main {
     font-size: 18px;
     margin-right: 57px;
     border-bottom: 2px solid transparent;
+    cursor: pointer;
 }
 
 .header-logo {
@@ -81,6 +82,7 @@ main {
     padding: 10px 20px;
     font-weight: 400;
     border-radius: 10px;
+    cursor: pointer;
 }
 
 .btn:hover,

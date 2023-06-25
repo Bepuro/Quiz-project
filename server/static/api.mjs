@@ -130,3 +130,15 @@ export function getDeckCards(deckId) {
         return data;
     });
 }
+
+export function getUser() {
+    return fetch(`${API_BASE_URL}/get_user_data`, {
+        method: 'GET',
+        credentials: 'include'
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            return data;
+        });
+}
