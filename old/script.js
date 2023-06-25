@@ -2,7 +2,7 @@ const cards = document.querySelectorAll('.card');
 
 [...cards].forEach((card)=>{
     card.addEventListener( 'click', function() {
-        card.classList.toggle('is-flipped'); // можно this
+        card.classList.toggle('is-flipped'); 
     }); 
 }); 
 
@@ -12,7 +12,7 @@ let i = 0;
 document.getElementById("one").addEventListener(() => {
     
 })
-document.getElementById("one").onclick = function() { // addEventListener
+document.getElementById("one").addEventListener("click", function() { 
     if (Object.keys(dir).length === i) {
 
         document.getElementById("f").innerHTML = "Я";
@@ -24,4 +24,9 @@ document.getElementById("one").onclick = function() { // addEventListener
         document.getElementById("b").innerHTML = dir[i][1];
         i++;
     }
-}
+})
+
+const navMainPage = document.getElementById("main-page")
+const navCardsPage = document.getElementById("cards-page")
+navMainPage.addEventListener("click", ()=> window.open("index.html"))
+navCardsPage.addEventListener("click", ()=> window.open("cards.html"))

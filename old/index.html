@@ -6,21 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cards</title>
     <link rel="stylesheet" href="css/main.css">
+    <script defer src="cards.js"></script>
 </head>
 <body>
     <header>
         <div class="cnt">
             <img class="logo" src="img/Koloda.svg">
         </div>
-        <div class="tab">
-            <div class="t-cnt">
-                <div class="tablinks text" onclick="window.location.href = 'index.html';">Главная</div><!-- треш!!!!!  -->
-                
+        <nav>
+            <div class="tab"> 
+                <div class="t-cnt">
+                    <div id="main-page" class="tablinks text">Главная</div>
+                </div>
+                <div class="t-cnt">
+                    <div id="cards-page" class="tablinks text">Карточки</div>
+                </div>
             </div>
-            <div class="t-cnt">
-                <div class="tablinks text" onclick="window.location.href = 'cards.html';">Карточки</div><!-- треш!!!!!  -->
-            </div>
-        </div>
+        </nav>
 
 
         <img hidden class="wrp-img" id = "wrp-img" src="img/user.svg">
@@ -37,8 +39,8 @@
                 <img src="img/Saly-1.png">
                 <div class="modal-inf">
                     <div class="modal-text">
-                        <p class="h1">Добро пожаловать!</p>
-                        <p class="h5">Авторизация</p>
+                        <p class="txt-comein">Добро пожаловать!</p>
+                        <p class="txt-auth">Авторизация</p>
                     </div>
                     <div class="inputs">
                         <label for="email" class="label">Почта</label>
@@ -60,11 +62,11 @@
                 <img src="img/Saly-1.png">
                 <div class="modal-inf">
                     <div class="modal-text">
-                        <p class="h1">Добро пожаловать!</p><!-- треш!!!!!  -->
-                        <p class="h5">Регистрация</p><!-- треш!!!!!  -->
+                        <p class="txt-comein">Добро пожаловать!</p>
+                        <p class="txt-auth">Регистрация</p>
                     </div>
                     <div class="inputs">
-
+ 
                         <label for="text-b" class="label">Логин</label>
                         <input type="text" id="text-b" class="input" name="input" placeholder="jsx123">
 
@@ -101,6 +103,5 @@
       <p class ="p2"> Присоединяйся к нам и создавай карточки сам</p>
       <a  class="btn1" href="#">Зарегистрироваться</a>
     </div>
-    <script src="cards.js"></script><!-- треш!!!!!  -->
 </body>
 </html>

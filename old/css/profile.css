@@ -9,8 +9,7 @@ header{
     align-items: flex-start;
     background-color: white;
     display: flex;
-    height: 60px !important;
-    /* срочно убрать important */
+    height: 60px ;
     width: 100vh
 }
 
@@ -64,8 +63,7 @@ header{
 }
 
 .clr-txt{
-    color: gray !important;
-    /* срочно убрать important */
+    color: gray ;
 }
 
 .name-txt{
@@ -215,8 +213,7 @@ header{
 .h1-ed{
     margin: 2px;
     padding: 0px;
-    font-size: 28px !important;
-    /* срочно убрать important */
+    font-size: 28px;
     font-weight: 500;
     text-align: center;
 }
@@ -244,12 +241,28 @@ header{
     margin: 20px;
 }
 
+.edit-btn{
+filter: invert(73%) sepia(11%) saturate(16%) hue-rotate(19deg) brightness(94%) contrast(97%);
+cursor: pointer;
+}
+
+.edit-btn:hover{
+    filter: invert(16%) sepia(97%) saturate(4123%) hue-rotate(231deg) brightness(92%) contrast(110%);
+    cursor: pointer;
+}
+
+
 .prev{
+    cursor: pointer;
     margin-left: 20px;
     margin-top: 20px;
     margin-bottom: 20px;
     margin-right: 0px;
     width: 28px;
+}
+
+.prev:hover{
+    filter: invert(15%) sepia(79%) saturate(6601%) hue-rotate(233deg) brightness(94%) contrast(107%);
 }
 
 .divider-header{
@@ -340,6 +353,8 @@ header{
 }
 
 .bottom-card{
+    display: flex;
+    flex-direction: row;
     background: #F6F7FB;
     border-radius: 0px 0px 10px 10px ;
     height: 200px;
@@ -378,10 +393,34 @@ header{
 }
 
 .trash-btn{
-    filter: invert(.7);
+    filter: invert(88%) sepia(0%) saturate(503%) hue-rotate(294deg) brightness(88%) contrast(85%);
+    cursor: pointer;
 }
 
 .trash-btn:hover{
     cursor: pointer;
-	filter: brightness(50%) sepia(1) hue-rotate(-38deg) hue-rotate(132deg) saturate(103.2%) brightness(91.2%);
+    filter: invert(68%) sepia(56%) saturate(5259%) hue-rotate(322deg) brightness(125%) contrast(117%);
+}
+
+.p1{
+    display: none;
+}
+
+.p2{
+    display: none;
+}
+
+.text-area-card{
+    background: transparent;
+    border: 0px;
+}
+
+.cards{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.create-card{
+    display: none;
 }

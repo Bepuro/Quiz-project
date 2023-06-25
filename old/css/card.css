@@ -11,8 +11,7 @@ header{
     align-items: flex-start;
     background-color: white;
     display: flex;
-    height: 60px !important; 
-    /* important нельзя */
+    height: 60px; 
     width: 100%;
 }
 
@@ -78,21 +77,16 @@ header{
 
 .btn-1{
     cursor: pointer;
-    color: gray !important;
-    /* important нельзя */
-    
+    color: gray ;    
 }
 
 .btn-1:hover{
-    color: #0036f8 !important;
-    /* important нельзя */
+    color: #0036f8;
 }
 
 .btn-2{
     background-color: #305DFF;
     color: white;
-    /* width: 240px; */
-    /* ?*/
     align-items: center;
     border: 0px;
     height: fit-content;
@@ -108,8 +102,6 @@ header{
 .modal-inf{
     display: flex;
     flex-direction: column;
-    gap: 0px;
-    /* не уверен что нужно*/
     width: 100%;
     align-items: center;
 }
@@ -132,11 +124,10 @@ header{
 .label{
     font-weight: 400;
     font-size: 16px;
-    /* мб лучше в rem*/
     color: #808080;
 }
 
-.h1{
+.txt-comein{
     padding: 0px;
     margin: 0px;
     font-weight: 500;
@@ -144,7 +135,7 @@ header{
     color: #1E1E1E;
 }
 
-.h5{
+.txt-auth{
     padding: 0px;
     margin: 0px;
     font-weight: 500;
@@ -188,7 +179,7 @@ header{
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 6px !important;
+    gap: 6px;
 }
 
 

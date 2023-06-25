@@ -10,8 +10,7 @@ header{
     align-items: flex-start;
     background-color: white;
     display: flex;
-    height: 60px !important;
-    /* никаких important */
+    height: 60px;
     width: 100%;
 }
 
@@ -78,13 +77,11 @@ header{
 
 .btn-1{
     cursor: pointer;
-    color: gray !important;
-    /* никаких important */
+    color: gray;
 }
 
 .btn-1:hover{
-    color: #0036f8 !important;
-    /* никаких important */
+    color: #0036f8;
 }
 
 .btn-2{
@@ -114,16 +111,24 @@ header{
     width: fit-content;
 }
 
-.search{
-    align-items: center;
-    background-color: #F6F7FB;
-    border-radius: 10px;
-    display: flex;
-    gap: 10px;
-    padding: 16px 10px;
-    position: relative;
-    width: 700px;
+.vector{
+    position: absolute;
 }
+.search{
+    background-color: #F6F7FB ;
+    border-color: #0036f8;
+    border-radius: 10px;
+    border: none;
+    padding: 16px 10px;
+    width: 700px;
+    text-indent: 16px;
+}
+
+#icon {
+    background-image: url(../img/Vector.svg);
+    background-repeat: no-repeat;
+    background-position: 6px 18px;
+  }
 
 .placeholder{
     color: gray;
@@ -220,8 +225,7 @@ header{
     color: white;
     padding: 12px 14px;
     width: fit-content;
-    margin-top: auto !important;
-    /* срочно убрать important */
+    margin-top: auto ;
     height: 20px;
     right: 20px;
     bottom: 20px;
@@ -329,7 +333,7 @@ dialog {
     color: #808080;
 }
 
-.h1{
+.txt-comein{
     padding: 0px;
     margin: 0px;
     font-weight: 500;
@@ -337,7 +341,7 @@ dialog {
     color: #1E1E1E;
 }
 
-.h5{
+.txt-auth{
     padding: 0px;
     margin: 0px;
     font-weight: 500;
