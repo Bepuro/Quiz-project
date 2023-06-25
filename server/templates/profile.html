@@ -5,13 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
-    <link rel="stylesheet" href="css/profile.css">
-    <script defer src="profile.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='profile.css') }}">
+    <script defer src="{{ url_for('static', filename='profile.js') }}"></script>
 </head>
 <body>
     <header>
         <div class="cnt">
-            <img class="logo" src="img/Koloda.svg">
+            <img class="logo" src="{{ url_for('static', filename='./img/Koloda.svg') }}">
         </div>
         <nav>
             <div class="tab"> 
@@ -38,9 +38,8 @@
                         <div class="circle-1"></div>
                         <div class="text name-txt">Алексеев Иван</div>
                         <div id="page-edit" class="box-btn">
-                            <img class="edit-btn" src="img/edit.svg" >
+                            <img class="edit-btn" src="{{ url_for('static', filename='./img/edit.svg') }}" >
                         </div>
-                        
                     </div>
                     <div class="divider"></div>
                     <div id="page-kolodos" class="menu-item">
@@ -67,7 +66,7 @@
                             <div class="divider-header"></div>
                         </div>
                         <div class="empty-kolods">
-                            <img class="empty-folder" src="img/folder.svg">
+                            <img class="empty-folder" src="{{ url_for('static', filename='./img/folder.svg') }}">
                             <h1 class="h1-ed">Вы еще не создали колоды</h1>
                             <h3 class="h3-ed">Создайте колоду, чтобы заучивать свои домашки</h3>
                             <button id="btn-create" class="btn-2">Создать</button>
@@ -77,7 +76,7 @@
                     <div class="create-card" id="subpage-2">
                         <div class="kolods">
                             <div class="header-1">
-                                <img class="prev" id="return-btn" src="img/prev-1.svg">
+                                <img class="prev" id="return-btn" src="{{ url_for('static', filename='./img/prev-1.svg') }}">
                                 <p class="header-block">Колоды</p>
                             </div>
                             <div class="divider-header"></div>
@@ -109,7 +108,7 @@
                         <div class="divider-header"></div> 
                     </div>
                     <div class="empty-kolods">
-                        <img class="empty-folder" src="img/folder.svg">
+                        <img class="empty-folder" src="{{ url_for('static', filename='./img/folder.svg') }}">
                         <h1 class="h1-ed">Ваше избранное пусто</h1>
                         <h3 class="h3-ed">Добаваьте в избранное, чтобы не потерять</h3>
                         <button id="btn-add-x" class="btn-2">Добавить</button>
