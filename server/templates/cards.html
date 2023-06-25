@@ -1,20 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cards</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='cards.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='./cards.css') }}">
 </head>
 <body>
+    <!-- classname нормально написать -->
+
     <header>
         <div class="cnt">
-            <img class="logo" src="{{ url_for('static', filename='img/Koloda.png') }}">
+            <img class="logo" src="{{ url_for('static', filename='img/Koloda.svg') }}">
         </div>
         <div class="tab">
+            <!--  тег nav -->
             <div class="t-cnt">
                 <div class="tablinks text" onclick="window.location.href = 'index.html';">Главная</div>
+                     <!-- ссылка и js не тут должен быть -->
             </div>
             <div class="t-cnt">
                 <div class="tablinks text" onclick="window.location.href = 'cards.html';">Карточки</div>
@@ -23,25 +27,30 @@
 
 
         <img hidden class="wrp-img" id = "wrp-img" src="{{ url_for('static', filename='img/user.svg') }}">
+                     <!-- hidden раберись с ним  -->
+
 
         <div  class="wrp" id="wrp">
             <div id="btn-txt" class="btn-1 text" id="btn-log-in">Вход</div>
             <button id="btn" class="btn-2">Зарегистрироваться</button>
 
         </div>
-
         <dialog id="modal">
+            <!-- проверить кроссплатформенности -->
             <span id="btn-close" class="close">&times;</span>
             <div class="modal-dist">
                 <img src="{{ url_for('static', filename='img/Saly-1.png') }}">
                 <div class="modal-inf">
                     <div class="modal-text">
                         <p class="h1">Добро пожаловать!</p>
+                        <!-- треш!!!!!  -->
                         <p class="h5">Авторизация</p>
+                        <!-- треш!!!!!  -->
                     </div>
                     <div class="inputs">
                         <label for="email" class="label">Почта</label>
                         <input class="input" type="email" id="email" size="30" required placeholder="test@test.com">
+                        <!-- треш!!!!!  -->
                         <label for="pass" class="label">Пароль</label>
                         <input class="input" type="password" id="pass" name="password" minlength="8" required placeholder="***********">
                         <div class="btn-gr">
@@ -59,8 +68,8 @@
                 <img src="{{ url_for('static', filename='img/Saly-1.png') }}">
                 <div class="modal-inf">
                     <div class="modal-text">
-                        <p class="h1">Добро пожаловать!</p>
-                        <p class="h5">Регистрация</p>
+                        <p class="h1">Добро пожаловать!</p><!-- треш!!!!!  -->
+                        <p class="h5">Регистрация</p><!-- треш!!!!!  -->
                     </div>
                     <div class="inputs">
 
@@ -78,6 +87,7 @@
 
                         <label for="pass" class="label">Пароль</label>
                         <input class="input" type="password" id="pass" name="password" minlength="8" required placeholder="***********">
+                        <!-- треш!!!!! id уникальный должен быть -->
                         <div class="btn-gr">
                             <button class="btn-3">Зарегистрироваться</button>
                             <div id="log-in" class="btn-1 text-items">Уже есть аккаунт?</div>
@@ -86,13 +96,16 @@
                 </div>
             </div>
         </dialog>
+
     </header>
     <div class="wrapper">
+        <!-- инпут сделать человечьим -->
         <h1 class="text">Найди карточку для себя</h1>
         <div class="search">
             <img class="vector" src="{{ url_for('static', filename='img/Vector.svg') }}">
             <div class="placeholder text">Твоя тема</div>
         </div>
+        <!-- есть input type serch если не лень надо тестить кросбраузерность и делать по красоте  -->
         <div class="menu">
             <div class="text text-items">Математика</div>
             <div class="text text-items">Химия</div>
@@ -100,10 +113,140 @@
             <div class="text text-items">Языки</div>
             <div class="text text-items">Обществознание</div>
         </div>
+        <!-- nav -->
+
     </div>
     <div class="container">
-        <div class="list"></div>
+        <div class="list">
+            <div class="block">
+                <div class="item" onclick="window.location.href = 'card.html';">
+                    <!-- треш!!!!!  -->
+                    <div class="block-name">
+                        <div class="text-block">
+                            <h3 class="text text-list">Cтроение компа</h3>
+                            <a class="desc">12 вопросов</a>
+                        </div>
+                        <div class="name">
+                            <div class="circle"></div>
+                            <div class="text">Oleg Ivanov</div>
+                        </div>
+                    </div>
+                    <div class="tag">АрхЭвм</div>
+                </div>
+                <div class="item" onclick="window.location.href = 'card.html';">
+                    <!-- треш!!!!!  -->
+                    <div class="block-name">
+                        <div class="text-block">
+                            <h3 class="text text-list">Cтроение компа</h3>
+                            <a class="desc">12 вопросов</a>
+                        </div>
+                        <div class="name">
+                            <div class="circle"></div>
+                            <div class="text">Oleg Ivanov</div>
+                        </div>
+                    </div>
+                    <div class="tag">АрхЭвм</div>
+                </div>
+                <div class="item" onclick="window.location.href = 'card.html';">
+                    <!-- треш!!!!!  -->
+                    <div class="block-name">
+                        <div class="text-block">
+                            <h3 class="text text-list">Cтроение компа</h3>
+                            <a class="desc">12 вопросов</a>
+                        </div>
+                        <div class="name">
+                            <div class="circle"></div>
+                            <div class="text">Oleg Ivanov</div>
+                        </div>
+                    </div>
+                    <div class="tag">АрхЭвм</div>
+                </div>
+            </div>
+            <div class="block">
+                <div class="item" onclick="window.location.href = 'card.html';">
+                    <div class="block-name">
+                        <div class="text-block">
+                            <h3 class="text text-list">Cтроение компа</h3>
+                            <a class="desc">12 вопросов</a>
+                        </div>
+                        <div class="name">
+                            <div class="circle"></div>
+                            <div class="text">Oleg Ivanov</div>
+                        </div>
+                    </div>
+                    <div class="tag">АрхЭвм</div>
+                </div>
+                <div class="item" onclick="window.location.href = 'card.html';">
+                    <div class="block-name">
+                        <div class="text-block">
+                            <h3 class="text text-list">Cтроение компа</h3>
+                            <a class="desc">12 вопросов</a>
+                        </div>
+                        <div class="name">
+                            <div class="circle"></div>
+                            <div class="text">Oleg Ivanov</div>
+                        </div>
+                    </div>
+                    <div class="tag">АрхЭвм</div>
+                </div>
+                <div class="item" onclick="window.location.href = 'card.html';">
+                    <div class="block-name">
+                        <div class="text-block">
+                            <h3 class="text text-list">Cтроение компа</h3>
+                            <a class="desc">12 вопросов</a>
+                        </div>
+                        <div class="name">
+                            <div class="circle"></div>
+                            <div class="text">Oleg Ivanov</div>
+                        </div>
+                    </div>
+                    <div class="tag">АрхЭвм</div>
+                </div>
+            </div>
+            <div class="block">
+                <div class="item" onclick="window.location.href = 'card.html';">
+                    <div class="block-name">
+                        <div class="text-block">
+                            <h3 class="text text-list">Cтроение компа</h3>
+                            <a class="desc">12 вопросов</a>
+                        </div>
+                        <div class="name">
+                            <div class="circle"></div>
+                            <div class="text">Oleg Ivanov</div>
+                        </div>
+                    </div>
+                    <div class="tag">АрхЭвм</div>
+                </div>
+                <div class="item" onclick="window.location.href = 'card.html';">
+                    <div class="block-name">
+                        <div class="text-block">
+                            <h3 class="text text-list">Cтроение компа</h3>
+                            <a class="desc">12 вопросов</a>
+                        </div>
+                        <div class="name">
+                            <div class="circle"></div>
+                            <div class="text">Oleg Ivanov</div>
+                        </div>
+                    </div>
+                    <div class="tag">АрхЭвм</div>
+                </div>
+                <div class="item" onclick="window.location.href = 'card.html';">
+                    <div class="block-name">
+                        <div class="text-block">
+                            <h3 class="text text-list">Cтроение компа</h3>
+                            <a class="desc">12 вопросов</a>
+                        </div>
+                        <div class="name">
+                            <div class="circle"></div>
+                            <div class="text">Oleg Ivanov</div>
+                        </div>
+                    </div>
+                    <div class="tag">АрхЭвм</div>
+                </div>
+            </div>
+        </div>
         <div class="pages">
+            <!-- классы  -->
             <div class="next-prev">
                 <img src="{{ url_for('static', filename='img/prev.svg') }}">
                 <div class="text btn-prev">Назад</div>
@@ -122,6 +265,6 @@
             </div>
         </div>
     </div>
-    <script src="{{ url_for('static', filename='cards.mjs') }}" type="module"></script>
+    <script src="{{ url_for('static', filename='cards.js') }}"></script><!-- треш!!!!!  -->
 </body>
 </html>
