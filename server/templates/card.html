@@ -64,8 +64,24 @@
         <button id="btn-1" class="grade grade-1">1</button>
     </div>
     <ol class="grade-slider">
-        <span class="slider-block" style="background: green; width: 90%">good</span>
-        <span class="slider-block" style="background: red; width: 10%">bad</span>
+        <li class="slider-block" style="background: rgba(48, 93, 255, 0.2); width: 0">
+            <span class="grade-block"></span><span class="grade-word"> Плохо</span>
+        </li>
+        <li class="slider-block" style="background: rgba(48, 93, 255, 0.4); width: 0%">
+            <span class="grade-block"></span><span class="grade-word"> Удовлетворительно</span>
+        </li>
+        <li class="slider-block" style="background: rgba(48, 93, 255, 0.6); width: 0%">
+            <span class="grade-block"></span><span class="grade-word"> Средне</span>
+        </li>
+        <li class="slider-block" style="background: rgba(48, 93, 255, 0.8); width: 0%">
+            <span class="grade-block"></span><span class="grade-word"> Хорошо</span>
+        </li>
+        <li class="slider-block" style="background: rgba(48, 93, 255, 1); width: 0%">
+            <span class="grade-block"></span><span class="grade-word"> Отлично</span>
+        </li>
+        <li class="slider-block" style="background: rgba(115,114,114,0.16); width: 100%">
+            <span class="grade-block"></span><span class="grade-word"> Не просмотрено</span>
+        </li>
     </ol>
     <div class="confetti-container">
         <div class="confetti">
@@ -177,7 +193,7 @@
             <i style="--speed: 15; --bg: cyan" class="square"></i>
         </div>
     </div>
-        <audio id="fanfar" src="{{ url_for('static', filename='sounds/fanfar.mp3') }}"></audio>
+    <audio id="fanfar" src="{{ url_for('static', filename='sounds/fanfar.mp3') }}"></audio>
     <script src="{{ url_for('static', filename='api.mjs') }}" type="module"></script>
     <script src="{{ url_for('static', filename='cardPage/cardPage.mjs') }}" type="module"></script>
 </main>

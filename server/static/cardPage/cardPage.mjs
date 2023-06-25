@@ -14,12 +14,18 @@ const arrows = {
     right: document.querySelector('.right-arrow')
 }
 
-const grades = [-1, -1, -1, -1, -1];
+const grades = Array.from(document.querySelectorAll('.slider-block')).map(el => {
+    return {
+        htmlEl: el,
+        grade:6,
+        num: 0
+    }
+});
 
 const confetti = document.querySelector('.confetti-container');
 const fanfarAudio = document.querySelector('#fanfar');
 
-const charactersPerLine = 20;
+const charactersPerLine = 30;
 
 let cardIsFlipped = false;
 let curIdx = 0;
@@ -48,7 +54,7 @@ function initScript() {
                     deck.info.push({
                         front: card.question,
                         back: card.answer,
-                        grade: -1,
+                        grade: 6,
                         isFavourite: false
                     });
                 }
@@ -67,6 +73,8 @@ function startScript(deck) {
     preprocessCards(info);
 
     mxIdx = info.length - 1;
+    grades[5].num = info.length;
+    grades[5].htmlEl.querySelector('.grade-block').innerHTML = info.length;
 
     addHeader(deckName);
 
@@ -164,7 +172,10 @@ function addGradeLogic(info) {
 
     for (let i = 0; i < grades.length; i++) {
         grades[i].onclick = () => {
-            info[curIdx].grade = info.length - i + 1;
+            const oldGrade = info[curIdx].grade;
+            info[curIdx].grade = 5 - i;
+
+            processSlider(info[curIdx].grade, oldGrade);
 
             if (curIdx !== mxIdx) {
                 rightSwitch();
@@ -179,6 +190,17 @@ function addGradeLogic(info) {
             changeCard(info);
         };
     }
+}
+
+function processSlider(newGrade, oldGrade) {
+    grades[newGrade - 1].num++;
+    grades[oldGrade - 1].num--;
+
+    grades[newGrade - 1].htmlEl.style.width = `${grades[newGrade - 1].num / (mxIdx + 1) * 100}%`;
+    grades[oldGrade - 1].htmlEl.style.width = `${grades[oldGrade - 1].num / (mxIdx + 1) * 100}%`;
+
+    grades[newGrade - 1].htmlEl.querySelector('.grade-block').innerHTML = `${grades[newGrade - 1].num}`;
+    grades[oldGrade - 1].htmlEl.querySelector('.grade-block').innerHTML = `${grades[oldGrade - 1].num}`;
 }
 
 function addSound() {
@@ -227,7 +249,7 @@ function formatText(text) {
 
         if (curLength >= charactersPerLine) {
             curLength = 0;
-            finalTextArr.push('<br>');
+            finalTextArr.push('-<br>');
         }
     }
 

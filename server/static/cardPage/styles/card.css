@@ -4,9 +4,7 @@ body {
     height: 100%;
     margin: 0;
     padding: 0;
-}
 
-body {
     font-family: 'Roboto', sans-serif;
     display: flex;
     flex-direction: column;
@@ -168,6 +166,8 @@ main {
     width: 75%;
     height: 75%;
 
+    font-size: 25px;
+
     right: 10px;
     overflow-y: auto;
     white-space: nowrap;
@@ -293,10 +293,12 @@ main {
 }
 
 .slider-block {
+    display: block;
     color: #fff;
     overflow: hidden;
     font-family: "Segoe UI", "Helvetica Neue", Roboto, Arial, sans-serif;
     text-align: center;
     font-size: 14px;
     line-height: 20px;
+    height: 20px;
 }
