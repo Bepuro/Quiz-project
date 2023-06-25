@@ -103,7 +103,6 @@ def register_modal():
                 return redirect(url_for("cards"))
         flash(err)
 
-    return render_template('index')
 
 @bp.route('/login_modal', methods=['POST'])
 def login_modal():
@@ -127,7 +126,7 @@ def login_modal():
 
         flash(err)
 
-    return render_template(url_for('index'))
+
 
 @bp.before_app_request
 def load_logged_in_user():
