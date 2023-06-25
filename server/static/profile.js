@@ -1,11 +1,52 @@
 function openPage(page) {
-    let i;
-    const x = document.getElementsByClassName("page");
-    for (i = 0; i < x.length; i++) {
-      x[i].style.display = "none";  
+    const mediaQuery = window.matchMedia('(max-width: 1000px)')
+    if (mediaQuery.matches) {
+        let i;
+        const x = document.getElementsByClassName("page");
+        const y = document.getElementsByClassName("desc")[0];
+        const z = document.getElementsByClassName("menu")[0];
+        console.log(page)
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        y.style.display="block"
+        z.style.display="none"
+
+        document.getElementById(page).style.display = "block";
+
     }
-    document.getElementById(page).style.display = "block";  
+    else{
+        let i;
+        const x = document.getElementsByClassName("page");
+        for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";  
+        }
+        document.getElementById(page).style.display = "block";
+    }
 }
+
+const mediaQuery = window.matchMedia('(max-width: 1000px)')
+mediaQuery.addListener((e) => {
+    const x = document.getElementsByClassName("page");
+    const y = document.getElementsByClassName("desc")[0];
+    const z = document.getElementsByClassName("menu")[0];
+    if (e.matches) {
+
+        y.style.display="block"
+        z.style.display="none"
+    }
+    else{
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        y.style.display="block"
+        z.style.display="block"
+        document.getElementById("page-3").style.display = "block";
+    }
+})
+
+
+
 
 const buttonAdd = document.getElementById("add-button");
 const parent = document.getElementsByClassName("cards")[0];
@@ -104,3 +145,12 @@ tabPageBest.addEventListener("click", () => openPage("page-2"));
 const buttonLogOut = document.getElementById("logout");
 buttonLogOut.addEventListener("click", () => window.open("index.html"));
 
+const returnButton = document.getElementsByClassName("prev-1");
+        for (i = 0; i < returnButton.length; i++) {
+            returnButton[i].addEventListener("click", function(){
+                const menu = document.getElementsByClassName("menu")[0];
+                const page = document.getElementsByClassName("desc")[0];
+                page.style.display = "none"
+                menu.style.display="block"
+            })
+        }
