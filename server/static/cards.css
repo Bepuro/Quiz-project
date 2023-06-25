@@ -125,9 +125,9 @@ header{
 }
 
 #icon {
-    background-image: url(../img/Vector.svg);
+    background-image: url(img/Vector.svg);
     background-repeat: no-repeat;
-    background-position: 6px 18px;
+    background-position: 6px 16px;
   }
 
 .placeholder{
@@ -152,33 +152,34 @@ header{
     background-color: #F6F7FB;
     width: 100%;
     height: 100%;
-    position: relative;
 }
 
 .list{
-    grid-gap: 20px;
+    align-items: center;
+    justify-content: center;
     display: grid;
+    grid-gap: 20px;
+    gap: 20px;
     padding: 20px;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 2fr));
-    flex-wrap: wrap;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 2fr));
 }
 
 .block{
     display: inline-block;
-    position: relative;
-    gap: 30px;
 }
 
 .item{
+    align-self: center;
+    justify-self: center;
     cursor: pointer;
     background-color: white;
     border-radius: 20px;
     box-shadow: 0px 4px 4px #00000040;
     height: 200px;
-    min-width: 360px;
+    width: 360px;
     display: flex;
     flex-direction: row;
-    gap: 100px;
+    justify-content: space-between;
     vertical-align: top;
 }
 
@@ -387,7 +388,7 @@ dialog {
     align-items: center;
     gap: 6px !important;
 }
-
+ 
 
 @media (max-width: 1000px) {
     .tab {
@@ -405,14 +406,50 @@ dialog {
 
     .wrp-img {
         display: flex;
+        cursor: pointer;
+        filter: invert(73%) sepia(11%) saturate(16%) hue-rotate(19deg) brightness(94%) contrast(97%);
     }
 
-    .search {
+    .wrp-img:hover {
+        display: flex;
+        cursor: pointer;
+        filter: invert(16%) sepia(97%) saturate(4123%) hue-rotate(231deg) brightness(92%) contrast(110%);
+    }
+
+    .menu {
+        gap: 70px;
+    }
+
+}
+
+@media (max-width: 750px) {
+
+    .search{
         width: 500px;
     }
 
     .menu {
         gap: 50px;
+    }
+
+    .text-items{
+        font-size: 12px !important;
+    }
+
+}
+
+@media (max-width: 500px) {
+
+    .search{
+        width: 300px;
+    }
+
+    .menu {
+        gap: 30px;
+    }
+
+    .text-items{
+        font-size: 12px !important;
     }
 
 }

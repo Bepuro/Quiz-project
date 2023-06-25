@@ -5,7 +5,7 @@ const cardsList = document.querySelector('.list');
 
 function createItemPattern() {
   itemPattern.className = 'item';
-  itemPattern.innerHTML = [
+  itemPattern.innerHTML = [ 
       '<div class="item" onclick="window.location.href = \'card\';">',
         '<div class="block-name">',
           '<div class="text-block">',
@@ -17,7 +17,6 @@ function createItemPattern() {
             '<div class="text" id="author-name">Oleg Ivanov</div>',
           '</div>',
         '</div>',
-        '<div class="tag">АрхЭвм</div>',
       '</div>'
   ].join('');
 }
