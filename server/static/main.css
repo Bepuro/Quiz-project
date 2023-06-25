@@ -31,6 +31,7 @@ header {
     font-size: 18px;
 
     margin-right: 57px;
+    cursor: pointer;
 }
 
 .btn {
@@ -40,6 +41,7 @@ header {
     padding: 14px 19.5px;
     font-weight: 400;
     border-radius: 10px;
+    cursor: pointer;
 }
 
 .box {

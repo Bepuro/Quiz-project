@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cards</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='cards.css') }}">
+    <script defer src="{{ url_for('static', filename='cards.mjs') }}" type="module"></script>
+    <script defer src="{{ url_for('static', filename='regAuth.js') }}" type="module"></script>
 </head>
 <body>
 <header>
@@ -25,7 +27,7 @@
     <img hidden class="wrp-img" id = "wrp-img" src="{{ url_for('static', filename='img/user.svg') }}">
 
     <div  class="wrp" id="wrp">
-        <div id="btn-txt" class="btn-1 text" id="btn-log-in">Вход</div>
+        <div id="btn-txt" class="btn-1 text" >Вход</div>
         <button id="btn" class="btn-2">Зарегистрироваться</button>
 
     </div>
@@ -39,16 +41,16 @@
                     <p class="h1">Добро пожаловать!</p>
                     <p class="h5">Авторизация</p>
                 </div>
-                <div class="inputs">
+                <form class="inputs" action="{{ url_for('auth.login_modal')}}" method="post">
                     <label for="email" class="label">Почта</label>
-                    <input class="input" type="email" id="email" size="30" required placeholder="test@test.com">
+                    <input class="input" name="username">
                     <label for="pass" class="label">Пароль</label>
-                    <input class="input" type="password" id="pass" name="password" minlength="8" required placeholder="***********">
+                    <input class="input" type="password" id="pass" name="password"  required placeholder="***********">
                     <div class="btn-gr">
-                        <button class="btn-3">Войти</button>
-                        <div  id="sign-up" class="btn-1 text-items">Зарегистрироваться</div>
+                        <input type="submit" class="btn-3" value="Войти">
+                        <div id="sign-up" class="btn-1 text-items">Зарегистрироваться</div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </dialog>
@@ -62,13 +64,13 @@
                     <p class="h1">Добро пожаловать!</p>
                     <p class="h5">Регистрация</p>
                 </div>
-                <div class="inputs">
+                <form class="inputs" action="{{ url_for('auth.register_modal')}}" method="post">
 
                     <label for="text-b" class="label">Логин</label>
-                    <input type="text" id="text-b" class="input" name="input" placeholder="jsx123">
+                    <input type="text" id="text-b" class="input" name="username" placeholder="jsx123">
 
                     <label for="email" class="label">Почта</label>
-                    <input class="input" type="email" id="email" size="30" required placeholder="test@test.com">
+                    <input class="input" type="email" id="email" size="30" name="email" required placeholder="test@test.com">
 
                     <label for="phone" class="label">Телефон</label>
                     <input type="tel" class="input" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required placeholder="953002211">
@@ -79,13 +81,14 @@
                     <label for="pass" class="label">Пароль</label>
                     <input class="input" type="password" id="pass" name="password" minlength="8" required placeholder="***********">
                     <div class="btn-gr">
-                        <button class="btn-3">Зарегистрироваться</button>
+                        <input class="btn-3" type="submit" value="Зарегистрироваться">
                         <div id="log-in" class="btn-1 text-items">Уже есть аккаунт?</div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </dialog>
+
 </header>
 <div class="wrapper">
     <h1 class="text">Найди карточку для себя</h1>
@@ -122,6 +125,5 @@
         </div>
     </div>
 </div>
-<script src="{{ url_for('static', filename='cards.mjs') }}" type="module"></script>
 </body>
 </html>

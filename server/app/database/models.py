@@ -1,5 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy    
-from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, Boolean
+from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, Boolean, JSON
 from sqlalchemy.orm import relationship
 
 
@@ -22,6 +22,7 @@ class User(db.Model):
     id = Column(Integer, primary_key=True)
     username = Column(String(20), unique=True, nullable=False)
     password = Column(String(200), nullable=False)
+    userData = Column(JSON, nullable=True)
     decks = relationship('Deck', cascade='all, delete, delete-orphan')
 
 

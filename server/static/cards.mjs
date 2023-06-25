@@ -1,60 +1,7 @@
 import {getUserDecks} from "./api.mjs";
 
-const btnOpen = document.getElementById("btn-txt");
-const btnClose = document.querySelector("#btn-close")
-const modal = document.querySelector("#modal");
-const sign_btn = document.getElementById("sign-up");
-
-const btnOpen_1 = document.getElementById("btn");
-const btnClose_1 = document.getElementById("btn-close-1")
-const modal_1 = document.getElementById("modal_1");
-const login_btn = document.getElementById("log-in");
-const btnOpen1 = document.getElementById("wrp-img");
-
 const itemPattern = document.createElement('div');
 const cardsList = document.querySelector('.list');
-
-function addButtons() {
-  btnOpen.onclick = () => {
-    modal.showModal()
-  }
-
-
-  btnClose.onclick = () => {
-    modal.close()
-  }
-
-
-  btnOpen_1.onclick = () => {
-    modal_1.showModal()
-  }
-
-
-  btnClose_1.onclick = () => {
-    modal_1.close()
-  }
-
-
-  sign_btn.onclick = () => {
-    modal.close()
-    modal_1.showModal()
-  }
-
-  login_btn.onclick = () => {
-    console.log('------111222')
-    modal_1.close()
-    modal.showModal()
-  }
-
-  btnOpen1.onclick = () => {
-    modal.showModal()
-  }
-
-
-  btnClose.onclick = () => {
-    modal.close()
-  }
-}
 
 function createItemPattern() {
   itemPattern.className = 'item';
@@ -109,7 +56,6 @@ function initScript() {
 }
 
 function startScript(decks) {
-  addButtons();
   createItemPattern();
   addDeckBlocks(decks);
 }

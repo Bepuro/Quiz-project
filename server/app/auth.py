@@ -1,6 +1,7 @@
 import functools
-
+import json
 from flask import (
+    jsonify,
     Blueprint,
     flash,
     g,
@@ -66,11 +67,65 @@ def login():
         if err is None:
             session.clear()
             session['user_id'] = user.id
-            return redirect(url_for('index'))
+            return redirect(url_for('cards'))
 
         flash(err)
 
     return render_template('auth/login.html')
+
+@bp.route('/register_modal', methods=['POST'])
+def register_modal():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        email = request.form['email']
+        phone_num = request.form['phone']
+
+        data_json = json.dumps({'email': email, 'phone_num': phone_num})
+
+        db = get_db()
+        err = None
+
+        if not username:
+            err = 'Username is required'
+        elif not password:
+            err = 'Password is required'
+
+        if err is None:
+            try:
+                user = User(username=username, password=generate_password_hash(password), userData=data_json)
+                db.session.add(user)
+                db.session.commit()
+            except IntegrityError as e:
+                db.session.rollback()
+                err = f'User {username} is already registered.'
+            else:
+                return redirect(url_for("cards"))
+        flash(err)
+
+
+@bp.route('/login_modal', methods=['POST'])
+def login_modal():
+    if request.method == 'POST':
+        print(request.form)
+        username = request.form['username']
+        password = request.form['password']
+        err = None
+
+        user = User.query.filter_by(username=username).first()
+
+        if user is None:
+            err = 'Incorrect username'
+        elif not check_password_hash(user.password, password):
+            err = 'Incorrect password.'
+
+        if err is None:
+            session.clear()
+            session['user_id'] = user.id
+            return redirect(url_for('cards'))
+
+        flash(err)
+
 
 
 @bp.before_app_request
