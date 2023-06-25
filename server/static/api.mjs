@@ -93,17 +93,13 @@ export function updateDeck(deckId, newName) {
     .then(data => console.log(data));
 }
 
-export function updateCard(cardId, newQuestion, newAnswer) {
-    const cardData = {
-        question: newQuestion,
-        answer: newAnswer
-    };
+export function updateCard(cardId, newCardData) {
     fetch(`${API_BASE_URL}/cards/${cardId}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(cardData),
+        body: JSON.stringify(newCardData),
         credentials: 'include'
     })
     .then(response => response.json())

@@ -1,4 +1,4 @@
-import { getDeckCards } from '../api.mjs'
+import {getDeckCards, updateCard} from '../api.mjs'
 
 const answer = document.querySelector('#answer');
 const question = document.querySelector('#question');
@@ -39,6 +39,7 @@ function initScript() {
         res => {
             const deckJson = res;
             const deck = {
+                deckId: deckId,
                 deckName: '',
                 info: []
             };
@@ -52,6 +53,7 @@ function initScript() {
 
                 for (let card of cards) {
                     deck.info.push({
+                        id: card.id,
                         front: card.question,
                         back: card.answer,
                         grade: 6,
@@ -68,13 +70,11 @@ function initScript() {
 
 function startScript(deck) {
     const deckName = deck.deckName;
-    const info = deck.info.sort((a, b) => a.grade - b.grade);
+    const info = deck.info;
 
     preprocessCards(info);
 
     mxIdx = info.length - 1;
-    grades[5].num = info.length;
-    grades[5].htmlEl.querySelector('.grade-block').innerHTML = info.length;
 
     addHeader(deckName);
 
@@ -84,6 +84,9 @@ function startScript(deck) {
 
     addSound();
     addFavourite(info);
+
+    deck.info = info;
+    addOnPageUnload(deck);
 }
 
 function addHeader(deckName) {
@@ -116,7 +119,7 @@ function addCardLogic(info) {
 }
 
 function addSwitching(info) {
-    arrows.left.onclick = e => {
+    arrows.left.onclick = () => {
         if (curIdx > 0) {
             curIdx--;
             changeCard(info);
@@ -124,7 +127,7 @@ function addSwitching(info) {
             confetti.style.display = 'none';
         }
     };
-    arrows.right.onclick = e => {
+    arrows.right.onclick = () => {
         if (curIdx < mxIdx) {
             curIdx++;
             changeCard(info);
@@ -232,10 +235,38 @@ function addFavourite(info) {
 }
 
 function preprocessCards(info) {
+    let emptyValNum = info.length;
     for (let infoCard of info) {
         infoCard.back = formatText(infoCard.back);
         infoCard.front = formatText(infoCard.front);
+
+        if (infoCard.grade !== 6) {
+            emptyValNum -= 1;
+            grades[infoCard.grade - 1]++;
+        }
     }
+    grades[5].num = emptyValNum;
+
+    for (let grade of grades) {
+        grade.htmlEl.style.width = `${grade.num / (mxIdx + 1) * 100}%`;
+        grade.htmlEl.querySelector('.grade-block').innerHTML = `${grade.num}`;
+    }
+
+}
+
+function addOnPageUnload(deck) {
+    window.addEventListener('beforeunload', () => {
+        for (let card of deck.info) {
+            updateCard(
+                card.id,
+                {
+                    question: card.front,
+                    answer: card.back,
+                    grade: card.grade
+                }
+            );
+        }
+    });
 }
 
 function formatText(text) {

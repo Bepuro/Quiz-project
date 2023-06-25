@@ -132,7 +132,10 @@ document.getElementById('deleteCardForm').addEventListener('submit', function(ev
 document.getElementById('updateCardForm').addEventListener('submit', function(event) {
     event.preventDefault();
     let cardId = document.getElementById('updateCardId').value;
-    let newQuestion = document.getElementById('newQuestion').value;
-    let newAnswer = document.getElementById('newAnswer').value;
-    updateCard(cardId, newQuestion, newAnswer);
+    let newCardData = {
+        question: document.getElementById('newQuestion').value,
+        answer: document.getElementById('newAnswer').value,
+        grade: 5
+    }
+    updateCard(cardId, newCardData);
 });
