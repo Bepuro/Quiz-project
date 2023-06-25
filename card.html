@@ -7,23 +7,23 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-     <!-- мб лучше скачать  -->
+    <script defer src="script.js"></script>
 </head>
 <body>
     <header>
         <div class="cnt">
             <img class="logo" src="img/Koloda.svg">
         </div>
-        <div class="tab">
-            <div class="t-cnt">
-                <div class="tablinks text" onclick="window.location.href = 'index.html';">Главная</div>
-                 <!-- треш!!!!!  -->
+        <nav>
+            <div class="tab"> 
+                <div class="t-cnt">
+                    <div id="main-page" class="tablinks text">Главная</div>
+                </div>
+                <div class="t-cnt">
+                    <div id="cards-page" class="tablinks text">Карточки</div>
+                </div>
             </div>
-            <div class="t-cnt">
-                <div class="tablinks text" onclick="window.location.href = 'cards.html';">Карточки</div>
-                 <!-- треш!!!!!  -->
-            </div>
-        </div>
+        </nav>
 
 
         <img hidden class="wrp-img" id = "wrp-img" src="img/user.svg">
@@ -40,8 +40,8 @@
                 <img src="img/Saly-1.png">
                 <div class="modal-inf">
                     <div class="modal-text">
-                        <p class="h1">Добро пожаловать!</p>
-                        <p class="h5">Авторизация</p>
+                        <p class="txt-comein">Добро пожаловать!</p>
+                        <p class="txt-auth">Авторизация</p>
                     </div>
                     <div class="inputs">
                         <label for="email" class="label">Почта</label>
@@ -63,8 +63,8 @@
                 <img src="img/Saly-1.png">
                 <div class="modal-inf">
                     <div class="modal-text">
-                        <p class="h1">Добро пожаловать!</p>
-                        <p class="h5">Регистрация</p>
+                        <p class="txt-comein">Добро пожаловать!</p>
+                        <p class="txt-auth">Регистрация</p>
                     </div>
                     <div class="inputs">
 
@@ -97,7 +97,7 @@
         <h1 class="name">КАКАКАКАКАК</h1>
     </div>
     <div class="wrap">
-        <div class="scene scene--card"><!-- треш имя класса!!!!!  -->
+        <div class="scene scene--card">
             <div class="card">
                 <div class="card__face card__face--front"><span id="f">я</span></div>
                 <div class="card__face card__face--back"><span id="b">семья</span></div>
@@ -113,7 +113,6 @@
         <button class="score five">5</button>
 
     </div>
-    <script src="script.js"></script><!-- треш!!!!!  -->
 </main>
 </body>
 </html>

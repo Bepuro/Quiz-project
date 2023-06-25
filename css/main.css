@@ -80,7 +80,7 @@ body {
 
 .btn-2{
     background-color: #305DFF;
-    color: white;
+    color: white; 
     align-items: center;
     border: 0px;
     height: fit-content;
@@ -123,7 +123,7 @@ body {
     color: #808080;
 }
 
-.h1{
+.txt-comein{
     padding: 0px;
     margin: 0px;
     font-weight: 500;
@@ -131,7 +131,7 @@ body {
     color: #1E1E1E;
 }
 
-.h5{
+.txt-auth{
     padding: 0px;
     margin: 0px;
     font-weight: 500;
