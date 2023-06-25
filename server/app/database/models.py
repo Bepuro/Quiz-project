@@ -1,5 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy    
-from sqlalchemy import create_engine, Column, Integer, String, ForeignKey
+from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, Boolean
 from sqlalchemy.orm import relationship
 
 
@@ -11,7 +11,8 @@ class UserCardProgress(db.Model):
     id = Column(Integer, primary_key=True)
     user_id = Column(Integer, ForeignKey('users.id'))
     card_id = Column(Integer, ForeignKey('cards.id'))
-    progress = Column(Integer, default=0)
+    progress = Column(Integer, default=6)
+    is_favourite = Column(Boolean, default=False)
     user = relationship('User')
     card = relationship('Card')
 

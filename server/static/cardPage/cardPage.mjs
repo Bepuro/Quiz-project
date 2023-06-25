@@ -1,4 +1,4 @@
-import {getDeckCards, updateCard} from '../api.mjs'
+import {getDeckCards, updateCard, updateCardProgress} from '../api.mjs'
 
 const answer = document.querySelector('#answer');
 const question = document.querySelector('#question');
@@ -56,11 +56,12 @@ function initScript() {
                         id: card.id,
                         front: card.question,
                         back: card.answer,
-                        grade: 6,
+                        grade: card.progress,
                         isFavourite: false
                     });
                 }
             }
+            console.log(deck);
             startScript(deck);
         }
     ).catch(err => {
@@ -257,11 +258,10 @@ function preprocessCards(info) {
 function addOnPageUnload(deck) {
     window.addEventListener('beforeunload', () => {
         for (let card of deck.info) {
-            updateCard(
+            updateCardProgress(
                 card.id,
                 {
-                    question: card.front,
-                    answer: card.back,
+                    is_favourite: card,
                     grade: card.grade
                 }
             );

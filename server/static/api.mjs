@@ -106,6 +106,19 @@ export function updateCard(cardId, newCardData) {
     .then(data => console.log(data));
 }
 
+export function updateCardProgress(cardId, newCardData) {
+    fetch(`${API_BASE_URL}/cards/progress/${cardId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newCardData),
+        credentials: 'include'
+    })
+        .then(response => response.json())
+        .then(data => console.log(data));
+}
+
 export function getDeckCards(deckId) {
     return fetch(`${API_BASE_URL}/decks/${deckId}/cards`, {
         method: 'GET',

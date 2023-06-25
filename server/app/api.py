@@ -5,7 +5,7 @@ from flask import jsonify, Blueprint, request, session, make_response
 from werkzeug.security import check_password_hash, generate_password_hash
 
 from .database import get_db
-from .database.models import Deck, Card, User
+from .database.models import Deck, Card, User, UserCardProgress
 from .database import db
 
 bp = Blueprint('api', __name__, url_prefix='/api')
@@ -236,7 +236,37 @@ def update_card(card_id):
         "id": card.id,
         "question": card.question,
         "answer": card.answer,
-        "deck_id": card.deck_id
+        "deck_id": card.deck_id,
+    }), 200
+
+@bp.route('/cards/progress/<int:card_id>', methods=['PUT'])
+def update_card_progress(card_id):
+    if 'user_id' not in session:
+        return jsonify({'message': 'Unauthorized'})
+
+    data = request.get_json()
+    if 'grade' not in data or 'is_favourite' not in data:
+        return jsonify({'message': 'Missing required parameters: "grade" or "is_favourite"'})
+
+    card_progress = UserCardProgress.query.filter_by(id=card_id, user_id=session['user_id']).first()
+    if card_progress  is None:
+        new_prog = UserCardProgress()
+        new_prog.user_id = session['user_id']
+        new_prog.card_id = card_id
+        new_prog.progress = data['grade']
+        new_prog.is_favourite = data['is_favourite']
+        db.session.add(new_prog)
+        return jsonify({'message': 'New user progress added'})
+
+    card_progress.progress = data['grade']
+    card_progress.is_favourite = data['is_favourite']
+
+    db.session.commit()
+
+    return jsonify({
+        "id": card_progress.id,
+        "grade": card_progress.grade,
+        "is_favourite": card_progress.is_favourite
     }), 200
 
 
@@ -264,7 +294,7 @@ def get_deck_cards(deck_id):
     if deck is None:
         return jsonify({'message': 'Deck not found'})
 
-    cards = Card.query.filter_by(deck_id=deck_id).all()
+    cards = Card.query.filter_by(deck_id=deck_id).outerjoin(UserCardProgress, UserCardProgress.user_id == session['user_id']).all()
     deck_name = Deck.query.filter_by(id=deck_id).first().name
 
     return jsonify({'deck':
@@ -274,7 +304,9 @@ def get_deck_cards(deck_id):
                     "id": card.id,
                     "question": card.question,
                     "answer": card.answer,
-                    "deck_id": card.deck_id
+                    "deck_id": card.deck_id,
+                    "progress": card.progress if hasattr(card, 'progress') else 6,
+                    "is_favourite": card.is_favourite if hasattr(card, 'is_favourite') else False
                 } for card in cards
             ]
         }
