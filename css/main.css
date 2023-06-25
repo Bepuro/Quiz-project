@@ -197,6 +197,14 @@ header{
 
     .wrp-img {
         display: flex;
+        cursor: pointer;
+        filter: invert(73%) sepia(11%) saturate(16%) hue-rotate(19deg) brightness(94%) contrast(97%);
+    }
+
+    .wrp-img:hover {
+        display: flex;
+        cursor: pointer;
+        filter: invert(16%) sepia(97%) saturate(4123%) hue-rotate(231deg) brightness(92%) contrast(110%);
     }
 
     .search {
@@ -235,7 +243,7 @@ dialog {
 
 .back-img {
     width: 100%;
-    height: 100vh;
+    height: 100%;
 }
 
 .box{
@@ -271,7 +279,6 @@ dialog {
 .block-2{
     display: flex;
     flex-direction: column;
-    /* gap: 100px; */
 }
 
 .block-3{
@@ -348,30 +355,97 @@ dialog {
     font-size: 28px;
 }
 
-
-
-.circle-1{
-    position: relative;
-    left: -20%;
-    border-radius: 526px;
-    background: #305DFF;
-    width: 526px;
-    height: 509px;
-}
-
-.circle-2{
-    right: -90%;
-    bottom: -90%;
-    position: relative;
-    border-radius: 526px;
-    background: #305DFF;
-    width: 526px;
-    height: 509px;
-}
-
 .company{
     margin: 20px;
     color: #808080;
     font-size: 24px;
     font-weight: 500;
+}
+
+@media (max-width: 1200px) {
+    .box{
+        top: 20%;
+        gap: 10px;
+        width: 70%;
+    }
+    .p1 {
+        font-size: 32px;
+    }
+    
+    .p2 {
+        font-size: 16px;
+    }
+    
+    .p3{
+        font-size: 32px;
+    }
+
+    .p4{
+        font-size: 26px;
+    }
+    
+    .p5{
+        font-size: 18px;
+    }
+    .img-card{
+        width: 350px;
+        height: 220px;
+    }
+    .num{
+        font-size: 32px;
+    }
+    .action-text{
+        font-size: 18px;
+    }
+    
+    .company{
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 800px) {
+    .block-3{
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+}
+
+@media (max-width: 550px) {
+    .box{
+        top: 10%;
+    }
+    .p1 {
+        font-size: 24px;
+    }
+    
+    .p2 {
+        font-size: 14px;
+    }
+    
+    .p3{
+        font-size: 24px;
+    }
+
+    .p4{
+        font-size: 20px;
+    }
+    
+    .p5{
+        font-size: 14px;
+    }
+    .img-card{
+        width: 350px;
+        height: 220px;
+    }
+    .num{
+        font-size: 24px;
+    }
+    .action-text{
+        font-size: 14px;
+    }
+    
+    .company{
+        font-size: 10px;
+    }
 }
