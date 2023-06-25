@@ -37,7 +37,7 @@ buttonAdd.addEventListener("click", function() {
     })
     
     const trashSVG = document.createElement("img");
-    trashSVG.src = "img/trash.svg";
+    trashSVG.src = "static/img/trash.svg";
     trashSVG.className = "trash-btn";
 
     const bottomCard = document.createElement("div");

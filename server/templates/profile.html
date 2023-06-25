@@ -11,7 +11,7 @@
 <body>
     <header>
         <div class="cnt">
-            <img class="logo" src="{{ url_for('static', filename='./img/Koloda.svg') }}">
+            <img class="logo" src="{{ url_for('static', filename='img/Koloda.png') }}">
         </div>
         <nav>
             <div class="tab"> 
@@ -38,7 +38,7 @@
                         <div class="circle-1"></div>
                         <div class="text name-txt">Алексеев Иван</div>
                         <div id="page-edit" class="box-btn">
-                            <img class="edit-btn" src="{{ url_for('static', filename='./img/edit.svg') }}" >
+                            <img class="edit-btn" src="{{ url_for('static', filename='img/edit.svg') }}" >
                         </div>
                     </div>
                     <div class="divider"></div>
@@ -66,7 +66,7 @@
                             <div class="divider-header"></div>
                         </div>
                         <div class="empty-kolods">
-                            <img class="empty-folder" src="{{ url_for('static', filename='./img/folder.svg') }}">
+                            <img class="empty-folder" src="{{ url_for('static', filename='img/folder.svg') }}">
                             <h1 class="h1-ed">Вы еще не создали колоды</h1>
                             <h3 class="h3-ed">Создайте колоду, чтобы заучивать свои домашки</h3>
                             <button id="btn-create" class="btn-2">Создать</button>
@@ -76,7 +76,7 @@
                     <div class="create-card" id="subpage-2">
                         <div class="kolods">
                             <div class="header-1">
-                                <img class="prev" id="return-btn" src="{{ url_for('static', filename='./img/prev-1.svg') }}">
+                                <img class="prev" id="return-btn" src="{{ url_for('static', filename='img/prev-1.svg') }}">
                                 <p class="header-block">Колоды</p>
                             </div>
                             <div class="divider-header"></div>
@@ -108,7 +108,7 @@
                         <div class="divider-header"></div> 
                     </div>
                     <div class="empty-kolods">
-                        <img class="empty-folder" src="{{ url_for('static', filename='./img/folder.svg') }}">
+                        <img class="empty-folder" src="{{ url_for('static', filename='img/folder.svg') }}">
                         <h1 class="h1-ed">Ваше избранное пусто</h1>
                         <h3 class="h3-ed">Добаваьте в избранное, чтобы не потерять</h3>
                         <button id="btn-add-x" class="btn-2">Добавить</button>
@@ -120,13 +120,13 @@
                             <p class="header-block">Мои данные</p>
                         </div>
                         <div class="divider-header"></div>
-                        <div class="inputs">
+                        <form class="inputs" method="post" action="{{ url_for('')}}">
                     
                             <label for="text-b" class="label">Логин</label>
-                            <input type="text" id="text-b" class="input" name="input" placeholder="jsx123">
+                            <input type="text" id="text-b" class="input" name="username" placeholder="jsx123">
 
                             <label for="email" class="label">Почта</label>
-                            <input class="input" type="email" id="email" size="30" required placeholder="test@test.com">
+                            <input class="input" type="email" id="email" size="30" required placeholder="test@test.com" name="email">
 
                             <label for="phone" class="label">Телефон</label>
                             <input type="tel" class="input" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required placeholder="953002211">
@@ -137,9 +137,8 @@
                             <label for="pass" class="label">Пароль</label>
                             <input class="input" type="password" id="pass" name="password" minlength="8" required placeholder="***********">
                             
-                            <button id="btn" class="btn-2">Cохранить</button>
-
-                        </div>
+                            <input type="submit" id="btn" class="btn-2" value="Cохранить">
+                        </form>
                 </div>
             </div>
         </div>
