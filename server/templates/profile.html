@@ -16,14 +16,14 @@
         <nav>
             <div class="tab">
                 <div class="t-cnt">
-                    <a id="cards-page" class="tablinks text" href="{{ url_for('static', filename='cards.html') }}">Карточки</a>
+                    <a id="cards-page" class="tablinks text" href="/cards">Карточки</a>
                 </div>
             </div>
         </nav>
 
         <div  class="wrp" id="wrp">
             <div class="circle"></div>
-            <div class="text clr-txt">Алексеев Иван</div>
+            <div class="text clr-txt username"></div>
         </div>
     </header>
 
@@ -33,7 +33,7 @@
                 <div class="menu-cnt">
                     <div class="wrp-1">
                         <div class="circle-1"></div>
-                        <div class="text name-txt" id="username"></div>
+                        <div class="text name-txt username"></div>
                         <div id="page-edit" class="box-btn">
                             <img class="edit-btn" src="{{ url_for('static', filename='img/edit.svg') }}" >
                         </div>

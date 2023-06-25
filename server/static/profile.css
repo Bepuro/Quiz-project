@@ -30,6 +30,10 @@ header{
     width: fit-content;
 }
 
+#cards-page {
+    text-decoration: none;
+}
+
 .cnt{
     cursor: pointer;
     align-items: center;

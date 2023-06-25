@@ -1,6 +1,6 @@
 import {getUser} from "./api.mjs";
 
-const username = document.querySelector('#username');
+const username = document.querySelectorAll('.username');
 
 const card = document.createElement("div");
 const headCard = document.createElement("div");
@@ -46,8 +46,10 @@ function addButtons() {
         card.className = "card";
         headCard.className = "head-card";
         contentHeadCard.className = "cnt-card";
+
         numCard.className = "txt-card";
         numCard.innerText = `${lengthCards + 1}`;
+
         deleteButton.className = "icons";
         deleteButton.addEventListener("click", function() {
             card.remove();
@@ -110,7 +112,9 @@ function addButtons() {
 function initScript() {
     getUser().then(res => {
         addButtons();
-        username.innerHTML = res.username;
+        for (let name of username) {
+            name.innerHTML = res.username;
+        }
     }).catch(err => console.log(err));
 }
 

@@ -1,7 +1,6 @@
-from flask_sqlalchemy import SQLAlchemy    
+from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, Boolean, JSON
 from sqlalchemy.orm import relationship
-
 
 db = SQLAlchemy()
 
@@ -42,3 +41,13 @@ class Card(db.Model):
     answer = Column(String(1000), nullable=False)
     deck_id = Column(Integer, ForeignKey('decks.id'))
     deck = relationship('Deck', overlaps='cards')
+
+
+class FavoriteUserDeck(db.Model):
+    tablename = 'favorite_user_decks'
+    id = Column(Integer, primary_key=True)
+    user_id = Column(Integer, ForeignKey('users.id'))
+    deck_id = Column(Integer, ForeignKey('decks.id'))
+    is_favourite = Column(Boolean, default=False)
+    user = relationship('User')
+    deck = relationship('Deck')
