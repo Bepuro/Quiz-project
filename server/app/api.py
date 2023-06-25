@@ -321,7 +321,7 @@ def get_deck_cards(deck_id):
     }), 200
 
 
-@bp.route('/user', methods=['POST'])
+@bp.route('/update_user_data', methods=['POST'])
 def update_user_data():
     if 'user_id' not in session:
         return jsonify({'message': 'Unauthorized'})
@@ -347,4 +347,4 @@ def get_user_data():
     user = User.query.get(session['user_id'])
     if not user:
         return jsonify({'message': 'User not found'}), 404
-    return jsonify(user.userData), 200
+    return jsonify({'username': user.username, 'user_data': user.userData}), 200
