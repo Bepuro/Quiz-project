@@ -1,7 +1,10 @@
 import os
 from flask import Flask
+from flask_migrate import Migrate
 from server.app import db
 
+
+migrate = Migrate()
 
 def create_app(test_config=None):
     app = Flask(
@@ -27,6 +30,7 @@ def create_app(test_config=None):
     from .app import database
     database.init_app(app)
     db.init_app(app)
+    migrate.init_app(app, db)
 
     from .app import auth
     app.register_blueprint(auth.bp)

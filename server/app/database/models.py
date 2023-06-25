@@ -36,7 +36,7 @@ class Deck(db.Model):
 class Card(db.Model):
     __tablename__ = 'cards'
     id = Column(Integer, primary_key=True)
-    question = Column(String(100), nullable=False)
-    answer = Column(String(100), nullable=False)
+    question = Column(String(1000), nullable=False)
+    answer = Column(String(1000), nullable=False)
     deck_id = Column(Integer, ForeignKey('decks.id'))
     deck = relationship('Deck', overlaps='cards')
