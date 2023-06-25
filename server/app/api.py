@@ -319,3 +319,32 @@ def get_deck_cards(deck_id):
             ]
         }
     }), 200
+
+
+@bp.route('/user', methods=['POST'])
+def update_user_data():
+    if 'user_id' not in session:
+        return jsonify({'message': 'Unauthorized'})
+    username = request.form['username']
+    password = request.form['password']
+    email = request.form['email']
+    phone_num = request.form['phone']
+    data_json = json.dumps({'email': email, 'phone_num': phone_num})
+    user = User.query.get(session['user_id'])
+    if not user:
+        return jsonify({'message': 'User not found'}), 404
+    user.username = username
+    user.password = generate_password_hash(password)
+    user.userData = data_json
+    db.session.commit()
+    return jsonify({'message': 'User data updated successfully'}), 200
+
+
+@bp.route('/user/data', methods=['GET'])
+def get_user_data():
+    if 'user_id' not in session:
+        return jsonify({'message': 'Unauthorized'}), 401
+    user = User.query.get(session['user_id'])
+    if not user:
+        return jsonify({'message': 'User not found'}), 404
+    return jsonify(user.userData), 200
