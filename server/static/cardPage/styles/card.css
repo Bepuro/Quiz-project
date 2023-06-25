@@ -8,6 +8,8 @@ body {
     font-family: 'Roboto', sans-serif;
     display: flex;
     flex-direction: column;
+
+    min-width: 600px;
 }
 
 header {
@@ -33,10 +35,10 @@ main {
     padding-bottom: 20px;
     display: flex;
     align-items: center;
-    justify-content: space-around;
 }
 
 .nav {
+    display: flex;
     align-items: center;
     justify-content: flex-start;
     flex-grow: 1;
@@ -51,6 +53,11 @@ main {
     border-bottom: 2px solid transparent;
 }
 
+.header-logo {
+    display: flex;
+    padding-bottom: 10px;
+}
+
 .nav-item:first-child {
     margin-left: 50px;
 }
@@ -62,7 +69,8 @@ main {
 }
 
 .authorization {
-    margin-left: auto;
+    display: flex;
+    gap: 5px;
     align-items: center;
 }
 
@@ -70,7 +78,7 @@ main {
     background-color: #305DFF;
     color: #fff;
     text-decoration: none;
-    padding: 14px 20px;
+    padding: 10px 20px;
     font-weight: 400;
     border-radius: 10px;
 }
@@ -220,7 +228,7 @@ main {
     left: 0;
     padding-top: 30px;
     line-height: 14px;
-    width: 600px;
+    width: 100%;
     height: 20px;
     background-color: #fff;
     border-top-left-radius: 8px;
@@ -267,8 +275,9 @@ main {
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 580px;
-    padding: 10px;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
     color: white;
     font-size: 12px;
     text-align: center;

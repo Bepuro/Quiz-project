@@ -84,7 +84,6 @@ function startScript(deck) {
     addSwitching(info);
 
     addSound();
-    //addFavourite(info);
 
     deck.info = info;
     addOnPageUnload(deck);
@@ -220,20 +219,6 @@ function addSound() {
         e.stopPropagation();
         speechSynthesis.speak(answerSoundBox);
     }
-}
-
-function addFavourite(info) {
-    const frontFav = document.querySelector('.card__face--front .favourite');
-    const backFav = document.querySelector('.card__face--back .favourite');
-
-    frontFav.onclick = e => {
-        e.stopPropagation();
-        info[curIdx].isFavourite = true;
-    };
-    backFav.onclick = e => {
-        e.stopPropagation();
-        info[curIdx].isFavourite = true;
-    };
 }
 
 function preprocessCards(info) {
