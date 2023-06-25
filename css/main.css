@@ -362,7 +362,7 @@ dialog {
     font-weight: 500;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1300px) {
     .box{
         top: 20%;
         gap: 10px;
@@ -411,7 +411,7 @@ dialog {
     }
 }
 
-@media (max-width: 550px) {
+@media (max-width: 600px) {
     .box{
         top: 10%;
     }
