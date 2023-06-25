@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="css/profile.css">
+    <script defer src="profile.js"></script>
+    <!-- исправить везде! -->
+
+</head>
+<body>
+    <header>
+        <div class="cnt">
+            <img class="logo" src="img/Koloda.svg">
+        </div>
+        <div class="tab"> 
+                <!-- Плохо тег должен быть nav -->
+
+            <div class="t-cnt">
+                <div class="tablinks text" onclick="window.location.href = 'index.html';">Главная</div>
+                <!-- Плохо тег должен быть ссылкой и обработчик в js -->
+            </div>
+            <div class="t-cnt">
+                <div class="tablinks text" onclick="window.location.href = 'cards.html';">Карточки</div>
+                <!-- Плохо тег должен быть ссылкой и обработчик в js -->
+            </div>
+        </div>
+
+        <div  class="wrp" id="wrp">
+            <div class="circle"></div>
+            <div class="text clr-txt">Алексеев Иван</div>
+        </div>
+    </header>
+
+    <div class="box">
+        <div class="profile">
+            <div class="menu">
+                <div class="menu-cnt">
+                    <div class="wrp-1">
+                        <div class="circle-1"></div>
+                        <div class="text name-txt">Алексеев Иван</div>
+                    </div>
+                    <div class="divider"></div>
+                     <!-- по хорошему есть тег hr? -->
+                    <div class="menu-item" onclick="openPage('page-1')">
+                        <!-- Плохо вешать обработчики надо в js методом addEventListener, это button -->
+                        <div class=" txt-mn-it">Колоды</div>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="menu-item">
+                        <div class=" txt-mn-it" onclick="openPage('page-2')">Избранное</div>
+                        <!-- Плохо вешать обработчики надо в js методом addEventListener, это button -->
+                    </div>
+                    <div class="divider"></div>
+                    <div class="menu-item">
+                        <div class=" txt-mn-it-out" onclick="window.location.href = 'index.html';">Выйти</div>
+                    </div>
+                </div>
+            </div>
+            <div class="desc">
+                <div id="page-1" class="page">
+                    <!-- <div class="empty-kolods">
+                        <img class="empty-folder" src="img/folder.svg">
+                        <h1 class="h1-ed">Вы еще не создали колоды</h1>
+                        <h3 class="h3-ed">Создайте колоду, чтобы заучивать свои домашки</h3>
+                        <button id="btn" class="btn-2">Создать</button>
+                    </div> -->
+                    <div class="kolods">
+                        <div class="header-1">
+                            <img class="prev" src="img/prev-1.svg">
+                            <p class="header-block">Колоды</p>
+                        </div>
+                        <div class="divider-header"></div>
+                     <!-- по хорошему есть тег hr? -->
+                    </div>
+                    <div class="inputs">
+                    
+                        <label for="name" class="label">Введите название</label>
+                        <input class="input" type="text" id="name" size="30" required placeholder="Математическая карусель">
+                        <!-- Плохо size должен быть в css -->
+                        
+                        <label for="descr" class="label">Описание</label>
+                        <input class="input" type="text" id="descr" size="30" required placeholder="Про математику и кошек">
+                        <!-- Плохо size должен быть в css -->
+                        <div class="card">
+                            <div class="head-card">
+                                <div class="cnt-card">
+                                    <p class="txt-card">1</p>
+                                    <div class="icons">
+                                        <!-- <img class="move-btn" src="img/move.svg"> -->
+                                        <img class="trash-btn" src="img/trash.svg">
+                                     </div>
+                                </div>
+                                
+                            </div>
+                            <div class="bottom-card">
+
+                            </div>
+                        </div>
+                        <div class="btn-gr">
+                            <button class="btn-4">Добавить карточку</button>
+                            <button class="btn-3">Cохранить</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- у всех page display: none -->
+
+                <div id="page-2" class="page">
+                    <div class="empty-kolods">
+                        <img class="empty-folder" src="img/folder.svg">
+                        <h1 class="h1-ed">Ваше избранное пусто</h1>
+                        <h3 class="h3-ed">Добаваьте в избранное, чтобы не потерять</h3>
+                        <button id="btn" class="btn-2" onclick="window.location.href = 'cards.html';">Добавить</button>
+                        <!-- Плохо правильно вешать обработчики js в js файл методом addEventListener, мб лучше использовать ссылку-->
+                    </div>
+                </div>
+                <div id="page-3" class="page">Вкладка 3</div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>

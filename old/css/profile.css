@@ -1,0 +1,387 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    width: 100%;
+    height: 100%;
+}
+
+header{
+    top: 0px;
+    align-items: flex-start;
+    background-color: white;
+    display: flex;
+    height: 60px !important;
+    /* срочно убрать important */
+    width: 100vh
+}
+
+
+.tab {
+    align-items: flex-start;
+    display: flex;
+    gap: 16px;
+    margin-left: 16px;
+    position: relative;
+    width: fit-content;
+}
+
+.text{
+    letter-spacing: 0;
+    line-height: normal;
+    position: relative;
+    width: fit-content;
+}
+
+.cnt{
+    cursor: pointer;
+    align-items: center;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    padding: 16px 20px;
+    position: relative;
+    width: fit-content;
+}
+
+.t-cnt {
+    cursor: pointer;
+    align-items: center;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    padding: 16px 20px;
+    position: relative;
+    width: fit-content;
+}
+
+.wrp{
+    padding:3px;
+    display: flex;
+    position: absolute;
+    width: fit-content;
+    align-items: center;
+    gap: 10px;
+    right: 25px;
+}
+
+.clr-txt{
+    color: gray !important;
+    /* срочно убрать important */
+}
+
+.name-txt{
+    font-size: 32px;
+    font-weight: 500;
+}
+
+.circle{
+    border-radius: 30px;
+    height: 42px;
+    width: 42px;
+    background-color: #305DFF;
+}
+
+.box{
+    background-color: #F6F7FB;
+    height: 100vh;
+    display: flex;
+}
+
+.profile{
+    margin: auto;
+    align-items: flex-start;
+    display: flex;
+    gap: 20px;
+    width: fit-content;
+}
+
+.menu{
+    background-color: white;
+    border-radius: 20px;
+    height: 420px;
+    min-width: 400px;
+}
+
+
+.menu-cnt{
+    cursor: pointer;
+    display: flex;
+    gap: 0px;
+    width: 100%;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+}
+
+.desc{
+    background-color: white;
+    border-radius: 20px;
+    height: 600px;
+    width: 600px;
+    margin: auto;
+}
+
+.circle-1{
+    border-radius: 30px;
+    height: 100px;
+    width: 100px;
+    background-color: #305DFF;
+}
+
+.wrp-1{
+    margin: 20px;
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.divider{
+    background-color: #F4F4F4;
+    height: 2px;
+    width: 90%;
+}
+
+.menu-item{
+    margin: 4px 0px;
+    border-radius: 20px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    width: 90%;
+}
+
+.txt-mn-it{
+    padding: 0px 10px;
+    color: black;
+    font-size: 16px;
+    letter-spacing: 0.4px;
+    font-weight: 500;
+}
+
+.txt-mn-it-out{
+    padding: 0px 10px;
+    color: red;
+    font-size: 16px;
+    letter-spacing: 0.4px;
+    font-weight: 500;
+}
+
+.menu-item:hover{
+    background-color: #F6F7FB;
+}
+
+.btn-2{
+    background-color: #305DFF;
+    color: white;
+    width: 80%;
+    align-items: center;
+    border: 0px;
+    height: fit-content;
+    border-radius: 10px;
+    padding: 14px 18px;
+    font-size: 14px;
+}
+
+.btn-2:hover{
+    background-color: #0036f8;
+}
+
+.page{
+    align-items: center;
+    margin: auto;
+    height: 100%;
+
+}
+
+.empty-kolods{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    flex-direction: column;
+    height: 100%;
+}
+
+.h3-ed{
+    margin: 2px;
+    padding: 0px;
+    color: grey;
+    font-size: 20px;
+    font-weight: 200;
+    text-align: center;
+}
+
+.h1-ed{
+    margin: 2px;
+    padding: 0px;
+    font-size: 28px !important;
+    /* срочно убрать important */
+    font-weight: 500;
+    text-align: center;
+}
+
+.empty-folder{
+    width: 200px;
+    height: 200px;
+}
+
+.header-1{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.empty-kolods{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.header-block{
+    font-weight: 800;
+    font-size: 28px;
+    margin: 20px;
+}
+
+.prev{
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 0px;
+    width: 28px;
+}
+
+.divider-header{
+    background-color: #F4F4F4;
+    height: 2px;
+    width: 100%;
+}
+
+.label{
+    font-weight: 400;
+    font-size: 16px;
+    color: #808080;
+}
+
+.input{
+    background: #F6F7FB;
+    border-radius: 10px;
+    padding: 16px 10px;
+    border: #0036f8;
+}
+
+.btn-gr{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.btn-3{
+    cursor: pointer;
+    background-color: #305DFF;
+    color: white;
+    width: 100%;
+    align-items: center;
+    border: 0px;
+    height: fit-content;
+    border-radius: 10px;
+    padding: 14px 18px;
+    font-size: 14px;
+}
+
+.btn-3:hover{
+    background-color: #0036f8;
+}
+
+.btn-4{
+    cursor: pointer;
+    background-color: white;
+    color: #305DFF;
+    width: 100%;
+    align-items: center;
+    border-width: 2px;
+    height: fit-content;
+    border-radius: 10px;
+    border-color: #305DFF;
+    padding: 14px 18px;
+    font-size: 14px;
+}
+
+.btn-4:hover{
+    color: #0036f8;
+    border-color: #0036f8;
+}
+
+.inputs{
+    padding: 20px;
+    display: flex;
+    height: 470px;
+    flex-direction: column;
+    gap: 10px;
+    width:auto;
+    overflow: auto;
+}
+
+.card{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width:auto;
+}
+
+.head-card{
+    background: #F6F7FB;
+    border-radius: 10px 10px 0px 0px;
+    padding: 16px 10px;
+    border: #0036f8;
+}
+
+.bottom-card{
+    background: #F6F7FB;
+    border-radius: 0px 0px 10px 10px ;
+    height: 200px;
+    padding: 16px 10px;
+    border: #0036f8;
+}
+
+.txt-card{
+    padding: 0px;
+    margin: 0px;
+    font-size: 16px;
+    color: grey;
+    width: fit-content;
+}
+
+.cnt-card{
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.icons{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.move-btn{
+    fill: grey;
+    cursor: pointer;
+}
+
+.move-btn:hover{
+    fill: #0036f8;
+}
+
+.trash-btn{
+    filter: invert(.7);
+}
+
+.trash-btn:hover{
+    cursor: pointer;
+	filter: brightness(50%) sepia(1) hue-rotate(-38deg) hue-rotate(132deg) saturate(103.2%) brightness(91.2%);
+}

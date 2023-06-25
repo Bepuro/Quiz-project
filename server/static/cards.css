@@ -11,6 +11,7 @@ header{
     background-color: white;
     display: flex;
     height: 60px !important;
+    /* никаких important */
     width: 100%;
 }
 
@@ -78,16 +79,17 @@ header{
 .btn-1{
     cursor: pointer;
     color: gray !important;
+    /* никаких important */
 }
 
 .btn-1:hover{
     color: #0036f8 !important;
+    /* никаких important */
 }
 
 .btn-2{
     background-color: #305DFF;
     color: white;
-    /* width: 240px; */
     align-items: center;
     border: 0px;
     height: fit-content;
@@ -219,6 +221,7 @@ header{
     padding: 12px 14px;
     width: fit-content;
     margin-top: auto !important;
+    /* срочно убрать important */
     height: 20px;
     right: 20px;
     bottom: 20px;
