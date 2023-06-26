@@ -6,14 +6,6 @@ const username = document.querySelectorAll('.username');
 
 const buttonCreateKolods = document.getElementById("btn-create");
 
-const buttonAddToSpecial = document.getElementById("btn-add-x");
-
-const navCardsPage = document.getElementById("cards-page");
-
-const tabPageEdit = document.getElementById("page-edit");
-const tabPageKolods = document.getElementById("page-kolodos");
-const tabPageBest = document.getElementById("page-best");
-
 const buttonAdd = document.getElementById("add-button");
 const parent = document.getElementsByClassName("cards")[0];
 
@@ -182,7 +174,7 @@ function addButtons() {
                     menu.style.display="block"
                 })
             }
-            
+
     buttonAddToSpecial.addEventListener("click", () => window.open("cards.html"));
     navCardsPage.addEventListener("click", ()=> window.open("cards.html"));
     tabPageEdit.addEventListener("click", () => openPage("page-3"));
