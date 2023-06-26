@@ -2,17 +2,7 @@ import {getUser} from "./api.mjs";
 
 const username = document.querySelectorAll('.username');
 
-const card = document.createElement("div");
-const headCard = document.createElement("div");
-const contentHeadCard = document.createElement("div");
-const numCard = document.createElement("p");
-const lengthCards = document.querySelectorAll(".cards > .card").length;
-const deleteButton = document.createElement("div");
-const cardsNums = document.querySelectorAll(".cards > .card .txt-card")
-const trashSVG = document.createElement("img");
-const bottomCard = document.createElement("div");
-const textArea1 = document.createElement("textarea");
-const textArea2 = document.createElement("textarea");
+
 
 const emptyKolods = document.getElementById("subpage-1");
 const createKolods = document.getElementById("subpage-2");
@@ -48,13 +38,27 @@ function openPage(page) {
 
 function addButtons() {
     buttonAdd.addEventListener("click", function() {
+
+        
+        
+        const lengthCards = document.querySelectorAll(".cards > .card").length;
+        const cardsNums = document.querySelectorAll(".cards > .card .txt-card")
+        
+
+        const card = document.createElement("div");
         card.className = "card";
+
+        const headCard = document.createElement("div");
         headCard.className = "head-card";
+
+        const contentHeadCard = document.createElement("div");
         contentHeadCard.className = "cnt-card";
 
+        const numCard = document.createElement("p");
         numCard.className = "txt-card";
         numCard.innerText = `${lengthCards + 1}`;
 
+        const deleteButton = document.createElement("div");
         deleteButton.className = "icons";
         deleteButton.addEventListener("click", function() {
             card.remove();
@@ -63,17 +67,21 @@ function addButtons() {
             }
         })
 
+        const trashSVG = document.createElement("img");
         trashSVG.src = "static/img/trash.svg";
         trashSVG.className = "trash-btn";
 
+        const bottomCard = document.createElement("div");
         bottomCard.className = "bottom-card";
 
+        const textArea1 = document.createElement("textarea");
         textArea1.className = "text-area-card";
         textArea1.name = "comment";
         textArea1.cols = "60";
         textArea1.rows = "10";
         textArea1.placeholder = "Термин";
 
+        const textArea2 = document.createElement("textarea");
         textArea2.className = "text-area-card";
         textArea2.name = "comment";
         textArea2.cols = "60";
