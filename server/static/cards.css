@@ -219,19 +219,6 @@ header{
     position: relative;
 }
 
-.tag{
-    margin: 20px;
-    background-color: #305DFF;
-    border-radius: 20px;
-    color: white;
-    padding: 12px 14px;
-    width: fit-content;
-    margin-top: auto ;
-    height: 20px;
-    right: 20px;
-    bottom: 20px;
-}
-
 .pages{
     align-items: center;
     align-self: center;
@@ -313,6 +300,9 @@ dialog {
     align-items: center;
 }
 
+.image-auth{
+    width:50%
+}
 .inputs{
     display: flex;
     flex-direction: column;
@@ -335,6 +325,7 @@ dialog {
 }
 
 .txt-comein{
+    text-align: center;
     padding: 0px;
     margin: 0px;
     font-weight: 500;
@@ -420,6 +411,15 @@ dialog {
         gap: 70px;
     }
 
+    .image-auth{
+        display: none;
+    }
+
+    dialog{
+        height: 80%;
+        background: white;
+    }
+
 }
 
 @media (max-width: 750px) {
@@ -453,3 +453,5 @@ dialog {
     }
 
 }
+
+
