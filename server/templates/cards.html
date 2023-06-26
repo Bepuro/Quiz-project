@@ -10,120 +10,121 @@
     <script defer src="{{ url_for('static', filename='regAuth.js') }}" type="module"></script>
 </head>
 <body>
-<header>
-    <div class="cnt">
-        <img class="logo" src="{{ url_for('static', filename='img/Koloda.png') }}">
-    </div>
-    <div class="tab">
-        <div class="t-cnt">
-            <div class="tablinks text" onclick="window.location.href = 'index.html';">Главная</div>
+    <header> 
+        <div class="cnt">
+            <img class="logo" src="{{ url_for('static', filename='img/Koloda.png') }}">
         </div>
-        <div class="t-cnt">
-            <div class="tablinks text" onclick="window.location.href = 'cards.html';">Карточки</div>
-        </div>
-    </div>
-
-
-    <img hidden class="wrp-img" id = "wrp-img" src="{{ url_for('static', filename='img/user.svg') }}">
-
-    <div  class="wrp" id="wrp">
-        <div id="btn-txt" class="btn-1 text" >Вход</div>
-        <button id="btn" class="btn-2">Зарегистрироваться</button>
-
-    </div>
-
-    <dialog id="modal">
-        <span id="btn-close" class="close">&times;</span>
-        <div class="modal-dist">
-            <img src="{{ url_for('static', filename='img/Saly-1.png') }}">
-            <div class="modal-inf">
-                <div class="modal-text">
-                    <p class="h1">Добро пожаловать!</p>
-                    <p class="h5">Авторизация</p>
+        <nav>
+            <div class="tab"> 
+                <div class="t-cnt">
+                    <div id="main-page" class="tablinks text">Главная</div>
                 </div>
-                <form class="inputs" action="{{ url_for('auth.login_modal')}}" method="post">
-                    <label for="email" class="label">Почта</label>
-                    <input class="input" name="username">
-                    <label for="pass" class="label">Пароль</label>
-                    <input class="input" type="password" id="pass" name="password"  required placeholder="***********">
-                    <div class="btn-gr">
-                        <input type="submit" class="btn-3" value="Войти">
-                        <div id="sign-up" class="btn-1 text-items">Зарегистрироваться</div>
+                <div class="t-cnt">
+                    <div id="cards-page" class="tablinks text">Карточки</div>
+                </div>
+            </div>
+        </nav>
+
+
+        <img hidden class="wrp-img" id = "wrp-img" src="{{ url_for('static', filename='img/user.svg') }}">
+
+
+        <div  class="wrp" id="wrp">
+            <div id="btn-txt" class="btn-1 text" id="btn-log-in">Вход</div>
+            <button id="btn" class="btn-2">Зарегистрироваться</button>
+
+        </div>
+        <dialog id="modal">
+            <span id="btn-close" class="close">&times;</span>
+            <div class="modal-dist">
+                <img class="image-auth" src="{{ url_for('static', filename='img/Saly-1.png') }}">
+                <div class="modal-inf">
+                    <div class="modal-text">
+                        <p class="txt-comein">Добро пожаловать!</p>
+                        <p class="txt-auth">Авторизация</p>
                     </div>
-                </form>
+                    <div class="inputs">
+                        <label for="email" class="label">Почта</label>
+                        <input class="input" type="email" id="email" size="30" required placeholder="test@test.com">
+                        <label for="pass" class="label">Пароль</label>
+                        <input class="input" type="password" id="pass" name="password" minlength="8" required placeholder="***********">
+                        <div class="btn-gr">
+                            <button class="btn-3">Войти</button>
+                            <div  id="sign-up" class="btn-1 text-items">Зарегистрироваться</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </dialog>
+
+        <dialog id="modal_1">
+            <span id="btn-close-1" class="close">&times;</span>
+            <div class="modal-dist">
+                <img  class="image-auth" src="{{ url_for('static', filename='img/Saly-1.png') }}">
+                <div class="modal-inf">
+                    <div class="modal-text">
+                        <p class="txt-comein">Добро пожаловать!</p>
+                        <p class="txt-auth">Регистрация</p>
+                    </div>
+                    <div class="inputs">
+
+                        <label for="text-b" class="label">Логин</label>
+                        <input type="text" id="text-b" class="input" name="input" placeholder="jsx123">
+
+                        <label for="email" class="label">Почта</label>
+                        <input class="input" type="email" id="email" size="30" required placeholder="test@test.com">
+
+                        <label for="phone" class="label">Телефон</label>
+                        <input type="tel" class="input" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required placeholder="953002211">
+
+                        <label for="pass" class="label">Пароль</label>
+                        <input class="input" type="password" id="pass-first" name="password" minlength="8" required placeholder="***********">
+
+                        <label for="pass" class="label">Пароль</label>
+                        <input class="input" type="password" id="pass-second" name="password" minlength="8" required placeholder="***********">
+                        <div class="btn-gr">
+                            <button class="btn-3">Зарегистрироваться</button>
+                            <div id="log-in" class="btn-1 text-items">Уже есть аккаунт?</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </dialog>
+    </header>
+
+    <div class="wrapper">
+        <h1 class="text">Найди карточку для себя</h1>
+
+        <input id="icon" class="search" type="search" placeholder="Твоя тема">
+
+        <div class="menu">
+            <div class="text text-items">Математика</div>
+            <div class="text text-items">Химия</div>
+            <div class="text text-items">Философия</div>
+            <div class="text text-items">Языки</div>
+            <div class="text text-items">Обществознание</div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="list"></div>
+        <div class="pages">
+            <div class="next-prev">
+                <img src="{{ url_for('static', filename='img/prev.svg') }}">
+                <div class="text btn-prev">Назад</div>
+            </div>
+            <div class="nums">
+                <div class="num-check text">1</div>
+                <div class="num text">2</div>
+                <div class="num text">3</div>
+                <div class="num text">4</div>
+                <div class="num text">...</div>
+                <div class="num text">25</div>
+            </div>
+            <div class="next-prev">
+                <div class="text btn-next">Далее</div>
+                <img src="{{ url_for('static', filename='img/next.svg') }}">
             </div>
         </div>
-    </dialog>
-
-    <dialog id="modal_1">
-        <span id="btn-close-1" class="close">&times;</span>
-        <div class="modal-dist">
-            <img src="{{ url_for('static', filename='img/Saly-1.png') }}">
-            <div class="modal-inf">
-                <div class="modal-text">
-                    <p class="h1">Добро пожаловать!</p>
-                    <p class="h5">Регистрация</p>
-                </div>
-                <form class="inputs" action="{{ url_for('auth.register_modal')}}" method="post">
-
-                    <label for="text-b" class="label">Логин</label>
-                    <input type="text" id="text-b" class="input" name="username" placeholder="jsx123">
-
-                    <label for="email" class="label">Почта</label>
-                    <input class="input" type="email" id="email" size="30" name="email" required placeholder="test@test.com">
-
-                    <label for="phone" class="label">Телефон</label>
-                    <input type="tel" class="input" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required placeholder="953002211">
-
-                    <label for="pass" class="label">Пароль</label>
-                    <input class="input" type="password" id="pass" name="password" minlength="8" required placeholder="***********">
-
-                    <label for="pass" class="label">Пароль</label>
-                    <input class="input" type="password" id="pass" name="password" minlength="8" required placeholder="***********">
-                    <div class="btn-gr">
-                        <input class="btn-3" type="submit" value="Зарегистрироваться">
-                        <div id="log-in" class="btn-1 text-items">Уже есть аккаунт?</div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </dialog>
-
-</header>
-<div class="wrapper">
-    <h1 class="text">Найди карточку для себя</h1>
-    <div class="search">
-        <img class="vector" src="{{ url_for('static', filename='img/Vector.svg') }}">
-        <div class="placeholder text">Твоя тема</div>
     </div>
-    <div class="menu">
-        <div class="text text-items">Математика</div>
-        <div class="text text-items">Химия</div>
-        <div class="text text-items">Философия</div>
-        <div class="text text-items">Языки</div>
-        <div class="text text-items">Обществознание</div>
-    </div>
-</div>
-<div class="container">
-    <div class="list"></div>
-    <div class="pages">
-        <div class="next-prev">
-            <img src="{{ url_for('static', filename='img/prev.svg') }}">
-            <div class="text btn-prev">Назад</div>
-        </div>
-        <div class="nums">
-            <div class="num-check text">1</div>
-            <div class="num text">2</div>
-            <div class="num text">3</div>
-            <div class="num text">4</div>
-            <div class="num text">...</div>
-            <div class="num text">25</div>
-        </div>
-        <div class="next-prev">
-            <div class="text btn-next">Далее</div>
-            <img src="{{ url_for('static', filename='img/next.svg') }}">
-        </div>
-    </div>
-</div>
 </body>
 </html>

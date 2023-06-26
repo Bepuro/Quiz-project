@@ -19,7 +19,7 @@
                     <a id="cards-page" class="tablinks text" href="/cards">Карточки</a>
                 </div>
             </div>
-        </nav>
+        </nav> 
 
         <div  class="wrp" id="wrp">
             <div class="circle"></div>
@@ -58,6 +58,8 @@
                     <div class="my-cards" id="subpage-1">
                         <div class="kolods">
                             <div class="header-1">
+                                <img class="prev-1" src="{{ url_for('static', filename='img/prev-1.svg') }}">
+
                                 <p class="header-block">Колоды</p>
                             </div>
                             <div class="divider-header"></div>
@@ -100,6 +102,7 @@
                 <div id="page-2" class="page p2">
                     <div class="kolods">
                         <div class="header-1">
+                            <img class="prev-1"  src="{{ url_for('static', filename='img/prev-1.svg') }}">
                             <p class="header-block">Избранное</p>
                         </div>
                         <div class="divider-header"></div> 
@@ -114,6 +117,7 @@
                 <div id="page-3" class="page p3">
                     <div class="kolods">
                         <div class="header-1">
+                            <img class="prev-1"  src="{{ url_for('static', filename='img/prev-1.svg') }}">
                             <p class="header-block">Мои данные</p>
                         </div>
                         <div class="divider-header"></div>
@@ -134,7 +138,7 @@
                             <label for="pass" class="label">Пароль</label>
                             <input class="input" type="password" id="pass" name="password" minlength="8" required placeholder="***********">
                             
-                            <input type="submit" id="btn" class="btn-2" value="Cохранить">
+                            <input type="submit" id="btn" class="btn-3" value="Cохранить">
                         </form>
                 </div>
             </div>
