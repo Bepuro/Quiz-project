@@ -4,11 +4,8 @@ const username = document.querySelectorAll('.username');
 
 
 
-const emptyKolods = document.getElementById("subpage-1");
-const createKolods = document.getElementById("subpage-2");
 const buttonCreateKolods = document.getElementById("btn-create");
 
-const returnEmpty = document.getElementById("return-btn");
 const buttonAddToSpecial = document.getElementById("btn-add-x");
 
 const navCardsPage = document.getElementById("cards-page");
@@ -28,13 +25,52 @@ cards.addEventListener('click', () => {
 
 
 function openPage(page) {
-    let i;
-    const x = document.getElementsByClassName("page");
-    for (i = 0; i < x.length; i++) {
-      x[i].style.display = "none";
+    const mediaQuery = window.matchMedia('(max-width: 1000px)')
+    if (mediaQuery.matches) {
+        let i;
+        const x = document.getElementsByClassName("page");
+        const y = document.getElementsByClassName("desc")[0];
+        const z = document.getElementsByClassName("menu")[0];
+        console.log(page)
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        y.style.display="block"
+        z.style.display="none"
+
+        document.getElementById(page).style.display = "block";
+
     }
-    document.getElementById(page).style.display = "block";
+    else{
+        let i;
+        const x = document.getElementsByClassName("page");
+        for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";  
+        }
+        document.getElementById(page).style.display = "block";
+    }
 }
+
+const mediaQuery = window.matchMedia('(max-width: 1000px)')
+mediaQuery.addListener((e) => {
+    const x = document.getElementsByClassName("page");
+    const y = document.getElementsByClassName("desc")[0];
+    const z = document.getElementsByClassName("menu")[0];
+    if (e.matches) {
+
+        y.style.display="block"
+        z.style.display="none"
+    }
+    else{
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        y.style.display="block"
+        z.style.display="block"
+        document.getElementById("page-3").style.display = "block";
+    }
+})
+
 
 function addButtons() {
     buttonAdd.addEventListener("click", function() {
@@ -101,24 +137,59 @@ function addButtons() {
     })
 
 
+    const emptyKolods = document.getElementById("subpage-1");
+
     buttonCreateKolods.addEventListener("click", function(){
         emptyKolods.style.display = "none";
         createKolods.style.display = "block";
     })
 
+    const createKolods = document.getElementById("subpage-2");
+
+    const returnEmpty = document.getElementById("return-btn");
 
     returnEmpty.addEventListener("click", function(){
         createKolods.style.display = "none";
         emptyKolods.style.display = "block";
     })
 
-
+    const buttonAddToSpecial = document.getElementById("btn-add-x");
+    buttonAddToSpecial.addEventListener("click", () => window.open("cards.html"));
+    
+    const navMainPage = document.getElementById("main-page");
+    const navCardsPage = document.getElementById("cards-page");
+    navMainPage.addEventListener("click", ()=> window.open("index.html"));
+    navCardsPage.addEventListener("click", ()=> window.open("cards.html"));
+    
+    const tabPageEdit = document.getElementById("page-edit");
+    tabPageEdit.addEventListener("click", () => openPage("page-3"));
+    
+    const tabPageKolods = document.getElementById("page-kolodos");
+    tabPageKolods.addEventListener("click", () => openPage("page-1"));
+    
+    const tabPageBest = document.getElementById("page-best");
+    tabPageBest.addEventListener("click", () => openPage("page-2"));
+    
+    const buttonLogOut = document.getElementById("logout");
+    buttonLogOut.addEventListener("click", () => window.open("index.html"));
+    
+    const returnButton = document.getElementsByClassName("prev-1");
+            for (i = 0; i < returnButton.length; i++) {
+                returnButton[i].addEventListener("click", function(){
+                    const menu = document.getElementsByClassName("menu")[0];
+                    const page = document.getElementsByClassName("desc")[0];
+                    page.style.display = "none"
+                    menu.style.display="block"
+                })
+            }
+            
     buttonAddToSpecial.addEventListener("click", () => window.open("cards.html"));
     navCardsPage.addEventListener("click", ()=> window.open("cards.html"));
     tabPageEdit.addEventListener("click", () => openPage("page-3"));
     tabPageKolods.addEventListener("click", () => openPage("page-1"));
     tabPageBest.addEventListener("click", () => openPage("page-2"));
 }
+
 
 
 function initScript() {
