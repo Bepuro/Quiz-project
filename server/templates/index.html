@@ -1,55 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
-<link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
-<link rel="stylesheet" href="{{ url_for('static', filename='modal.css') }}">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <link rel ='stylesheet' href="../static/main.css">
-    <title>CardDeck</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <script defer src="{{ url_for('static', filename='regAuth.js') }}" type="module"></script>
-
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cards</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    <script defer src="{{ url_for('static', filename='cards.js') }}"></script>
+    <script defer src="{{ url_for('static', filename='regAuth.js') }}"></script>
 </head>
 <body>
 <header>
-  <div class="container">
-    <div class="header-line">
-      <div class="header-logo">
-          <img src="{{ url_for('static', filename='img/Koloda.png') }}" alt="">
-        </div>
-        <div class="nav">
-          <a class="nav-item" href="/">Главная</a>
-          <a class="nav-item" href="/card">Карточки</a>
-          <a class="nav-item" href="/api_test">тест API (ОБЯЗАТЕЛЬНо НУЖНО ЗАЙТИ В АККАУНТ)</a>
-        </div>
-        <div class = "authorization">
-            <a id="btn-txt"  class="nav-item">Вход</a>
-            <a id="btn"   class="btn">Зарегистрироваться</a>
-        </div>
+    <div class="cnt">
+        <img class="logo" src="{{ url_for('static', filename='img/Koloda.png') }}">
     </div>
-  </div>
+    <nav>
+        <div class="tab">
+            <div class="t-cnt">
+                <div id="cards-page" class="tablinks text">Карточки</div>
+            </div>
+        </div>
+    </nav>
 
+
+    <img hidden class="wrp-img" id = "wrp-img" src="{{ url_for('static', filename='img/user.svg') }}">
+
+
+    <div  class="wrp" id="wrp">
+        <div id="btn-txt" class="btn-1 text" id="btn-log-in">Вход</div>
+        <button id="btn" class="btn-2">Зарегистрироваться</button>
+
+    </div>
     <dialog id="modal">
         <span id="btn-close" class="close">&times;</span>
         <div class="modal-dist">
             <img src="{{ url_for('static', filename='img/Saly-1.png') }}">
             <div class="modal-inf">
                 <div class="modal-text">
-                    <p class="h1">Добро пожаловать!</p>
-                    <p class="h5">Авторизация</p>
+                    <p class="txt-comein">Добро пожаловать!</p>
+                    <p class="txt-auth">Авторизация</p>
                 </div>
-                <form class="inputs" action="{{ url_for('auth.login_modal')}}" method="post">
+                <div class="inputs">
                     <label for="email" class="label">Почта</label>
-                    <input class="input" name="username">
+                    <input class="input" type="email" id="email" size="30" required placeholder="test@test.com">
                     <label for="pass" class="label">Пароль</label>
-                    <input class="input" type="password" id="pass" name="password"  required placeholder="***********">
+                    <input class="input" type="password" id="pass" name="password" minlength="8" required placeholder="***********">
                     <div class="btn-gr">
-                        <input type="submit" class="btn-3" value="Войти">
-                        <div id="sign-up" class="btn-1 text-items">Зарегистрироваться</div>
+                        <button class="btn-3">Войти</button>
+                        <div  id="sign-up" class="btn-1 text-items">Зарегистрироваться</div>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
     </dialog>
@@ -60,46 +60,86 @@
             <img src="{{ url_for('static', filename='img/Saly-1.png') }}">
             <div class="modal-inf">
                 <div class="modal-text">
-                    <p class="h1">Добро пожаловать!</p>
-                    <p class="h5">Регистрация</p>
+                    <p class="txt-comein">Добро пожаловать!</p>
+                    <p class="txt-auth">Регистрация</p>
                 </div>
-                <form class="inputs" action="{{ url_for('auth.register_modal')}}" method="post">
+                <div class="inputs">
 
                     <label for="text-b" class="label">Логин</label>
-                    <input type="text" id="text-b" class="input" name="username" placeholder="jsx123">
+                    <input type="text" id="text-b" class="input" name="input" placeholder="jsx123">
 
                     <label for="email" class="label">Почта</label>
-                    <input class="input" type="email" id="email" size="30" name="email" required placeholder="test@test.com">
+                    <input class="input" type="email" id="email" size="30" required placeholder="test@test.com">
 
                     <label for="phone" class="label">Телефон</label>
                     <input type="tel" class="input" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required placeholder="953002211">
 
                     <label for="pass" class="label">Пароль</label>
-                    <input class="input" type="password" id="pass" name="password" minlength="8" required placeholder="***********">
+                    <input class="input" type="password" id="pass-first" name="password" minlength="8" required placeholder="***********">
 
                     <label for="pass" class="label">Пароль</label>
-                    <input class="input" type="password" id="pass" name="password" minlength="8" required placeholder="***********">
+                    <input class="input" type="password" id="pass-second" name="password" minlength="8" required placeholder="***********">
                     <div class="btn-gr">
-                        <input class="btn-3" type="submit" value="Зарегистрироваться">
+                        <button class="btn-3">Зарегистрироваться</button>
                         <div id="log-in" class="btn-1 text-items">Уже есть аккаунт?</div>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
     </dialog>
 
 </header>
-<main>
-    <div class="box">
-        <img class = "back-img" src="{{ url_for('static', filename='img/bg.png') }}" alt="">
-        <p class = "p1">С легкостью готовься к
-            <br>сложным экзаменам с
-            <br>помощью карточек</p>
+<img class = "back-img" src="{{ url_for('static', filename='img/bg.jpg') }}">
+<div class="box">
 
-        <p class ="p2"> Присоединяйся к нам и создавай карточки сам</p>
-        <a  class="btn1" href="/auth/register">Зарегистрироваться</a>
+    <p class = "p1">С легкостью готовься к
+        <br>сложным экзаменам с
+        <br>помощью карточек</p>
+    <p class ="p2"> Присоединяйся к нам и создавай карточки сам</p>
+    <button class="btn-3" id="btn-signup">Зарегистрироваться</button>
+</div>
+
+<div class="block-2">
+    <p class = "p3">Удобство использования в любом месте и в любое время</p>
+    <div class="block-3">
+        <div class="text-block">
+            <p class = "p4">Запоминайте что угодно с помощью бесплатных цифровых карточек</p>
+            <p class = "p5">Исследования показывают, что самопроверка с помощью карточек более эффективна,
+                чем перечитывание конспектов. Найдите готовые карточки, созданные вашими сверстниками и учителями,
+                или мгновенно создайте собственные.</p>
+            <button class="btn-3">Начать</button>
+        </div>
+        <img class="img-card" src="{{ url_for('static', filename='img/card.png') }}">
     </div>
-</main>
+    <p class = "p3">Как начать?</p>
+    <div class="block-3">
+        <div class="steps-content">
+            <div class="item">
+                <div class="num-box">
+                    <p class="num">01</p>
+                    <div class="divid"></div>
+                </div>
+                <p class="action-text">Зарегистрируйся или авторизуйся</p>
+            </div>
+            <div class="item">
+                <div class="num-box">
+                    <p class="num">02</p>
+                    <div class="divid"></div>
+                </div>
+                <p class="action-text">Создай свою колоду</p>
+            </div>
 
+
+            <div class="item">
+                <div class="num-box">
+                    <p class="num">03</p>
+                    <div class="divid"></div>
+                </div>
+                <p class="action-text">Изучи материал</p>
+            </div>
+        </div>
+    </div>
+    <p class="company">© team webproj, 2023</p>
+</div>
 </body>
 </html>
