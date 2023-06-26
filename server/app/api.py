@@ -240,7 +240,7 @@ def update_card(card_id):
         "deck_id": card.deck_id,
     }), 200
 
-@bp.route('/cards/progress/<int:card_id_prog>', methods=['PUT'])
+@bp.route('/cards/update_card_progress/<int:card_id_prog>', methods=['PUT'])
 def update_card_progress(card_id_prog):
     if 'user_id' not in session:
         return jsonify({'message': 'Unauthorized'})
@@ -248,6 +248,7 @@ def update_card_progress(card_id_prog):
     data = request.get_json()
     if 'grade' not in data or 'is_favourite' not in data:
         return jsonify({'message': 'Missing required parameters: "grade" or "is_favourite"'})
+
 
     card_progress = UserCardProgress.query.filter_by(card_id=card_id_prog, user_id=session['user_id']).first()
     if card_progress is None:
@@ -311,7 +312,7 @@ def get_deck_cards(deck_id):
         {
             'deckName': deck_name,
             'cards': [{
-                    "id": card.card_id,
+                    "id": card.id,
                     "question": card.question,
                     "answer": card.answer,
                     "deck_id": card.deck_id,

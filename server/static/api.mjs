@@ -107,7 +107,7 @@ export function updateCard(cardId, newCardData) {
 }
 
 export function updateCardProgress(cardId, newCardData) {
-    fetch(`${API_BASE_URL}/cards/progress/${cardId}`, {
+    fetch(`${API_BASE_URL}/cards/update_card_progress/${cardId}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
