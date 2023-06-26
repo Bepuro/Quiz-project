@@ -2,6 +2,11 @@ import {getUserDecks} from "./api.mjs";
 
 const itemPattern = document.createElement('div');
 const cardsList = document.querySelector('.list');
+const prof = document.querySelector('#btn');
+
+prof.addEventListener('click', () => {
+  window.open('/profile');
+})
 
 function createItemPattern() {
   itemPattern.className = 'item';

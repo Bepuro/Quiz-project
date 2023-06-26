@@ -35,22 +35,22 @@
         <span id="btn-close" class="close">&times;</span>
         <div class="modal-dist">
             <img src="{{ url_for('static', filename='img/Saly-1.png') }}">
-            <div class="modal-inf">
+            <form class="modal-inf" method="post" action="{{ url_for('auth.login_modal') }}">
                 <div class="modal-text">
                     <p class="txt-comein">Добро пожаловать!</p>
                     <p class="txt-auth">Авторизация</p>
                 </div>
                 <div class="inputs">
                     <label for="email" class="label">Почта</label>
-                    <input class="input" type="email" id="email" size="30" required placeholder="test@test.com">
+                    <input class="input" name="username" id="email" size="30">
                     <label for="pass" class="label">Пароль</label>
-                    <input class="input" type="password" id="pass" name="password" minlength="8" required placeholder="***********">
+                    <input class="input" type="password" id="pass" name="password"  required placeholder="***********">
                     <div class="btn-gr">
                         <button class="btn-3">Войти</button>
                         <div  id="sign-up" class="btn-1 text-items">Зарегистрироваться</div>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
     </dialog>
 
@@ -63,13 +63,13 @@
                     <p class="txt-comein">Добро пожаловать!</p>
                     <p class="txt-auth">Регистрация</p>
                 </div>
-                <div class="inputs">
+                <form class="inputs" method="post" action="{{ url_for('auth.register_modal') }}">
 
                     <label for="text-b" class="label">Логин</label>
-                    <input type="text" id="text-b" class="input" name="input" placeholder="jsx123">
+                    <input type="text" id="text-b" class="input" name="username" placeholder="jsx123">
 
                     <label for="email" class="label">Почта</label>
-                    <input class="input" type="email" id="email" size="30" required placeholder="test@test.com">
+                    <input class="input" type="email" id="email" size="30" name="email" required placeholder="test@test.com">
 
                     <label for="phone" class="label">Телефон</label>
                     <input type="tel" class="input" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required placeholder="953002211">
@@ -83,7 +83,7 @@
                         <button class="btn-3">Зарегистрироваться</button>
                         <div id="log-in" class="btn-1 text-items">Уже есть аккаунт?</div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </dialog>

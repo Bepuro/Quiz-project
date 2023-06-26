@@ -67,7 +67,7 @@ def login():
         if err is None:
             session.clear()
             session['user_id'] = user.id
-            return redirect(url_for('cards'))
+            return redirect(url_for('profile'))
 
         flash(err)
 
@@ -100,7 +100,7 @@ def register_modal():
                 db.session.rollback()
                 err = f'User {username} is already registered.'
             else:
-                return redirect(url_for("cards"))
+                return redirect(url_for("card_pages.profile"))
         flash(err)
 
 
@@ -122,7 +122,7 @@ def login_modal():
         if err is None:
             session.clear()
             session['user_id'] = user.id
-            return redirect(url_for('cards'))
+            return redirect(url_for('card_pages.profile'))
 
         flash(err)
 
@@ -142,7 +142,7 @@ def load_logged_in_user():
 @bp.route('/logout')
 def logout():
     session.clear()
-    return redirect(url_for('index'))
+    return redirect(url_for('index.html'))
 
 
 def login_required(view):

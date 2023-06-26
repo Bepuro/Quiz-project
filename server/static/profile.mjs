@@ -26,10 +26,15 @@ const navCardsPage = document.getElementById("cards-page");
 const tabPageEdit = document.getElementById("page-edit");
 const tabPageKolods = document.getElementById("page-kolodos");
 const tabPageBest = document.getElementById("page-best");
-const buttonLogOut = document.getElementById("logout");
 
 const buttonAdd = document.getElementById("add-button");
 const parent = document.getElementsByClassName("cards")[0];
+
+const cards = document.querySelector('#cards-page');
+
+cards.addEventListener('click', () => {
+   window.open('/cards');
+});
 
 
 function openPage(page) {
@@ -105,7 +110,6 @@ function addButtons() {
     tabPageEdit.addEventListener("click", () => openPage("page-3"));
     tabPageKolods.addEventListener("click", () => openPage("page-1"));
     tabPageBest.addEventListener("click", () => openPage("page-2"));
-    buttonLogOut.addEventListener("click", () => window.open("index.html"));
 }
 
 

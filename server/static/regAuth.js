@@ -51,4 +51,3 @@ function addButtons() {
 }
 
 addButtons();
-addSubmition();
